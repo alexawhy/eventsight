@@ -114,7 +114,7 @@ class SignupForm extends React.Component {
               <p>Your password must be at least 8 characters</p>
             </div>
             <button className="signup-btn">Sign Up</button>
-            <Link to="/signin/login">Log In Instead</Link>
+            <Link to="/login">Log In Instead</Link>
           </div>
         </form>
         <button 

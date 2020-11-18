@@ -16,8 +16,8 @@ class Nav extends React.Component {
           </div>
           <div className="signin">
             {/* <Link to="/signin">Sign In</Link> */}
-            <Link to="/signin/signup">Sign Up</Link>
-            <Link to="/signin/login">Log In</Link>
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Log In</Link>
           </div>
         </nav>
       )
