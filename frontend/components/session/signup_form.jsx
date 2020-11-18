@@ -113,10 +113,15 @@ class SignupForm extends React.Component {
               </div>
               <p>Your password must be at least 8 characters</p>
             </div>
-            <button>Sign Up</button>
+            <button className="signup-btn">Sign Up</button>
             <Link to="/signin/login">Log In Instead</Link>
           </div>
         </form>
+        <button 
+              className="demo-login-btn" 
+              onClick={() => dispatch(login({email: 'demo@example.com', password: 'pa$$word'}))}>
+              Demo User Login
+        </button>
       </div>
     )
   }
