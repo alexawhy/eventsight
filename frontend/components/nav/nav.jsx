@@ -4,50 +4,43 @@ import { Link } from 'react-router-dom';
 class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    this.props.logout();
-    const { history } = this.props;
-    history.push('/');
   }
 
   render () {
-    const { currentUserId } = this.props;
-    if (currentUserId == null) {
+    const { currentUser, logout } = this.props;
+    if (currentUser == null) {
       return (
-        null
+        <nav className="nav">
+          <div className="nav-logo">
+            eventsight
+          </div>
+          <div className="login">
+            <Link to="/login">Sign In</Link>
+          </div>
+        </nav>
       )
     } else {
       return (
-        null
+        <nav className="nav">
+          <div className="logo">
+            eventsight
+          </div>
+          <div className="user-dropdown">
+            <div className="user-dropdown-icon">
+              <i className="far fa-user-circle"></i>
+            </div>
+            <ul className="user-dropdown-list">
+              <li>{currentUser.fname} {currentUser.lname}</li>
+              <li>{currentUser.email}</li>
+              <li>
+                <Link className="logout" to="/" onClick={logout}>Log Out</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
       )
     }
   }
 }
-
-// const Nav = ({ currentUser, logout }) => {
-//   const loginLink = () => (
-//     <div className="login">
-//       <Link to="/login">Sign In</Link>
-//     </div>
-//   );
-
-//   const userDropdown = () => (
-//     <div className="user-dropdown">
-//       <div className="user-dropdown-icon">
-//         <i className="far fa-user-circle"></i>
-//       </div>
-//       <div className="user-dropdown-list">
-//         <Link className="logout" to="/" onClick={logout}>Log Out</Link>
-//       </div>
-//     </div>
-//   );
-
-  
-// };
-
 
 export default Nav;
