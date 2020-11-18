@@ -79,9 +79,9 @@ class LoginForm extends React.Component {
           </div>
         </form>
         <button 
-              className="demo-login-btn" 
-              onClick={() => dispatch(login({email: 'demo@example.com', password: 'pa$$word'}))}>
-              Demo User Login
+          className="demo-login-btn" 
+          onClick={() => dispatch(login({email: 'demo@example.com', password: 'pa$$word'}))}>
+          Demo User Login
         </button>
       </div>
     )
