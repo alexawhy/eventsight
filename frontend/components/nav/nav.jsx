@@ -14,8 +14,10 @@ class Nav extends React.Component {
           <div className="nav-logo">
             eventsight
           </div>
-          <div className="login">
-            <Link to="/login">Sign In</Link>
+          <div className="signin">
+            {/* <Link to="/signin">Sign In</Link> */}
+            <Link to="/signin/signup">Sign Up</Link>
+            <Link to="/signin/login">Log In</Link>
           </div>
         </nav>
       )
@@ -30,10 +32,12 @@ class Nav extends React.Component {
               <i className="far fa-user-circle"></i>
             </div>
             <ul className="user-dropdown-list">
-              <li>{currentUser.fname} {currentUser.lname}</li>
-              <li>{currentUser.email}</li>
-              <li>
-                <Link className="logout" to="/" onClick={logout}>Log Out</Link>
+              <li className="user-info">
+                <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
+                <div className="user-info-email">{currentUser.email}</div>
+              </li>
+              <li className="logout">
+                <Link to="/" onClick={logout}>Log Out</Link>
               </li>
             </ul>
           </div>
