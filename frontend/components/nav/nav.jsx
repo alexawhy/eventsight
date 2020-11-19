@@ -15,18 +15,18 @@ class Nav extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  toggleDropdown(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setState({visible: !this.state.visible}, () => {
-      if (this.state.visible) {
-        document.addEventListener("click", this.toggleDropdown)
-      }
-      else {
-        document.removeEventListener("click", this.toggleDropdown)
-      }
-    })
-  }
+  // toggleDropdown(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   this.setState({visible: !this.state.visible}, () => {
+  //     if (this.state.visible) {
+  //       document.addEventListener("mouseenter", this.toggleDropdown)
+  //     }
+  //     else {
+  //       document.removeEventListener("click", this.toggleDropdown)
+  //     }
+  //   })
+  // }
 
   render() {
     const { currentUser, logout } = this.props;
@@ -57,23 +57,25 @@ class Nav extends React.Component {
               <img src={window.logo} alt="eventsight" className="logo"/>
             </div>
             <div className="nav-links">
-              <a className="user-dropdown" onClick={this.toggleDropdown}>
-                <div className="user-dropdown-icon">
+              <a>Create Events</a>
+              <a>Tickets</a>
+              <div class="user-dropdown" onClick={this.toggleDropdown}>
+                <div className="user-dropdown-trigger">
                   <FontAwesomeIcon className="user-icon" icon={faUser}/>
-                  <FontAwesomeIcon className="down-icon"icon={faAngleDown} />
+                  <FontAwesomeIcon className="down-icon" icon={faAngleDown} />
                 </div>
-              </a>
+                <ul className={`user-dropdown-list ${dropdownState}`}>
+                  <li className="user-info">
+                    <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
+                    <div className="user-info-email">{currentUser.email}</div>
+                  </li>
+                  <li onClick={logout}>
+                    <Link to="/" className="logout">Log Out</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-          <ul className={`user-dropdown-list ${dropdownState}`}>
-            <li className="user-info">
-              <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
-              <div className="user-info-email">{currentUser.email}</div>
-            </li>
-            <li onClick={logout}>
-              <Link to="/" className="logout">Log Out</Link>
-            </li>
-          </ul>
         </nav>
       )
     }
