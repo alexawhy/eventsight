@@ -45,6 +45,10 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   render() {
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon icon={faUser} size="4x"/>;

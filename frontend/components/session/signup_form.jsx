@@ -15,7 +15,8 @@ class SignupForm extends React.Component {
       },
       errors: {}
     };
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.clearErrors = this.clearErrors.bind(this);
   }
 
   update(field) {
@@ -27,32 +28,35 @@ class SignupForm extends React.Component {
     }
   }
 
+  // clearErrors() {
+  //   this.setState({errors: {}})
+  // }
+
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   renderErrors() {
     return(
       <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-        {/* {this.props.errors.map((error, i) => {
+        {this.props.errors.map((error, i) => {
           let item = error.split(' ')[0];
           const message = error.split(' ').slice(1).join(' ');
           switch (item) {
-            case 'email':
-              return item = 'Email';          
-            case 'fname':
-              return item = 'First name';
-            case 'lname':
-              return item = 'Last name';
-            case 'password':
-              return item = 'Password';
+            case 'Fname':
+              item = 'First name';
+              break;
+            case 'Lname':
+              item = 'Last name';
+              break;
+            default:
+              item = item;
           }
           return (<li key={`error-${i}`}>
-            {item} {message} 
+            {item} {message}
           </li>
           )
-        })} */}
+        })}
       </ul>
     );
   }
