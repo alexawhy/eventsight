@@ -12,13 +12,13 @@
 
 .splash-text {
   font-weight: 900;
-  font-size: 30px;
+  font-size: 28px;
   color: $orange;
 }
 
 .splash-text-strong {
   font-weight: 900;
-  font-size: 40px;
+  font-size: 38px;
 }
 
 .splash-bg {
@@ -40,4 +40,8 @@
   background-color: $orange;
   border-radius: 25px;
   margin-top: 20px;
+}
+
+.splash-btn:hover{
+  background-color: $lighter-orange;
 }

@@ -77,11 +77,19 @@
   color: white;
 }
 
+.signup-btn:hover, .login-btn:hover {
+  background-color: $lighter-orange;
+}
+
 .demo-login-btn {
   width: 100%;
   height: 45px;
-  background-color: $blue;
+  background-color: $fb-blue;
   margin-top: 10px;
   color: white;
+}
+
+.demo-login-btn:hover {
+  background-color: rgb(49, 138, 253);
 }
 
