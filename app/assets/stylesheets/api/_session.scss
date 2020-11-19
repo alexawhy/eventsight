@@ -39,12 +39,14 @@
 }
 
 .input-wrapper {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 45px;
   margin: 12px 0;
-  border: 1px solid $gray;
+  border: 3px solid transparent;
   border-radius: 4px; 
+  box-shadow: 0px 0px 1px rgb(190, 190, 190);
   
   label {
     margin: 5px 10px 2px 10px;
@@ -60,6 +62,15 @@
   }
 }
 
+.input-wrapper:hover {
+  box-shadow: 0px 0px 1px rgb(70, 70, 70);
+}
+
+.input-wrapper:focus-within {
+  border: 2px solid #365AE4;
+  box-shadow: 0px 0px 1px rgb(190, 190, 190);
+  transition: border 0.3s;
+}
 .login-msg {
   display: block;
   margin-top: 10px;
@@ -100,3 +111,7 @@
   background-color: rgb(49, 138, 253);
 }
 
+
+.session-icon {
+  color: $orange;
+}

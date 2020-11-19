@@ -28,10 +28,6 @@ class SignupForm extends React.Component {
     }
   }
 
-  // clearErrors() {
-  //   this.setState({errors: {}})
-  // }
-
   componentWillUnmount() {
     this.props.clearSessionErrors();
   }
@@ -69,7 +65,7 @@ class SignupForm extends React.Component {
 
   render() {
     const { user } = this.state;
-    const userIcon = <FontAwesomeIcon icon={faUser} size="4x"/>;
+    const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
     return (
       <div className="session-form-container">
         {userIcon}
