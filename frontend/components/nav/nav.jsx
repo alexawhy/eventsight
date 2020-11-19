@@ -12,7 +12,7 @@ class Nav extends React.Component {
     this.state = {
       visible: false
     }
-    this.toggleDropdown = this.toggleDropdown.bind(this);
+    // this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   // toggleDropdown(e) {
@@ -59,15 +59,18 @@ class Nav extends React.Component {
             <div className="nav-links">
               <a>Create Events</a>
               <a>Tickets</a>
-              <div class="user-dropdown" onClick={this.toggleDropdown}>
+              <div className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-trigger">
                   <FontAwesomeIcon className="user-icon" icon={faUser}/>
                   <FontAwesomeIcon className="down-icon" icon={faAngleDown} />
                 </div>
                 <ul className={`user-dropdown-list ${dropdownState}`}>
                   <li className="user-info">
-                    <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
-                    <div className="user-info-email">{currentUser.email}</div>
+                    <FontAwesomeIcon className="user-icon-small" icon={faUser}/>
+                    <div>
+                      <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
+                      <div className="user-info-email">{currentUser.email}</div>
+                    </div>
                   </li>
                   <li onClick={logout}>
                     <Link to="/" className="logout">Log Out</Link>
