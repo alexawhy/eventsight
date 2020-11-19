@@ -15,6 +15,12 @@ class Nav extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
+  handleClickOutside(){
+    this.setState({
+      visible: false
+    })
+  }
+
   toggleDropdown() {
     this.setState(prevState => ({
       visible: !prevState.visible
@@ -34,11 +40,11 @@ class Nav extends React.Component {
                 <img src={window.logo} alt="eventsight" className="logo"/>
               </a>
             </div>
-            <ul className="auth-links">
+            <div className="auth-links">
               {/* <Link to="/signin">Sign In</Link> */}
-              <li><Link to="/signup">Sign Up</Link></li>
-              <li><Link to="/login">Log In</Link></li>
-            </ul>
+              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">Log In</Link>
+            </div>
           </div>
         </nav>
       )
@@ -49,21 +55,21 @@ class Nav extends React.Component {
             <div className="nav-logo">
               <img src={window.logo} alt="eventsight" className="logo"/>
             </div>
-            <ul className="nav-links">
-              <li className="user-dropdown" onClick={this.toggleDropdown}>
+            <div className="nav-links">
+              <a className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-icon">
                   {userIcon}
                 </div>
-              </li>
-            </ul>
+              </a>
+            </div>
           </div>
           <ul className={`user-dropdown-list ${dropdownState}`}>
             <li className="user-info">
               <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
               <div className="user-info-email">{currentUser.email}</div>
             </li>
-            <li className="logout">
-              <Link to="/" onClick={logout}>Log Out</Link>
+            <li onClick={logout}>
+              <Link to="/" className="logout">Log Out</Link>
             </li>
           </ul>
         </nav>

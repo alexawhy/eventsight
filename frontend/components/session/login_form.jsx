@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -45,10 +47,12 @@ class LoginForm extends React.Component {
 
   render() {
     const { user } = this.state;
+    const userIcon = <FontAwesomeIcon icon={faUser} size="4x"/>;
     return (
-      <div className="signup-form-container">
-        <h1 className="signup-form-title">Welcome Back</h1>
-        <h3>Please enter your password to log in.</h3>
+      <div className="session-form-container">
+        {userIcon}
+        <h1 className="session-form-title">Welcome Back</h1>
+        <h3 className="session-form-greeting">Please enter your password to log in.</h3>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
@@ -73,7 +77,6 @@ class LoginForm extends React.Component {
                   onChange={this.update('password')}
                 />
               </div>
-              <p>Your password must be at least 8 characters</p>
             </div>
             <button className="login-btn">Log In</button>
           </div>

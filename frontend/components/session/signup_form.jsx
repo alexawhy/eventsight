@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -63,10 +65,12 @@ class SignupForm extends React.Component {
 
   render() {
     const { user } = this.state;
+    const userIcon = <FontAwesomeIcon icon={faUser} size="4x"/>;
     return (
-      <div className="signup-form-container">
-        <h1 className="signup-form-title">Welcome</h1>
-        <h3>Create an account.</h3>
+      <div className="session-form-container">
+        {userIcon}
+        <h1 className="session-form-title">Welcome</h1>
+        <h3 className="session-form-greeting">Create an account.</h3>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
@@ -114,9 +118,9 @@ class SignupForm extends React.Component {
               <p>Your password must be at least 8 characters</p>
             </div>
             <button className="signup-btn">Sign Up</button>
-            <Link to="/login">Log In Instead</Link>
           </div>
         </form>
+        <Link to="/login" className="login-msg">Log In Instead</Link>
         <button 
           className="demo-login-btn" 
           onClick={() => dispatch(login({email: 'demo@example.com', password: 'pa$$word'}))}>

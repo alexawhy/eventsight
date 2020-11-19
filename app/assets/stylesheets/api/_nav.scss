@@ -15,7 +15,7 @@
 .auth-links{
   display: flex;
 
-  li {
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@
     color: $darker-gray;
   }
 
-  li:hover {
+  a:hover {
     background-color: $lightest-gray;
   }
 }
@@ -35,7 +35,7 @@
 .nav-links{
   display: flex;
 
-  li {
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,15 +47,34 @@
     color: $darker-gray;
   }
 
-  li:hover {
+  a:hover {
     background-color: $lightest-gray;
   }
 
 }
 
+.user-dropdown-list {
+  li {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  
+  li:first-child {
+    border-bottom: 1px solid $lighter-gray;
+  }
+
+  li:hover {
+    background-color: $lighter-gray;
+  }
+}
+
 .expand {
-  border: 2px blue solid;
-  display: absolute;
+  float: right;
+  box-shadow: 2px 2px 8px $gray;
+  width: 250px;
+  right: 0;
 }
 
 .collapse {

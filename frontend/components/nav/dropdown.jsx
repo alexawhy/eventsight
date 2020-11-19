@@ -9,4 +9,4 @@ class Dropdown extends React.Component {
   };
 }
 
-export default onClickOutside(MyComponent);
+export default onClickOutside(Dropdown);
