@@ -16,17 +16,18 @@ class Nav extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  handleClickOutside(){
-    this.setState({
-      visible: false
+  toggleDropdown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({visible: !this.state.visible}, () => {
+      if (this.state.visible) {
+        document.addEventListener("click", this.toggleDropdown)
+      }
+      else {
+        document.removeEventListener("click", this.toggleDropdown)
+      }
     })
   }
-
-  toggleDropdown() {
-    this.setState(prevState => ({
-      visible: !prevState.visible
-    }))
-  };
 
   render() {
     const { currentUser, logout } = this.props;
@@ -59,9 +60,7 @@ class Nav extends React.Component {
             <div className="nav-links">
               <a className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-icon">
-                  {/* <span className="user-icon-wrapper"> */}
-                    <FontAwesomeIcon className="user-icon" icon={faUser}/>
-                  {/* </span> */}
+                  <FontAwesomeIcon className="user-icon" icon={faUser}/>
                   <FontAwesomeIcon className="down-icon"icon={faAngleDown} />
                 </div>
               </a>
