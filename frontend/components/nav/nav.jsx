@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import onClickOutside from 'react-onclickoutside';
 import { extend } from 'lodash';
 
@@ -58,7 +59,10 @@ class Nav extends React.Component {
             <div className="nav-links">
               <a className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-icon">
-                  {userIcon}
+                  {/* <span className="user-icon-wrapper"> */}
+                    <FontAwesomeIcon className="user-icon" icon={faUser}/>
+                  {/* </span> */}
+                  <FontAwesomeIcon className="down-icon"icon={faAngleDown} />
                 </div>
               </a>
             </div>
