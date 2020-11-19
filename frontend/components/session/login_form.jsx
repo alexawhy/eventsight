@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
             <div className="email">
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-email">Email</label>
                 <input 
                   type="text"
@@ -64,7 +64,7 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <div className="password">
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-password">Password</label>
                 <input 
                   type="password"

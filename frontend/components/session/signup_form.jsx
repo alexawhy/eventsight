@@ -71,7 +71,7 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
             <div className="email">
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-email">Email</label>
                 <input 
                   type="text"
@@ -82,7 +82,7 @@ class SignupForm extends React.Component {
               </div>
             </div>
             <div className="name">
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-fname">First Name</label>
                 <input 
                   type="text"
@@ -91,7 +91,7 @@ class SignupForm extends React.Component {
                   onChange={this.update('fname')}
                 />
               </div>
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-lname">Last Name</label>
                 <input 
                   type="text"
@@ -102,7 +102,7 @@ class SignupForm extends React.Component {
               </div>
             </div>
             <div className="password">
-              <div className="input-box">
+              <div className="input-wrapper">
                 <label htmlFor="input-password">Password</label>
                 <input 
                   type="password"

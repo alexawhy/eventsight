@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  border-bottom: $lightest-gray 1px solid; 
+}
+
+.logo {
+  height: 30px;
+  width: 120px;
+  margin-left: 20px;
+}
+
+.auth-links{
+  display: flex;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    color: $darker-gray;
+  }
+
+  li:hover {
+    background-color: $lightest-gray;
+  }
+}
