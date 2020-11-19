@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import onClickOutside from 'react-onclickoutside';
+import { extend } from 'lodash';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,21 +12,18 @@ class Nav extends React.Component {
     this.state = {
       visible: false
     }
-    this.expandDropdown = this.expandDropdown.bind(this);
-    this.collapseDropdown = this.collapseDropdown.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  expandDropdown() {
-    this.setState({visible: true});
-  }
+  toggleDropdown() {
+    this.setState(prevState => ({
+      visible: !prevState.visible
+    }))
+  };
 
-  collapseDropdown() {
-    this.setState({visible: false});
-  }
-
-  render () {
+  render() {
     const { currentUser, logout } = this.props;
-    const userIcon = <FontAwesomeIcon icon={faUser} />
+    const userIcon = <FontAwesomeIcon icon={faUser} />;
     const dropdownState = this.state.visible ? 'expand' : 'collapse';
     if (currentUser == null) {
       return (
@@ -51,14 +50,14 @@ class Nav extends React.Component {
               <img src={window.logo} alt="eventsight" className="logo"/>
             </div>
             <ul className="nav-links">
-              <li className="user-dropdown" onClick={this.expandDropdown}>
+              <li className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-icon">
                   {userIcon}
                 </div>
               </li>
             </ul>
           </div>
-          <ul className={`user-dropdown-list ${dropdownState}`} tabIndex="0" onBlur={this.collapseDropdown} >
+          <ul className={`user-dropdown-list ${dropdownState}`}>
             <li className="user-info">
               <div className="user-info-name">{currentUser.fname} {currentUser.lname}</div>
               <div className="user-info-email">{currentUser.email}</div>
