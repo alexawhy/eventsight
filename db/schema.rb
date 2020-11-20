@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2020_11_19_213618) do
     t.string "title", null: false
     t.text "description", null: false
     t.string "venue", null: false
-    t.datetime "start", null: false
-    t.datetime "end", null: false
+    t.date "start_date", null: false
+    t.time "start_time", null: false
+    t.date "end_date", null: false
+    t.time "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_events_on_category_id"

@@ -8,8 +8,10 @@
 #  title        :string           not null
 #  description  :text             not null
 #  venue        :string           not null
-#  start        :datetime         not null
-#  end          :datetime         not null
+#  start_date   :date             not null
+#  start_time   :time             not null
+#  end_date     :date             not null
+#  end_time     :time             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

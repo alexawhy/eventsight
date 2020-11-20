@@ -8,4 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+  validates :category, presence: true
+
+  has_many :events, class_name: :Event 
 end
