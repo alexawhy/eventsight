@@ -22,4 +22,7 @@ class Event < ApplicationRecord
 
   belongs_to :organizer, class_name: :User
   belongs_to :category
+
+  has_one_attached :image
 end
+ 
