@@ -16,6 +16,7 @@ class Api::EventsController < ApplicationController
       render :show
     else
       render json: @event.errors.full_messages, status: 422
+    end
   end
 
   def update

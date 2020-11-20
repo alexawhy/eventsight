@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_19_213618) do
     t.string "title", null: false
     t.text "description", null: false
     t.string "venue", null: false
+    t.integer "capacity", null: false
     t.date "start_date", null: false
     t.string "start_time", null: false
     t.date "end_date", null: false
