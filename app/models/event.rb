@@ -16,8 +16,9 @@
 #  updated_at   :datetime         not null
 #
 class Event < ApplicationRecord
-  validates :organizer_id, :category_id, :title, :description, :venue, :start_date, :start_time, :end_date, :end_time, presence: true
+  validates :organizer_id, :category_id, :title, :description, :venue, :capacity, :start_date, :start_time, :end_date, :end_time, presence: true
   validates :title, uniqueness: true
+  validates :capacity, numericality: {greater_than: 0}
 
   belongs_to :organizer, class_name: :User
   belongs_to :category
