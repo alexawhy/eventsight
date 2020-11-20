@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :organized_events, class_name: :Event, inverse_of: :organizer
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user && user.is_password?(password)

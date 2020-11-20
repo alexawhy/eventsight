@@ -20,5 +20,5 @@ class Event < ApplicationRecord
   validates :title, uniqueness: true
 
   belongs_to :organizer, class_name: :User
-  belongs_to :category, class_name: :Category
+  belongs_to :category
 end
