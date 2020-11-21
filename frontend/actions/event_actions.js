@@ -21,7 +21,7 @@ const receiveEvent = event => {
 
 const removeEvent = eventId => {
   return {
-    ttype: REMOVE_EVENT,
+    type: REMOVE_EVENT,
     eventId
   }
 };
