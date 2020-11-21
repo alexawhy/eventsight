@@ -22,7 +22,6 @@ class EventShow extends React.Component {
   }
 
   render() {
-    debugger
     return(
       <div>
         <h1>{this.state.event.title}</h1>

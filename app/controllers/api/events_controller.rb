@@ -49,7 +49,7 @@ class Api::EventsController < ApplicationController
       :start_time, 
       :end_date, 
       :end_time,
-      image: []
+      :image
     )
   end
 end
