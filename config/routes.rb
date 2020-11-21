@@ -20,7 +20,5 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :create, :update, :destroy]
   end
 
-  resources :events, only: [:show]
-
   root "static_pages#root"
 end

@@ -8,6 +8,7 @@ class Api::EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
+    render :show
   end
 
   def create
@@ -47,7 +48,8 @@ class Api::EventsController < ApplicationController
       :start_date, 
       :start_time, 
       :end_date, 
-      :end_time
+      :end_time,
+      image: []
     )
   end
 end
