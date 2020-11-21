@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +11,11 @@ class Nav extends React.Component {
     this.state = {
       visible: false
     }
-    // this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.history.push("/")
   }
 
   // toggleDropdown(e) {
@@ -32,15 +35,17 @@ class Nav extends React.Component {
     const { currentUser, logout } = this.props;
     const userIcon = <FontAwesomeIcon icon={faUser} />;
     const dropdownState = this.state.visible ? 'expand' : 'collapse';
+    const navLogo = (
+      <div className="nav-logo" onClick={this.handleClick}>
+        <img src={window.logo} alt="eventsight" className="logo"/>
+      </div>
+    );
+
     if (currentUser == null) {
       return (
         <nav className="nav">
           <div className="navbar">
-            <div className="nav-logo">
-              <a href="/">
-                <img src={window.logo} alt="eventsight" className="logo"/>
-              </a>
-            </div>
+            {navLogo}
             <div className="auth-links">
               {/* <Link to="/signin">Sign In</Link> */}
               <Link to="/signup">Sign Up</Link>
@@ -53,9 +58,7 @@ class Nav extends React.Component {
       return (
         <nav className="nav">
           <div className="navbar">
-            <div className="nav-logo">
-              <img src={window.logo} alt="eventsight" className="logo"/>
-            </div>
+            {navLogo}
             <div className="nav-links">
               <a>Create Events</a>
               <a>Tickets</a>
@@ -85,5 +88,5 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
 

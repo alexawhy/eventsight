@@ -8,14 +8,12 @@ class EventIndexItem extends React.Component {
   }
 
   handleClick() {
-    debugger
     const { event } = this.props;
     this.props.history.push(`/events/${event.id}`)
   }
   
   render() {
     const { event } = this.props;
-    debugger
     return (
       <div className="event-index-item">
         <div className="event-index-item-image redirect">

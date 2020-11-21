@@ -8,7 +8,6 @@ class EventIndex extends React.Component {
 
   render() {
     const { events } = this.props;
-    debugger
     return (
       <div className="event-index">
         <h2>Events in New York</h2>

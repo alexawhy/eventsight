@@ -11,18 +11,18 @@ import SignupFormContainer from './session/signup_form_container'
 import LoginFormContainer from './session/login_form_container'
 import Splash from './splash/splash'
 import EventIndexContainer from './event/event_index_container'
-import EventShow from './event/event_show'
+import EventShowContainer from './event/event_show_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
     <NavContainer />
+    <Route exact path="/" component={Splash} />
+    <Route exact path="/" component={EventIndexContainer} />
     <Switch>
-      <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <Route exact path="/events" component={EventIndexContainer} />
-      <Route exact path="/events/:eventId" component={EventShow} />
+      <Route exact path="/events/:eventId" component={EventShowContainer} />
     </Switch>
   </div>
 );
