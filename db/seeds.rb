@@ -86,7 +86,7 @@ event4 = Event.create(
   organizer_id: michelle.id,
   category_id: arts.id,
   title: "Michelle's Open Studio",
-  description: "See all latest work of Michelle.",
+  description: "See all latest works of Michelle.",
   venue: "4637 Dancing Dove Lane, New York, NY 10016",
   capacity: 100,
   start_date: "2020-12-21",
