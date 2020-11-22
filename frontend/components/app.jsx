@@ -29,7 +29,7 @@ const App = () => (
       <Route exact path="/events/:eventId" component={EventShowContainer} />
     </Switch>
     <Route exact path="/" component={Footer} />
-    <Route exact path="/events/:eventId" component={Footer} />
+    {/* <Route exact path="/events/:eventId" component={Footer} /> */}
   </div>
 );
 
