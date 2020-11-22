@@ -45,6 +45,7 @@ class Api::EventsController < ApplicationController
       :title, 
       :description, 
       :venue, 
+      :capacity,
       :start_date, 
       :start_time, 
       :end_date, 
