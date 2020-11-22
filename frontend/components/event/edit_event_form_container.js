@@ -24,6 +24,8 @@ class EditEventForm extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     event: state.entities.events[ownProps.match.params.eventId],
+    // imageUrl: state.entities.events[ownProps.match.params.eventId].imageUrl,
+    imageFile: null,
     formType: 'Edit Event'
   }
 };

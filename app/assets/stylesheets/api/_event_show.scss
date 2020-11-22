@@ -4,12 +4,15 @@
   margin: 30px auto 50px auto;
   border-radius: 5px;
   border: 1px solid $lighter-gray;  
+  box-sizing: border-box;
 
   .left {
+    display: block;
     width: 66.67%;
   }
 
   .right {
+    display: block;
     width: 33.33%;
   }
 }
@@ -23,7 +26,6 @@
   }
 
   .right {
-    width: 33.33%;
     border-radius: 0px 4px 0px 0px;
     padding: 30px;
     background-color: $lightest-gray;
@@ -48,7 +50,6 @@
   border-bottom: 1px solid $lighter-gray;
 
   .left {
-    width: 66.67%;
 
     .bookmark {
       height: 20px;
@@ -68,7 +69,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 33.33%;
 
     button {
       padding: 0 30px;
@@ -95,11 +95,12 @@
   }
 
   .left>div{
-    margin: 30px;
+    padding: 30px;
 
     h3 {
       font-size: 20px;
       font-weight: 500;
+      margin-top: 0;
     }
 
     p {
@@ -125,6 +126,4 @@
 
     }
   }
-
-  
 }
