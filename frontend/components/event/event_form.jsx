@@ -41,7 +41,7 @@ class EventForm extends React.Component {
           </p>
           <div className="title">
             <div className="input-wrapper">
-              <label htmlFor="input-title">Event Title</label>
+              <label htmlFor="input-title">Event Title <span className="red">*</span></label>
               <input 
                 type="text"
                 id="input-title"
@@ -51,10 +51,44 @@ class EventForm extends React.Component {
           </div>
           <div className="category">
             <div className="input-wrapper">
-              <label htmlFor="input-category">Category</label>
+              <label htmlFor="input-category">Category <span className="red">*</span></label>
               <select id="input-category" onChange={this.update('category_id')} value={this.state.category}>
                 {categoryOptions}
               </select>
+            </div>
+          </div>
+        </div>
+        <div className="event-form-location">
+          <FontAwesomeIcon className="form-icon" icon={faMapMarkedAlt} />
+          <h2>Venue</h2>
+          <p>
+            Help people in the area discover your event and let attendees know where to show up.
+          </p>
+          <div className="venue">
+            <div className="input-wrapper">
+              <label htmlFor="input-venue">Venue <span className="red">*</span></label>
+              <input 
+                type="text"
+                id="input-venue"
+                value={this.state.venue}
+                onChange={this.update('venue')} />
+            </div>
+          </div>
+        </div>
+        <div className="event-form-location">
+          <FontAwesomeIcon className="form-icon" icon={faCalendarAlt} />
+          <h2>Date and time</h2>
+          <p>
+            Tell event-goers when your event starts and ends so they can make plans to attend.
+          </p>
+          <div className="start_date">
+            <div className="input-wrapper">
+              <label htmlFor="input-start_date">Event Starts <span className="red">*</span></label>
+              <input 
+                type="date"
+                id="input-start_date"
+                value={this.state.start_date}
+                onChange={this.update('start_date')} />
             </div>
           </div>
         </div>
