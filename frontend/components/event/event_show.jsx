@@ -5,7 +5,11 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 class EventShow extends React.Component {  
   componentDidMount() {
-    this.props.fetchEvent(this.props.match.params.eventId)
+    this.props.fetchEvent(this.props.match.params.eventId);
+  }
+  
+  componentDidUpdate() {
+    this.props.fetchEvent(this.props.match.params.eventId);
   }
 
   render() {
