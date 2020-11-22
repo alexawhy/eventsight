@@ -12,6 +12,8 @@ import LoginFormContainer from './session/login_form_container'
 import Splash from './splash/splash'
 import EventIndexContainer from './event/event_index_container'
 import EventShowContainer from './event/event_show_container'
+import createEventFormContainer from './event/create_event_form_container';
+import EditEventFormContainer from './event/edit_event_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -22,6 +24,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
+      <ProtectedRoute exact path="/events/create" component={createEventFormContainer} />
       <Route exact path="/events/:eventId" component={EventShowContainer} />
     </Switch>
   </div>
