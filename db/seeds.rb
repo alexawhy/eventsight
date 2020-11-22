@@ -47,7 +47,7 @@ event1 = Event.create(
   organizer_id: demo.id,
   category_id: food.id,
   title: "App Academy Graduation Party",
-  description: "Sody pop for everyone.",
+  description: "Sody pop for everyone.<br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec enim diam vulputate ut pharetra sit amet. Ut tristique et egestas quis ipsum.<br />  Felis imperdiet proin fermentum leo vel orci porta. A scelerisque purus semper eget duis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Sed velit dignissim sodales ut eu sem integer vitae. Tempor nec feugiat nisl pretium fusce id velit ut tortor.<br /> Eget duis at tellus at urna condimentum mattis. Facilisi cras fermentum odio eu feugiat. Augue ut lectus arcu bibendum at varius vel. Platea dictumst quisque sagittis purus sit amet volutpat consequat. Lobortis mattis aliquam faucibus purus in massa.<br /> Gravida dictum fusce ut placerat orci. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Morbi tristique senectus et netus. Non curabitur gravida arcu ac. Aliquam etiam erat velit scelerisque in dictum non consectetur.",
   venue: "90 5th Ave, New York, NY 10011",
   capacity: 50,
   start_date: "2020-12-18",

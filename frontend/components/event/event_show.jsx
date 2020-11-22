@@ -1,22 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
-class EventShow extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     event: {}
-  //   };
-  //   this.fetchEvent= this.fetchEvent.bind(this);
-  // }
-
-  // fetchEvent(eventId) {
-  //   $.ajax({
-  //     url: `/api/events/${eventId}`
-  //   }).then(event => {
-  //     this.setState( { event } );
-  //   });
-  // }
-  
+class EventShow extends React.Component {  
   componentDidMount() {
     this.props.fetchEvent(this.props.match.params.eventId)
   }
@@ -28,28 +14,37 @@ class EventShow extends React.Component {
     return(
       <div className="event-show-container">
         <div className="event-show-header">
-          <img src={event.imageUrl} alt=""/>
-          <div className="event-show-date">
-            {event.start_date}
+          <div className="left">
+            <img src={event.imageUrl} alt={event.title}/>
           </div>
-          <h1>{event.title}</h1>
+          <div className="right">
+            <div className="event-show-date">
+              {event.start_date}
+            </div>
+            <h1 id="event-title">{event.title}</h1>
+          </div>
         </div>
         <div className="event-show-action">
-          <button>Bookmark</button>
-          <button className="register-btn">Register</button>
+          <div className="left">
+            <FontAwesomeIcon className="bookmark" icon={faHeart} />
+          </div>
+          <div className="right">
+            <button className="register-btn">Register</button>
+          </div>
         </div>
         <div className="event-show-main">
-          <div className="event-show-description">
-            <h3>Description</h3>
-            {event.description}
+          <div className="left">
+            <div>
+              <h3>About this Event</h3>
+              <p>{event.description}</p>
+            </div>
           </div>
-          <div className="event-show-details">
+          <div className="right">
             <h3>Date and Time</h3>
-            {event.start_date}
-            <br />
-            {event.start_time} - {event.end_time}
+            <p>{event.start_date}</p>
+            <p>{event.start_time} - {event.end_time}</p>
             <h3>Location</h3>
-            {event.venue}
+            <p>{event.venue}</p>
           </div>
         </div>
       </div>

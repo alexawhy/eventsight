@@ -29,7 +29,6 @@ class EventForm extends React.Component {
       return <option value={idx + 1} key={category}>{category}</option>
     })
     
-    // debugger
     return (
       <form className="event-form">
         <div className="event-form-basic-info">
