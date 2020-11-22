@@ -11,7 +11,7 @@ class EventIndex extends React.Component {
     return (
       <div className="event-index">
         <h2>Events in New York</h2>
-        <div className="event-list">
+        <div className="event-index-list">
           {events.map(event => (
             <EventIndexItem
               event={event}

@@ -1,13 +1,16 @@
 .splash {
   // display: block;
-  margin-bottom: 320px;
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-bottom: 120px;
 }
 
 .splash-img {
-  width: 60%;
-  margin: 20px auto;
+  width: 50%;
+  max-width: 700px;
+  margin: 20px 8vw 100px auto;
   position: absolute;
-  right: 30px;
+  right: 5%;
 }
 
 .splash-text-box {
@@ -28,11 +31,11 @@
 
 .splash-bg {
   z-index: -1;
-  position: absolute;
-  top: 120px;
+  position: relative;
+  top: 60px;
   left: 100px;
-  width: 900px;
-  height: 25vw;
+  width: 80%;
+  height: 20vh;
   background-color: $lightest-gray;
 }
 
