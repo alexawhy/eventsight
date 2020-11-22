@@ -13,6 +13,10 @@ const eventsReducer = (state = {}, action) => {
     case RECEIVE_EVENT:
       const newEvent = { [action.event.id]: action.event};
       return Object.assign({}, state, newEvent)
+    case REMOVE_EVENT:
+      let nextState = Object.assign({}, state);
+      delete nextState[action.postId];
+      return nextState;
     default:
       return state;
   }
