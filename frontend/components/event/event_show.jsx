@@ -16,25 +16,25 @@ class EventShow extends React.Component {
     const { event } = this.props;
     if (!event) return null;
 
-    const Background = styled.div`
-      background-image: url(${event.imageUrl});
-      background-size: cover;
-      width: 100%;
-      height: 60vh;
-      position: absolute;
-      top: 72px;
-      z-index: -1;
-      filter: blur(15px);
-      transform: scale(1.1);
-      opacity: 0.9;
-    `
+    // const Background = styled.div`
+    //   background-image: url(${event.imageUrl});
+    //   background-size: cover;
+    //   width: 100%;
+    //   height: 60vh;
+    //   position: absolute;
+    //   top: 72px;
+    //   z-index: -1;
+    //   filter: blur(15px);
+    //   transform: scale(1.1);
+    //   opacity: 0.9;
+    // `
 
     return(
       <div>
-        <Background event={event}/>
-        {/* <div className="background">
+        {/* <Background event={event}/> */}
+        <div className="background">
           <img src={event.imageUrl} alt=""/>
-        </div> */}
+        </div>
         <div className="event-show-container">
           <div className="event-show-header">
             <div className="left">
