@@ -1,30 +1,38 @@
-import { connect } from 'react-redux';
-import { createEvent } from '../../actions/event_actions';
+import React from 'react';
+import { connect } from ' react-redux';
 import EventForm from './event_form';
+import { fetchEvent, updateEvent } from '../../actions/event_actions';
 
-const mapStateToProps = state => {
+class EditEventForm extends React.Component {
+  componentDidMount() {
+    this.props.fetchEvent(this.props.match.params.eventId);
+  }
+
+  render () {
+    const { action, formType, event } = this.props;
+    if (!event) return null;
+
+    return (
+      <EventForm 
+        action={action}
+        formType={formType}
+        event={event} />
+    );
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
   return {
-    event: {
-      organizer_id: '',
-      category_id: '',
-      title: '',
-      description: '',
-      venue: '',
-      capacity: '',
-      start_date: '', 
-      start_time: '', 
-      end_date: '', 
-      end_time: '',
-    },
-    formType: 'Create Event',
-    currentUserId: state.session.currentUserId
+    event: state.entities.events[ownProps.match.params.eventId],
+    formType: 'Edit Event'
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: event => dispatch(createEvent(event))
+    fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+    action: event => dispatch(updateEvent(event))
   }
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm);
