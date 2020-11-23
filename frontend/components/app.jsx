@@ -30,6 +30,8 @@ const App = () => (
       <Route exact path="/events/:eventId" component={EventShowContainer} />
     </Switch>
     <Route exact path="/" component={Footer} />
+    <Route exact path="/events/create" component={Footer} />
+    <Route exact path="/events/:eventId/edit" component={Footer} />
     {/* <Route exact path="/events/:eventId" component={Footer} /> */}
   </div>
 );

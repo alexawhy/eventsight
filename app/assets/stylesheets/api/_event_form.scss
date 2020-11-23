@@ -1,7 +1,7 @@
 .event-form {
   // display: flex;
   // flex-direction: column;
-  width: 90%;
+  width: 85%;
   max-width: 900px;
   margin: 20px auto;
   padding: 40px;
@@ -19,6 +19,10 @@
   padding: 20px 40px 40px 40px;
   margin-bottom: 20px;
   border-bottom: 1px solid $lightest-gray;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   .left {
     width: 10%;
@@ -76,6 +80,11 @@
   }
 }
 
+.event-form-description {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+
 .description .input-wrapper {
   height: 200px;
 
@@ -121,14 +130,25 @@
   }
 }
 
+.event-form-image {
+  p {
+    margin-bottom: 20px;
+  }
+}
+
 .submit-btn {
-  // display: block;
   background-color: $orange;
   height: 50px;
   width: 150px;
   color: white;
   position: relative;
-  left: 80%;
+  float: right;
+  margin-right: 40px;
+  margin-bottom: 40px;
+
+  &:hover {
+    background-color: $lighter-orange;
+  }
 }
 
 .red {

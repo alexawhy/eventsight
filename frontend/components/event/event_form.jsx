@@ -100,7 +100,7 @@ class EventForm extends React.Component {
             </div>
             <div className="category">
               <div className="input-wrapper">
-                <select id="input-category" value={currEvent.category_id} defaultValue={currEvent.category_id} onChange={this.handleInput('category_id')}>
+                <select id="input-category" value={currEvent.category_id} onChange={this.handleInput('category_id')}>
                   <option value="">Category </option>
                   {categoryOptions}
                 </select>
