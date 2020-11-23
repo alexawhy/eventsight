@@ -16,17 +16,16 @@ const mapStateToProps = state => {
       start_time: '', 
       end_date: '', 
       end_time: '',
-      imageUrl: null
+      imageUrl: null                                                                                                                                       
     },
     imageFile: null,
-    formType: 'Create Event',
-    currentUserId: state.session.currentUserId
+    formType: 'Create Event',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: event => dispatch(createEvent(event))
+    action: formData => dispatch(createEvent(formData))
   }
 };
 

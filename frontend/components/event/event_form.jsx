@@ -20,9 +20,23 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append(currEvent[title])
+    formData.append(currEvent[organizer_id], this.props.currentUserId);
+    formData.append(currEvent[category_id], this.state.currEvent.category_id);
+    formData.append(currEvent[title], this.state.currEvent.title);
+    formData.append(currEvent[description], this.state.currEvent.description);
+    formData.append(currEvent[online], this.state.currEvent.online);
+    formData.append(currEvent[venue], this.state.currEvent.venue);
+    formData.append(currEvent[capacity], this.state.currEvent.capacity);
+    formData.append(currEvent[start_date], this.state.currEvent.start_date);
+    formData.append(currEvent[start_time], this.state.currEvent.start_time);
+    formData.append(currEvent[end_date], this.state.currEvent.end_date);
+    formData.append(currEvent[end_time], this.state.currEvent.end_time);
+    formData.append(currEvent[image], this.state.currEvent.imageFile);
+    this.props.action(formData).then(
+      response => console.log(response.message), 
+      response => console.log(response.responseJSON));
   }
-
+  
   handleFile(e) {
     const image = e.currentTarget.files[0];
     this.setState({ imageFile: image })
@@ -78,8 +92,9 @@ class EventForm extends React.Component {
       </div>
     )
     
+    console.log(this.state);
     return (
-      <form className="event-form">
+      <form className="event-form" onSubmit={this.handleSubmit}>
         <div className="event-form-basic-info form-section">
           <div className="left">
             <FontAwesomeIcon className="form-icon" icon={faAlignLeft} size="3x"/>
@@ -115,13 +130,13 @@ class EventForm extends React.Component {
           <FontAwesomeIcon className="form-icon" icon={faMapMarkedAlt} size="3x" />
           </div>
           <div className="right">
-            <h2>Venue</h2>
+            <h2>Location</h2>
             <p>
               Help people in the area discover your event and let attendees know where to show up.
             </p>
             <div className="flex-row location-selector" >
-              <button className={`location-btn ${isOffline}`} onClick={this.toggleOffline}>Venue</button>
-              <button className={`location-btn ${isOnline}`} onClick={this.toggleOnline}>Online Event</button>
+              <div className={`location-btn ${isOffline}`} onClick={this.toggleOffline}>Venue</div>
+              <div className={`location-btn ${isOnline}`} onClick={this.toggleOnline}>Online Event</div>
             </div>
             {this.state.currEvent.online ? '' : venueInput}
           </div>

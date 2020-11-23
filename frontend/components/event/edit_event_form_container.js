@@ -34,7 +34,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchEvent: eventId => dispatch(fetchEvent(eventId)),
-    action: event => dispatch(updateEvent(event))
+    action: formData => dispatch(updateEvent(formData))
   }
 }
 

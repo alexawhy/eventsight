@@ -117,11 +117,12 @@
 .location-btn {
   box-sizing: border-box;
   height: 50px;
-  padding: 0 20px;
+  padding: 15px 20px;
   border: 1px solid $lighter-gray;
   margin-right: 10px;
   margin-bottom: 5px;
   font-weight: 400;
+  border-radius: 4px; 
   
   &.selected {
     color: #3d64ff;
@@ -130,11 +131,15 @@
     box-shadow: none;
   }
 
-  &:focus-within {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
     color: #3d64ff;
     border: 2px solid #3d64ff;
     background-color: rgba(61, 100, 255, 0.1);
-    box-shadow: none;
+    box-shadow: none;   
   }
 }
 
