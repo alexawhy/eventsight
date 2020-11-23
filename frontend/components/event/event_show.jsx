@@ -1,5 +1,4 @@
 import React from 'react';
-import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
@@ -15,19 +14,6 @@ class EventShow extends React.Component {
   render() {
     const { event } = this.props;
     if (!event) return null;
-
-    // const Background = styled.div`
-    //   background-image: url(${event.imageUrl});
-    //   background-size: cover;
-    //   width: 100%;
-    //   height: 60vh;
-    //   position: absolute;
-    //   top: 72px;
-    //   z-index: -1;
-    //   filter: blur(15px);
-    //   transform: scale(1.1);
-    //   opacity: 0.9;
-    // `
 
     return(
       <div>
