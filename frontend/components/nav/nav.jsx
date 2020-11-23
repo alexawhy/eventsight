@@ -60,8 +60,8 @@ class Nav extends React.Component {
           <div className="navbar">
             {navLogo}
             <div className="nav-links">
-              {/* <Link to="/events/create">Create Events</Link> */}
-              <a>Create Events</a>
+              <Link to="/events/create">Create Events</Link>
+              {/* <a>Create Events</a> */}
               <a>Tickets</a>
               <div className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-trigger">
