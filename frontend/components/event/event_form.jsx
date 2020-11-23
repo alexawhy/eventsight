@@ -1,34 +1,49 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft, faMapMarkedAlt, faCalendarAlt, faImage } from '@fortawesome/free-solid-svg-icons';
+import { faAlignLeft, faMapMarkedAlt, faCalendarAlt, faImage, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import * as eventFormUtil from '../../util/event_form_util'
 
 class EventForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.event;
+    this.state = {
+      currEvent: this.props.event,
+      imageFile: null
+    }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
   
   handleSubmit() {
+    // this.setState( { imageFile: e.})
+  }
+
+  handleFile(e) {
 
   }
 
   //formData
 
   update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value });
+    // debugger
+    return e => this.setState({ currEvent: {[field]: e.currentTarget.value }});
   }
 
   //render
 
   render() {
-    // const { event } = this.state;
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {
-      return <option value={idx + 1} key={category}>{category}</option>
+      return(
+      <option 
+        value={idx + 1} 
+        key={category}
+        selected={this.state.currEvent.category_id - 1 === idx ? 'true' : ''}>
+        {category}
+      </option>) 
     })
     
+    // debugger
     return (
       <form className="event-form">
         <div className="event-form-basic-info">
@@ -44,14 +59,15 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-title"
-                value={this.state.title}
+                value={this.state.currEvent.title}
                 onChange={this.update('title')} />
             </div>
           </div>
           <div className="category">
             <div className="input-wrapper">
-              <label htmlFor="input-category">Category <span className="red">*</span></label>
-              <select id="input-category" onChange={this.update('category_id')} value={this.state.category}>
+              {/* <label htmlFor="input-category">Category <span className="red">*</span></label> */}
+              <select id="input-category" onChange={this.update('category_id')} value={this.state.currEvent.category}>
+                <option value="">Category</option>
                 {categoryOptions}
               </select>
             </div>
@@ -69,10 +85,25 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-venue"
-                value={this.state.venue}
+                value={this.state.currEvent.venue}
                 onChange={this.update('venue')} />
             </div>
           </div>
+        </div>
+        <div className="event-form-capacity">
+          <FontAwesomeIcon className="form-icon" icon={faUserFriends} />
+          <h2>Capacity</h2>
+          <p>Tell us how many attendees can register at maximum.</p>
+          <div className="capacity">
+            <div className="input-wrapper">
+              <label htmlFor="input-capacity">Event capacity <span className="red">*</span></label>
+              <input
+              type="number"
+              id="input-capacity"
+              value={this.state.currEvent.capacity}
+              onChange={this.update('capacity')} />
+            </div>
+          </div>s
         </div>
         <div className="event-form-location">
           <FontAwesomeIcon className="form-icon" icon={faCalendarAlt} />
@@ -80,18 +111,68 @@ class EventForm extends React.Component {
           <p>
             Tell event-goers when your event starts and ends so they can make plans to attend.
           </p>
-          <div className="start_date">
-            <div className="input-wrapper">
-              <label htmlFor="input-start_date">Event Starts <span className="red">*</span></label>
+          <div className="start">
+            <div className="input-wrapper start-date">
+              <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
               <input 
                 type="date"
-                id="input-start_date"
-                value={this.state.start_date}
+                id="input-start-date"
+                value={this.state.currEvent.start_date}
                 onChange={this.update('start_date')} />
+            </div>
+            <div className="input-wrapper start-time">
+              <label htmlFor="input-start-time">Start Time</label>
+              <input 
+                type="time"
+                id="input-start-time"
+                value={this.state.currEvent.start_time}
+                onChange={this.update('start_time')} />
+            </div>
+          </div>
+          <div className="end">
+            <div className="input-wrapper end-date">
+              <label htmlFor="input-end-date">Event Ends <span className="red">*</span></label>
+              <input 
+                type="date"
+                id="input-end-date"
+                value={this.state.currEvent.end_date}
+                onChange={this.update('end_date')} />
+            </div>
+            <div className="input-wrapper end-time">
+              <label htmlFor="input-end-time">End Time</label>
+              <input 
+                type="time"
+                id="input-end-time"
+                value={this.state.currEvent.end_time}
+                onChange={this.update('end_time')} />
             </div>
           </div>
         </div>
-
+        <div className="event-form-image">
+          <FontAwesomeIcon className="form-icon" icon={faImage} />
+          <h2>Main Event Image</h2>
+          <p>This is the first image attendees will see at the top of your listing. Use a high quality image: 2160x1080px (2:1 ratio).</p>
+          <div className="image">
+            <input 
+              type="file"
+              onChange="handleFile" />
+          </div>
+        </div>
+        <div className="event-form-description">
+          <FontAwesomeIcon className="form-icon" icon={faAlignLeft} />
+          <h2>Description</h2>
+          <p>Add more details to your event like your schedule, sponsors, or featured guests.</p>
+          <div className="description">
+            <div className="input-wrapper">
+              <label htmlFor="input-description">Event Description <span className="red">*</span></label>
+              <textarea
+                id="input-description"
+                value={this.state.currEvent.description}
+                onChange={this.update('description')} />
+            </div>
+          </div>
+        </div>
+        <button>{this.props.formType}</button>
       </form>
     )
   }

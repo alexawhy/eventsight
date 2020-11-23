@@ -45,15 +45,17 @@ ActiveRecord::Schema.define(version: 2020_11_20_175128) do
 
   create_table "events", force: :cascade do |t|
     t.integer "organizer_id", null: false
+    t.string "organizer_name"
     t.integer "category_id", null: false
     t.string "title", null: false
     t.text "description", null: false
-    t.string "venue", null: false
+    t.boolean "online", null: false
+    t.string "venue"
     t.integer "capacity", null: false
     t.date "start_date", null: false
-    t.string "start_time", null: false
+    t.string "start_time"
     t.date "end_date", null: false
-    t.string "end_time", null: false
+    t.string "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_events_on_category_id"

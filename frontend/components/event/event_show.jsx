@@ -8,9 +8,9 @@ class EventShow extends React.Component {
     this.props.fetchEvent(this.props.match.params.eventId);
   }
   
-  componentDidUpdate() {
-    this.props.fetchEvent(this.props.match.params.eventId);
-  }
+  // componentDidUpdate() {
+  //   this.props.fetchEvent(this.props.match.params.eventId);
+  // }
 
   render() {
     const { event } = this.props;

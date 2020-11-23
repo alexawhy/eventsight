@@ -41,6 +41,8 @@
 
   img {
     border-radius: 4px 0px 0px 0px;
+    margin-top: -1px;
+    margin-left: -1px;
   }
 
   .right {
@@ -107,6 +109,7 @@
 
 .event-show-main{
   display: flex;
+  min-height: 300px;
 
   p {
     font-size: 16px;
@@ -123,6 +126,7 @@
 
     p {
       color: $gray;
+      white-space: pre-line;
     }
   }
 

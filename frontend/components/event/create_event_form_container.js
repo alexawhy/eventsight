@@ -15,9 +15,9 @@ const mapStateToProps = state => {
       start_time: '', 
       end_date: '', 
       end_time: '',
-      imageUrl: null,
-      imageFile: null
+      imageUrl: null
     },
+    imageFile: null,
     formType: 'Create Event',
     currentUserId: state.session.currentUserId
   }
