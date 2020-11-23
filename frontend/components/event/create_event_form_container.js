@@ -9,6 +9,7 @@ const mapStateToProps = state => {
       category_id: '',
       title: '',
       description: '',
+      online: false,
       venue: '',
       capacity: '',
       start_date: '', 

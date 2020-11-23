@@ -17,8 +17,10 @@ class EventForm extends React.Component {
     this.toggleOffline = this.toggleOffline.bind(this);
   }
   
-  handleSubmit() {
-    
+  handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append(currEvent[title])
   }
 
   handleFile(e) {
