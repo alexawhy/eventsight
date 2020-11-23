@@ -7,7 +7,7 @@ class EventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: this.props.event,
+      currEvent: this.props.event,
       imageFile: null
     }
 
@@ -28,16 +28,14 @@ class EventForm extends React.Component {
   update(field) {
     // debugger
     return e => {
-      let nextEvent = Object.assign({}, event);
+      let nextEvent = Object.assign({}, this.state.currEvent);
       nextEvent[field] = e.currentTarget.value;
-      this.setState({ event: nextEvent})
+      this.setState({ currEvent: nextEvent})
     };
   }
 
-  //render
-
   render() {
-    const { event } = this.state;
+    const { currEvent } = this.state;
 
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {
       return(
@@ -64,14 +62,14 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-title"
-                value={event.title}
+                value={currEvent.title}
                 onChange={this.update('title')} />
             </div>
           </div>
           <div className="category">
             <div className="input-wrapper">
               {/* <label htmlFor="input-category">Category <span className="red">*</span></label> */}
-              <select id="input-category" defaultValue={event.category_id} onChange={this.update('category_id')} value={event.category}>
+              <select id="input-category" value={event.category_id} defaultValue={event.category_id} onChange={this.update('category_id')}>
                 <option disabled>Category</option>
                 {categoryOptions}
               </select>
@@ -90,7 +88,7 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-venue"
-                value={event.venue}
+                value={currEvent.venue}
                 onChange={this.update('venue')} />
             </div>
           </div>
@@ -105,10 +103,10 @@ class EventForm extends React.Component {
               <input
               type="number"
               id="input-capacity"
-              value={event.capacity}
+              value={currEvent.capacity}
               onChange={this.update('capacity')} />
             </div>
-          </div>s
+          </div>
         </div>
         <div className="event-form-location">
           <FontAwesomeIcon className="form-icon" icon={faCalendarAlt} />
@@ -122,7 +120,7 @@ class EventForm extends React.Component {
               <input 
                 type="date"
                 id="input-start-date"
-                value={event.start_date}
+                value={currEvent.start_date}
                 onChange={this.update('start_date')} />
             </div>
             <div className="input-wrapper start-time">
@@ -130,7 +128,7 @@ class EventForm extends React.Component {
               <input 
                 type="time"
                 id="input-start-time"
-                value={event.start_time}
+                value={currEvent.start_time}
                 onChange={this.update('start_time')} />
             </div>
           </div>
@@ -140,7 +138,7 @@ class EventForm extends React.Component {
               <input 
                 type="date"
                 id="input-end-date"
-                value={event.end_date}
+                value={currEvent.end_date}
                 onChange={this.update('end_date')} />
             </div>
             <div className="input-wrapper end-time">
@@ -148,7 +146,7 @@ class EventForm extends React.Component {
               <input 
                 type="time"
                 id="input-end-time"
-                value={event.end_time}
+                value={currEvent.end_time}
                 onChange={this.update('end_time')} />
             </div>
           </div>
@@ -172,7 +170,7 @@ class EventForm extends React.Component {
               <label htmlFor="input-description">Event Description <span className="red">*</span></label>
               <textarea
                 id="input-description"
-                value={event.description}
+                value={currEvent.description}
                 onChange={this.update('description')} />
             </div>
           </div>
