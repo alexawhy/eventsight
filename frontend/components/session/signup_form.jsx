@@ -16,7 +16,6 @@ class SignupForm extends React.Component {
       errors: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.clearErrors = this.clearErrors.bind(this);
   }
 
   update(field) {
@@ -24,7 +23,6 @@ class SignupForm extends React.Component {
       let newUser = Object.assign({}, this.state.user);
       newUser[field] = e.target.value;
       this.setState({ user: newUser });
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
   }
 

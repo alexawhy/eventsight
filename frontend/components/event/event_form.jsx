@@ -7,7 +7,7 @@ class EventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currEvent: this.props.event,
+      event: this.props.event,
       imageFile: null
     }
 
@@ -16,7 +16,7 @@ class EventForm extends React.Component {
   }
   
   handleSubmit() {
-    // this.setState( { imageFile: e.})
+    
   }
 
   handleFile(e) {
@@ -26,19 +26,22 @@ class EventForm extends React.Component {
   //formData
 
   update(field) {
-    // debugger
-    return e => this.setState({ currEvent: {[field]: e.currentTarget.value }});
+    return e => {
+      let nextEvent = Object.assign({}, this.state.event);
+      nextEvent[field] = e.currentTarget.value;
+      this.setState({ event: nextEvent})
+    };
   }
 
   //render
 
   render() {
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {
+      // const persisted = this.state.event.category_id !== "undefined" ? false : true;
       return(
       <option 
         value={idx + 1} 
-        key={category}
-        selected={this.state.currEvent.category_id - 1 === idx ? 'true' : ''}>
+        key={category}>
         {category}
       </option>) 
     })
@@ -59,15 +62,15 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-title"
-                value={this.state.currEvent.title}
+                value={this.state.event.title}
                 onChange={this.update('title')} />
             </div>
           </div>
           <div className="category">
             <div className="input-wrapper">
               {/* <label htmlFor="input-category">Category <span className="red">*</span></label> */}
-              <select id="input-category" onChange={this.update('category_id')} value={this.state.currEvent.category}>
-                <option value="">Category</option>
+              <select id="input-category" onChange={this.update('category_id')} value={this.state.event.category}>
+                <option defaultValue={this.state.event.category_id}>Category</option>
                 {categoryOptions}
               </select>
             </div>
@@ -85,7 +88,7 @@ class EventForm extends React.Component {
               <input 
                 type="text"
                 id="input-venue"
-                value={this.state.currEvent.venue}
+                value={this.state.event.venue}
                 onChange={this.update('venue')} />
             </div>
           </div>
@@ -100,7 +103,7 @@ class EventForm extends React.Component {
               <input
               type="number"
               id="input-capacity"
-              value={this.state.currEvent.capacity}
+              value={this.state.event.capacity}
               onChange={this.update('capacity')} />
             </div>
           </div>s
@@ -117,7 +120,7 @@ class EventForm extends React.Component {
               <input 
                 type="date"
                 id="input-start-date"
-                value={this.state.currEvent.start_date}
+                value={this.state.event.start_date}
                 onChange={this.update('start_date')} />
             </div>
             <div className="input-wrapper start-time">
@@ -125,7 +128,7 @@ class EventForm extends React.Component {
               <input 
                 type="time"
                 id="input-start-time"
-                value={this.state.currEvent.start_time}
+                value={this.state.event.start_time}
                 onChange={this.update('start_time')} />
             </div>
           </div>
@@ -135,7 +138,7 @@ class EventForm extends React.Component {
               <input 
                 type="date"
                 id="input-end-date"
-                value={this.state.currEvent.end_date}
+                value={this.state.event.end_date}
                 onChange={this.update('end_date')} />
             </div>
             <div className="input-wrapper end-time">
@@ -143,7 +146,7 @@ class EventForm extends React.Component {
               <input 
                 type="time"
                 id="input-end-time"
-                value={this.state.currEvent.end_time}
+                value={this.state.event.end_time}
                 onChange={this.update('end_time')} />
             </div>
           </div>
@@ -167,7 +170,7 @@ class EventForm extends React.Component {
               <label htmlFor="input-description">Event Description <span className="red">*</span></label>
               <textarea
                 id="input-description"
-                value={this.state.currEvent.description}
+                value={this.state.event.description}
                 onChange={this.update('description')} />
             </div>
           </div>

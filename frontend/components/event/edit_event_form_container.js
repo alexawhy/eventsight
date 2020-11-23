@@ -5,7 +5,8 @@ import { fetchEvent, updateEvent } from '../../actions/event_actions';
 
 class EditEventForm extends React.Component {
   componentDidMount() {
-    this.props.fetchEvent(this.props.match.params.eventId);
+    this.props.fetchEvent(this.props.match.params.eventId)
+      .then(() => this.setState({ event: this.props.event }))
   }
 
   render () {
