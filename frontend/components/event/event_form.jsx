@@ -13,6 +13,8 @@ class EventForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.toggleOnline = this.toggleOnline.bind(this);
+    this.toggleOffline = this.toggleOffline.bind(this);
   }
   
   handleSubmit() {
@@ -20,17 +22,30 @@ class EventForm extends React.Component {
   }
 
   handleFile(e) {
-
+    const image = e.currentTarget.files[0];
+    this.setState({ imageFile: image })
   }
 
   //formData
 
-  update(field) {
+  handleInput(field) {
     return e => {
       let nextEvent = Object.assign({}, this.state.currEvent);
       nextEvent[field] = e.currentTarget.value;
-      this.setState({ currEvent: nextEvent})
+      this.setState({ currEvent: nextEvent });
     };
+  }
+
+  toggleOnline() {
+    let nextEvent = Object.assign({}, this.state.currEvent);
+    nextEvent.online = true;
+    this.setState({ currEvent: nextEvent });
+  }
+
+  toggleOffline() {
+    let nextEvent = Object.assign({}, this.state.currEvent);
+    nextEvent.online = false;
+    this.setState({ currEvent: nextEvent });
   }
 
   render() {
@@ -44,6 +59,22 @@ class EventForm extends React.Component {
         {category}
       </option>) 
     })
+
+    const isOnline = currEvent.online === true ? 'selected' : '';
+    const isOffline = currEvent.online === false? 'selected' : '';
+
+    const venueInput = (
+      <div className="venue">
+        <div className="input-wrapper">
+          <label htmlFor="input-venue">Venue Location <span className="red">*</span></label>
+          <input 
+            type="text"
+            id="input-venue"
+            value={currEvent.venue}
+            onChange={this.handleInput('venue')} />
+        </div>
+      </div>
+    )
     
     return (
       <form className="event-form">
@@ -64,14 +95,13 @@ class EventForm extends React.Component {
                   type="text"
                   id="input-title"
                   value={currEvent.title}
-                  onChange={this.update('title')} />
+                  onChange={this.handleInput('title')} />
               </div>
             </div>
             <div className="category">
               <div className="input-wrapper">
-                {/* <label htmlFor="input-category">Category <span className="red">*</span></label> */}
-                <select id="input-category" value={event.category_id} defaultValue={event.category_id} onChange={this.update('category_id')}>
-                  <option disabled>Category</option>
+                <select id="input-category" value={currEvent.category_id} defaultValue={currEvent.category_id} onChange={this.handleInput('category_id')}>
+                  <option value="">Category </option>
                   {categoryOptions}
                 </select>
               </div>
@@ -87,16 +117,11 @@ class EventForm extends React.Component {
             <p>
               Help people in the area discover your event and let attendees know where to show up.
             </p>
-            <div className="venue">
-              <div className="input-wrapper">
-                <label htmlFor="input-venue">Venue <span className="red">*</span></label>
-                <input 
-                  type="text"
-                  id="input-venue"
-                  value={currEvent.venue}
-                  onChange={this.update('venue')} />
-              </div>
+            <div className="flex-row location-selector" >
+              <button className={`location-btn ${isOffline}`} onClick={this.toggleOffline}>Venue</button>
+              <button className={`location-btn ${isOnline}`} onClick={this.toggleOnline}>Online Event</button>
             </div>
+            {this.state.currEvent.online ? '' : venueInput}
           </div>
         </div>
         <div className="event-form-capacity form-section">
@@ -113,7 +138,7 @@ class EventForm extends React.Component {
                 type="number"
                 id="input-capacity"
                 value={currEvent.capacity}
-                onChange={this.update('capacity')} />
+                onChange={this.handleInput('capacity')} />
               </div>
             </div>
           </div>
@@ -127,14 +152,14 @@ class EventForm extends React.Component {
             <p>
               Tell event-goers when your event starts and ends so they can make plans to attend.
             </p>
-            <div className="start">
+            <div className="flex-row">
               <div className="input-wrapper start-date">
                 <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
                 <input 
                   type="date"
                   id="input-start-date"
                   value={currEvent.start_date}
-                  onChange={this.update('start_date')} />
+                  onChange={this.handleInput('start_date')} />
               </div>
               <div className="input-wrapper start-time">
                 <label htmlFor="input-start-time">Start Time</label>
@@ -142,17 +167,17 @@ class EventForm extends React.Component {
                   type="time"
                   id="input-start-time"
                   value={currEvent.start_time}
-                  onChange={this.update('start_time')} />
+                  onChange={this.handleInput('start_time')} />
               </div>
             </div>
-            <div className="end">
+            <div className="flex-row">
               <div className="input-wrapper end-date">
                 <label htmlFor="input-end-date">Event Ends <span className="red">*</span></label>
                 <input 
                   type="date"
                   id="input-end-date"
                   value={currEvent.end_date}
-                  onChange={this.update('end_date')} />
+                  onChange={this.handleInput('end_date')} />
               </div>
               <div className="input-wrapper end-time">
                 <label htmlFor="input-end-time">End Time</label>
@@ -160,7 +185,7 @@ class EventForm extends React.Component {
                   type="time"
                   id="input-end-time"
                   value={currEvent.end_time}
-                  onChange={this.update('end_time')} />
+                  onChange={this.handleInput('end_time')} />
               </div>
             </div>
           </div>
@@ -175,7 +200,7 @@ class EventForm extends React.Component {
             <div className="image">
               <input 
                 type="file"
-                />
+                onChange={this.handleFile}/>
             </div>
           </div>
         </div>
@@ -192,12 +217,12 @@ class EventForm extends React.Component {
                 <textarea
                   id="input-description"
                   value={currEvent.description}
-                  onChange={this.update('description')} />
+                  onChange={this.handleInput('description')} />
               </div>
             </div>
           </div>
         </div>
-        <button>{this.props.formType}</button>
+        <button className="submit-btn">{this.props.formType}</button>
       </form>
     )
   }

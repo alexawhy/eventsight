@@ -44,12 +44,10 @@ class Api::EventsController < ApplicationController
       :category_id, 
       :title, 
       :description, 
-      :venue, 
+      :online, 
       :capacity,
       :start_date, 
-      :start_time, 
       :end_date, 
-      :end_time,
       :image
     )
   end

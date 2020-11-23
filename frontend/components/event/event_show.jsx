@@ -4,6 +4,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 class EventShow extends React.Component {  
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchEvent(this.props.match.params.eventId);
   }
   

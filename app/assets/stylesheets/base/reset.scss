@@ -31,11 +31,14 @@ input[type="email"],
 input[type="text"],
 input[type="submit"],
 textarea,
-button {
+button,
+select,
+option {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: none;
+  outline: none;
 }
 
 button,
