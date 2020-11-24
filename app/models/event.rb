@@ -22,6 +22,7 @@ class Event < ApplicationRecord
   validates :organizer_id, :category_id, :title, :description, :capacity, :start_date, :end_date, presence: true
   validates :online, inclusion: { in: [true, false] }
   validates :capacity, numericality: {greater_than: 0}
+  validate :ensure_image
 
   belongs_to :organizer, 
     class_name: :User, 
@@ -30,5 +31,11 @@ class Event < ApplicationRecord
   belongs_to :category
 
   has_one_attached :image
+
+  def ensure_image 
+    unless self.image.attached?
+      errors[:image] << "must be attached"
+    end
+  end
 end
  

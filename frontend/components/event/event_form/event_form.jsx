@@ -20,7 +20,6 @@ class EventForm extends React.Component {
   }
   
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('event[organizer_id]', this.props.currentUserId);
@@ -34,13 +33,11 @@ class EventForm extends React.Component {
     formData.append('event[start_time]', this.state.currEvent.start_time);
     formData.append('event[end_date]', this.state.currEvent.end_date);
     formData.append('event[end_time]', this.state.currEvent.end_time);
-    // if (this.props.formType === 'submit') {
-    formData.append('event[image]', this.state.imageFile);
-    // } 
-    // formData.append('event[image]', this.state.currEvent.image);
+    if (this.state.imageFile) {
+      formData.append('event[image]', this.state.imageFile);
+    } 
     this.props.action(formData, this.state.currEvent.id).then(
       (payload) => {
-        debugger
         this.props.history.push(`/events/${payload.event.id}`)
       });
   }

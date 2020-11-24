@@ -59,12 +59,10 @@ export const createEvent = event => dispatch => {
 };
 
 export const updateEvent = (event, eventId) => dispatch => {
-  debugger
   return EventAPIUtil.updateEvent(event, eventId)
     .then(event => {
       return dispatch(receiveEvent(event))
     }, error => {
-      debugger
       return dispatch(receiveEventErrors(error.responseJSON))
     })
 };
