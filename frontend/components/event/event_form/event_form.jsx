@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignLeft, faMapMarkedAlt, faCalendarAlt, faImage, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import * as eventFormUtil from '../../../util/event_form_util'
@@ -31,11 +32,12 @@ class EventForm extends React.Component {
     formData.append('event[start_time]', this.state.currEvent.start_time);
     formData.append('event[end_date]', this.state.currEvent.end_date);
     formData.append('event[end_time]', this.state.currEvent.end_time);
+    // formData.append('event[imageUrl]', this.state.currEvent.imageUrl);
     formData.append('event[image]', this.state.imageFile);
-    this.props.action(formData).then(
-      () => {
+    this.props.action(formData, this.state.currEvent.id).then(
+      (payload) => {
         debugger
-        this.props.history.push('/')
+        this.props.history.push(`/events/${payload.event.id}`)
       });
   }
   
@@ -65,18 +67,24 @@ class EventForm extends React.Component {
   }
 
   renderErrors() {
-    return(
-      <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+    if (this.props.errors) {
+      return(
+        <ul className="errors">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
   }
 
+  //check if this.props.event.imageUrl exist or not =-> preview
+  // change by uploading or grab from imageUrl
+
   render() {
+
     const { currEvent } = this.state;
 
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {

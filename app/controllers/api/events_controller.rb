@@ -21,6 +21,7 @@ class Api::EventsController < ApplicationController
   end
 
   def update
+    debugger
     @event = Event.find_by(id: params[:id])
     if @event.update(event_params)
       render :show
@@ -40,7 +41,6 @@ class Api::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :organizer_id, 
       :category_id, 
       :title, 
       :description, 

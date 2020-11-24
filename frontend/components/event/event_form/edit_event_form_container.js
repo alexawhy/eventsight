@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import EventForm from './event_form';
 import { fetchEvent, updateEvent, clearEventErrors } from '../../../actions/event_actions';
 
 class EditEventForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     this.props.fetchEvent(this.props.match.params.eventId)
       .then(() => this.setState({ event: this.props.event }))
@@ -18,7 +22,8 @@ class EditEventForm extends React.Component {
         action={action}
         formType={formType}
         event={event}
-        imageFile={imageFile} />
+        imageFile={imageFile} 
+        history={this.props.history}/>
     );
   }
 }
@@ -28,16 +33,17 @@ const mapStateToProps = (state, ownProps) => {
     event: state.entities.events[ownProps.match.params.eventId],
     imageFile: null,
     formType: 'Edit Event',
-    errors: state.errors.event 
+    errors: state.errors.event, 
+    currentUserId: state.session.currentUserId
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchEvent: eventId => dispatch(fetchEvent(eventId)),
-    action: formData => dispatch(updateEvent(formData)),
+    action: (formData, eventId)  => dispatch(updateEvent(formData, eventId)),
     clearEventErrors: () => dispatch(clearEventErrors())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditEventForm));
