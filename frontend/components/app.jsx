@@ -18,21 +18,20 @@ import EditEventFormContainer from './event/event_form/edit_event_form_container
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
-    <NavContainer />
-    <Route exact path="/" component={Splash} />
-    <Route exact path="/" component={EventIndexContainer} />
-    <Switch>
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <ProtectedRoute exact path="/events/create" component={CreateEventFormContainer} />
-      <ProtectedRoute exact path="/events/:eventId/edit" component={EditEventFormContainer} />
-      <Route exact path="/events/:eventId" component={EventShowContainer} />
-    </Switch>
-    <Route exact path="/" component={Footer} />
-    <Route exact path="/events/create" component={Footer} />
-    <Route exact path="/events/:eventId/edit" component={Footer} />
-    {/* <Route exact path="/events/:eventId" component={Footer} /> */}
+  <div className="app">
+    <div className="content">
+      <NavContainer />
+      <Route exact path="/" component={Splash} />
+      <Route exact path="/" component={EventIndexContainer} />
+      <Switch>
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <ProtectedRoute exact path="/events/create" component={CreateEventFormContainer} />
+        <ProtectedRoute exact path="/events/:eventId/edit" component={EditEventFormContainer} />
+        <Route exact path="/events/:eventId" component={EventShowContainer} />
+      </Switch>
+    </div>
+    <Route path="/" component={Footer} />
   </div>
 );
 

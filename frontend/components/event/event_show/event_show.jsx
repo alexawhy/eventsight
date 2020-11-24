@@ -18,7 +18,7 @@ class EventShow extends React.Component {
     const diffEndDate = event.start_date === event.end_date;
 
     return(
-      <div>
+      <div className="event-show">
         {/* <Background event={event}/> */}
         <div className="background">
           <img src={event.imageUrl} alt=""/>

@@ -90,9 +90,6 @@ class EventForm extends React.Component {
     }
   }
 
-  // check if this.props.event.imageUrl exist or not =-> preview
-  // change by uploading or grab from imageUrl
-
   render() {
 
     const { currEvent } = this.state;
