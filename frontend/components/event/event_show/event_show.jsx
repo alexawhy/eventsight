@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import EventTime from './time_component'
 
 class EventShow extends React.Component {  
   componentDidMount() {
@@ -52,9 +53,7 @@ class EventShow extends React.Component {
             </div>
             <div className="right">
               <h3>Date and Time</h3>
-              <p>{event.start_date}</p>
-              
-              <p>{event.start_time} - {event.end_time}</p>
+              <EventTime event={this.props.event} />
               <h3>{locationHeader}</h3>
               <p>{event.venue}</p>
             </div>

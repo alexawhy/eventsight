@@ -20,7 +20,7 @@ class EventIndexItem extends React.Component {
           <img src={event.imageUrl} alt={event.title} onClick={this.handleClick} />
         </div>
         <div className="event-index-item-time">
-          {event.start_date} {event.start_time}
+          {event.start_date}, {event.start_time}
         </div>
         <div className="event-index-item-title redirect" onClick={this.handleClick}>
           {event.title}
