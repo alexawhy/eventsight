@@ -52,18 +52,19 @@ export const fetchEvent = eventId => dispatch => {
 export const createEvent = event => dispatch => {
   return EventAPIUtil.createEvent(event)
     .then(event => {
-      dispatch(receiveEvent(event))
+      return dispatch(receiveEvent(event))
     }, error => {
-      dispatch(receiveEventErrors(error.responseJSON))
+      debugger
+      return dispatch(receiveEventErrors(error.responseJSON))
     })
 };
 
 export const updateEvent = event => dispatch => {
   return EventAPIUtil.updateEvent(event, event.id)
     .then(event => {
-      dispatch(receiveEvent(event))
+      return dispatch(receiveEvent(event))
     }, error => {
-      dispatch(receiveEventErrors(error.responseJSON))
+      return dispatch(receiveEventErrors(error.responseJSON))
     })
 };
 

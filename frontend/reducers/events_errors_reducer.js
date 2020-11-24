@@ -3,16 +3,16 @@ import {
   REMOVE_EVENT_ERRORS
 } from '../actions/event_actions';
 
-const eventErrorsReducer = (state = [], action) => {
-  Object.freeze(state);
+const eventErrorsReducer = (oldState = [], action) => {
+  Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_EVENT_ERRORS:
       return action.errors; 
     case REMOVE_EVENT_ERRORS:
       return [];
     default:
-      return state;
+      return oldState;
   }
-}
+};
 
 export default eventErrorsReducer;

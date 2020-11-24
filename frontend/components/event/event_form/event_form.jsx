@@ -106,7 +106,6 @@ class EventForm extends React.Component {
     
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>
-        {this.renderErrors()}
         <div className="event-form-basic-info form-section">
           <div className="left">
             <FontAwesomeIcon className="form-icon" icon={faAlignLeft} size="3x"/>
@@ -251,6 +250,7 @@ class EventForm extends React.Component {
             </div>
           </div>
         </div>
+        {this.renderErrors()}
         <button className="submit-btn">{this.props.formType}</button>
       </form>
     )
