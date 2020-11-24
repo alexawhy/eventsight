@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchEvents } from '../../actions/event_actions';
+import { fetchEvents } from '../../../actions/event_actions';
 import EventIndex from './event_index';
 
 const matchStateToProps = ({ entities: {events} }) => {

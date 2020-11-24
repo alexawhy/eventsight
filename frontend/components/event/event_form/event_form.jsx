@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignLeft, faMapMarkedAlt, faCalendarAlt, faImage, faUserFriends } from '@fortawesome/free-solid-svg-icons';
-import * as eventFormUtil from '../../util/event_form_util'
+import * as eventFormUtil from '../../../util/event_form_util'
 
 class EventForm extends React.Component {
   constructor(props) {

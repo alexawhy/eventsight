@@ -7,15 +7,16 @@ class EventShow extends React.Component {
     window.scrollTo(0, 0);
     this.props.fetchEvent(this.props.match.params.eventId);
   }
-  
-  // componentDidUpdate() {
-  //   this.props.fetchEvent(this.props.match.params.eventId);
-  // }
 
   render() {
     const { event } = this.props;
     if (!event) return null;
 
+    const locationHeader = event.online === true ? 'Online Event' : 'Location';
+
+    const diffEndDate = event.start_date === event.end_date;
+
+    debugger
     return(
       <div>
         {/* <Background event={event}/> */}
@@ -52,8 +53,9 @@ class EventShow extends React.Component {
             <div className="right">
               <h3>Date and Time</h3>
               <p>{event.start_date}</p>
+              
               <p>{event.start_time} - {event.end_time}</p>
-              <h3>Location</h3>
+              <h3>{locationHeader}</h3>
               <p>{event.venue}</p>
             </div>
           </div>

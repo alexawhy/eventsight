@@ -11,10 +11,10 @@ import SignupFormContainer from './session/signup_form_container';
 import LoginFormContainer from './session/login_form_container';
 import Splash from './splash/splash';
 import Footer from './footer/footer';
-import EventIndexContainer from './event/event_index_container';
-import EventShowContainer from './event/event_show_container';
-import CreateEventFormContainer from './event/create_event_form_container';
-import EditEventFormContainer from './event/edit_event_form_container';
+import EventIndexContainer from './event/event_index/event_index_container';
+import EventShowContainer from './event/event_show/event_show_container';
+import CreateEventFormContainer from './event/event_form/create_event_form_container';
+import EditEventFormContainer from './event/event_form/edit_event_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
