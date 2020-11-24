@@ -21,7 +21,7 @@
   margin: 30px auto 50px auto;
   border-radius: 5px;
   background-color: white;
-  border: 1px solid $lighter-gray;  
+  // border: 1px solid $lighter-gray;  
   box-sizing: border-box;
 
   .left {
@@ -41,8 +41,9 @@
 
   img {
     border-radius: 4px 0px 0px 0px;
-    margin-top: -1px;
-    margin-left: -1px;
+    // margin-top: -1px;
+    // margin-left: -1px;
+
   }
 
   .right {

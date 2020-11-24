@@ -135,12 +135,12 @@
     cursor: pointer;
   }
 
-  &:active {
-    color: #3d64ff;
-    border: 2px solid #3d64ff;
-    background-color: rgba(61, 100, 255, 0.1);
-    box-shadow: none;   
-  }
+  // &:active {
+  //   color: #3d64ff;
+  //   border: 2px solid #3d64ff;
+  //   background-color: rgba(61, 100, 255, 0.1);
+  //   box-shadow: none;   
+  // }
 }
 
 .event-form-image {

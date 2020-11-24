@@ -20,7 +20,6 @@
 #
 class Event < ApplicationRecord
   validates :organizer_id, :category_id, :title, :description, :capacity, :start_date, :end_date, presence: true
-  validates :title, uniqueness: true
   validates :online, inclusion: { in: [true, false] }
   validates :capacity, numericality: {greater_than: 0}
 

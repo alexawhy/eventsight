@@ -42,7 +42,7 @@ export const createEvent = event => dispatch => {
 };
 
 export const updateEvent = event => dispatch => {
-  return EventAPIUtil.updateEvent(event)
+  return EventAPIUtil.updateEvent(event, event.id)
     .then(event => dispatch(receiveEvent(event)))
 };
 

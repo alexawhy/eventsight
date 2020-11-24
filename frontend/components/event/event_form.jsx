@@ -20,21 +20,23 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append(currEvent[organizer_id], this.props.currentUserId);
-    formData.append(currEvent[category_id], this.state.currEvent.category_id);
-    formData.append(currEvent[title], this.state.currEvent.title);
-    formData.append(currEvent[description], this.state.currEvent.description);
-    formData.append(currEvent[online], this.state.currEvent.online);
-    formData.append(currEvent[venue], this.state.currEvent.venue);
-    formData.append(currEvent[capacity], this.state.currEvent.capacity);
-    formData.append(currEvent[start_date], this.state.currEvent.start_date);
-    formData.append(currEvent[start_time], this.state.currEvent.start_time);
-    formData.append(currEvent[end_date], this.state.currEvent.end_date);
-    formData.append(currEvent[end_time], this.state.currEvent.end_time);
-    formData.append(currEvent[image], this.state.currEvent.imageFile);
+    formData.append('event[organizer_id]', this.props.currentUserId);
+    formData.append('event[category_id]', this.state.currEvent.category_id);
+    formData.append('event[title]', this.state.currEvent.title);
+    formData.append('event[description]', this.state.currEvent.description);
+    formData.append('event[online]', this.state.currEvent.online);
+    formData.append('event[venue]', this.state.currEvent.venue);
+    formData.append('event[capacity]', this.state.currEvent.capacity);
+    formData.append('event[start_date]', this.state.currEvent.start_date);
+    formData.append('event[start_time]', this.state.currEvent.start_time);
+    formData.append('event[end_date]', this.state.currEvent.end_date);
+    formData.append('event[end_time]', this.state.currEvent.end_time);
+    formData.append('event[image]', this.state.imageFile);
     this.props.action(formData).then(
-      response => console.log(response.message), 
-      response => console.log(response.responseJSON));
+      () => {
+        debugger
+        this.props.history.push('/')
+      });
   }
   
   handleFile(e) {
@@ -92,7 +94,6 @@ class EventForm extends React.Component {
       </div>
     )
     
-    console.log(this.state);
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>
         <div className="event-form-basic-info form-section">
