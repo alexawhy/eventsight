@@ -12,7 +12,7 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(create_event_params)
     if @event.save 
       render :show
     else
@@ -21,9 +21,9 @@ class Api::EventsController < ApplicationController
   end
 
   def update
-    debugger
+    # debugger
     @event = Event.find_by(id: params[:id])
-    if @event.update(event_params)
+    if @event.update(update_event_params)
       render :show
     else 
       render json: @event.errors.full_messages, status: 422
@@ -39,7 +39,24 @@ class Api::EventsController < ApplicationController
 
   private
 
-  def event_params
+  def create_event_params
+    params.require(:event).permit(
+      :organizer_id,
+      :category_id, 
+      :title, 
+      :description, 
+      :online, 
+      :venue,
+      :capacity,
+      :start_date,
+      :start_time, 
+      :end_date, 
+      :end_time,
+      :image
+    )
+  end
+
+  def update_event_params
     params.require(:event).permit(
       :category_id, 
       :title, 
