@@ -9,7 +9,8 @@ class EventForm extends React.Component {
     super(props);
     this.state = {
       currEvent: this.props.event,
-      imageFile: null
+      imageFile: null,
+      tempImageUrl: null
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,6 +20,7 @@ class EventForm extends React.Component {
   }
   
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('event[organizer_id]', this.props.currentUserId);
@@ -32,8 +34,10 @@ class EventForm extends React.Component {
     formData.append('event[start_time]', this.state.currEvent.start_time);
     formData.append('event[end_date]', this.state.currEvent.end_date);
     formData.append('event[end_time]', this.state.currEvent.end_time);
-    // formData.append('event[imageUrl]', this.state.currEvent.imageUrl);
+    // if (this.props.formType === 'submit') {
     formData.append('event[image]', this.state.imageFile);
+    // } 
+    // formData.append('event[image]', this.state.currEvent.image);
     this.props.action(formData, this.state.currEvent.id).then(
       (payload) => {
         debugger
@@ -43,7 +47,16 @@ class EventForm extends React.Component {
   
   handleFile(e) {
     const image = e.currentTarget.files[0];
-    this.setState({ imageFile: image })
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: image, tempImageUrl: fileReader.result })
+    }
+
+    if (image) {
+      fileReader.readAsDataURL(image);
+    } else {
+      this.setState({ imageFile: null, tempImageUrl: "" });
+    }
   }
 
   handleInput(field) {
@@ -80,7 +93,7 @@ class EventForm extends React.Component {
     }
   }
 
-  //check if this.props.event.imageUrl exist or not =-> preview
+  // check if this.props.event.imageUrl exist or not =-> preview
   // change by uploading or grab from imageUrl
 
   render() {
@@ -111,6 +124,9 @@ class EventForm extends React.Component {
         </div>
       </div>
     )
+
+    const imagePreview = this.state.tempImageUrl ? <img src={this.state.tempImageUrl}></img> : <img src={this.state.currEvent.imageUrl}></img>;
+
     
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>
@@ -237,6 +253,12 @@ class EventForm extends React.Component {
               <input 
                 type="file"
                 onChange={this.handleFile}/>
+            </div>
+            <div className="image-preview">
+            <h3>Image Preview</h3>
+            <div className="image-box">
+              {imagePreview}
+            </div>
             </div>
           </div>
         </div>
