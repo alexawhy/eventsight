@@ -2,12 +2,13 @@ class Api::EventsController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
   def index 
-    @events = Event.all
+    @events = Event.all.with_attached_image
+    # @events = Event.all
     render :index
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
+    @event = Event.with_attached_image.find_by(id: params[:id])
     render :show
   end
 
