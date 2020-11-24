@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EventForm from './event_form';
-import { fetchEvent, updateEvent } from '../../../actions/event_actions';
+import { fetchEvent, updateEvent, clearEventErrors } from '../../../actions/event_actions';
 
 class EditEventForm extends React.Component {
   componentDidMount() {
@@ -27,14 +27,16 @@ const mapStateToProps = (state, ownProps) => {
   return {
     event: state.entities.events[ownProps.match.params.eventId],
     imageFile: null,
-    formType: 'Edit Event'
+    formType: 'Edit Event',
+    errors: state.errors.event 
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchEvent: eventId => dispatch(fetchEvent(eventId)),
-    action: formData => dispatch(updateEvent(formData))
+    action: formData => dispatch(updateEvent(formData)),
+    clearEventErrors: () => dispatch(clearEventErrors())
   }
 }
 

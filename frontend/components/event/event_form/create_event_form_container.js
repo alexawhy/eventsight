@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { createEvent } from '../../../actions/event_actions';
+import { createEvent, clearEventErrors } from '../../../actions/event_actions';
 import EventForm from './event_form';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     event: {
       organizer_id: '',
@@ -20,13 +20,15 @@ const mapStateToProps = state => {
     },
     currentUserId: state.session.currentUserId,
     imageFile: null,
-    formType: 'Create Event',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    formType: 'Create Event',
+    errors: state.errors.event                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: formData => dispatch(createEvent(formData))
+    action: formData => dispatch(createEvent(formData)),
+    clearEventErrors: () => dispatch(clearEventErrors())
   }
 };
 

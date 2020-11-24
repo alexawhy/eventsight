@@ -17,7 +17,6 @@ class EventShow extends React.Component {
 
     const diffEndDate = event.start_date === event.end_date;
 
-    debugger
     return(
       <div>
         {/* <Background event={event}/> */}
@@ -53,7 +52,7 @@ class EventShow extends React.Component {
             </div>
             <div className="right">
               <h3>Date and Time</h3>
-              <EventTime event={this.props.event} />
+              <EventTime event={event} />
               <h3>{locationHeader}</h3>
               <p>{event.venue}</p>
             </div>

@@ -1,8 +1,6 @@
 import React from 'react';
 
 const EventTime = ({ event }) => {
-  // const { event } = event;
-  debugger
   if (event.start_date === event.end_date) {
     return(
     <>

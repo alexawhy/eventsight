@@ -59,4 +59,4 @@ export const logout = () => dispatch => {
 
 export const clearSessionErrors = () => dispatch => {
   return dispatch(removeSessionErrors())
-}
+};

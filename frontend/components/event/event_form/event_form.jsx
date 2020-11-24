@@ -44,8 +44,6 @@ class EventForm extends React.Component {
     this.setState({ imageFile: image })
   }
 
-  //formData
-
   handleInput(field) {
     return e => {
       let nextEvent = Object.assign({}, this.state.currEvent);
@@ -64,6 +62,18 @@ class EventForm extends React.Component {
     let nextEvent = Object.assign({}, this.state.currEvent);
     nextEvent.online = false;
     this.setState({ currEvent: nextEvent });
+  }
+
+  renderErrors() {
+    return(
+      <ul className="errors">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
@@ -96,6 +106,7 @@ class EventForm extends React.Component {
     
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>
+        {this.renderErrors()}
         <div className="event-form-basic-info form-section">
           <div className="left">
             <FontAwesomeIcon className="form-icon" icon={faAlignLeft} size="3x"/>
