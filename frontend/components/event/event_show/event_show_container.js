@@ -2,16 +2,16 @@ import { connect } from 'react-redux';
 import { fetchEvent } from '../../../actions/event_actions';
 import EventShow from './event_show';
 
-const matchStateToProps = ({ entities: {events} }, ownProps) => {
+const mapStateToProps = ({ entities: {events} }, ownProps) => {
   return {
     event: events[ownProps.match.params.eventId]
   }
 };
 
-const matchDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchEvent: (eventId) => dispatch(fetchEvent(eventId))
   }
 }
 
-export default connect(matchStateToProps, matchDispatchToProps)(EventShow);
+export default connect(mapStateToProps, mapDispatchToProps)(EventShow);

@@ -1,5 +1,5 @@
 import React from 'react';
-import EventIndexItem from './event_index_item'
+import EventIndexItem from './event_index_item';
 
 class EventIndex extends React.Component {
   componentDidMount() {

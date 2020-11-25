@@ -2,7 +2,8 @@ import { bindActionCreators } from 'redux';
 import { 
   RECEIVE_EVENTS,
   RECEIVE_EVENT,
-  REMOVE_EVENT
+  REMOVE_EVENT,
+  RECEIVE_ORGANIZED_EVENTS
 } from '../actions/event_actions';
 
 const eventsReducer = (state = {}, action) => {
@@ -17,6 +18,8 @@ const eventsReducer = (state = {}, action) => {
       let nextState = Object.assign({}, state);
       delete nextState[action.postId];
       return nextState;
+    case RECEIVE_ORGANIZED_EVENTS:
+      return action.events;
     default:
       return state;
   }

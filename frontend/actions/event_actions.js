@@ -5,6 +5,7 @@ export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
 export const REMOVE_EVENT_ERRORS = 'REMOVE_EVENT_ERRORS';
+export const RECEIVE_ORGANIZED_EVENTS = 'RECEIVE_ORGANIZED_EVENTS';
 
 const receiveEvents = events => {
   return {
@@ -36,6 +37,13 @@ const receiveEventErrors = errors => {
 const removeEventErrors = () => {
   return {
     type: REMOVE_EVENT_ERRORS
+  }
+}
+
+const receivedOrganizedEvents = events => {
+  return {
+    type: RECEIVE_ORGANIZED_EVENTS,
+    events
   }
 }
 
@@ -75,3 +83,8 @@ export const deleteEvent = eventId => dispatch => {
 export const clearEventErrors = () => dispatch => {
   return dispatchEvent(removeEventErrors())
 }; 
+
+export const fetchOrganizedEvents = userId => dispatch => {
+  return EventAPIUtil.fetchOrganizedEvents(userId)
+    .then(events => dispatch(receivedOrganizedEvents(events)))
+};

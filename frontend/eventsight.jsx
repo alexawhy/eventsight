@@ -8,7 +8,8 @@ import {
   fetchEvent,
   createEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  fetchOrganizedEvents
 } from './actions/event_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,5 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createEvent = createEvent;
   window.updateEvent = updateEvent;
   window.deleteEvent = deleteEvent;
-
+  window.fetchOrganizedEvents = fetchOrganizedEvents;
 });

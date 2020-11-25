@@ -3,7 +3,6 @@ class Api::EventsController < ApplicationController
 
   def index 
     @events = Event.all.with_attached_image
-    # @events = Event.all
     render :index
   end
 
