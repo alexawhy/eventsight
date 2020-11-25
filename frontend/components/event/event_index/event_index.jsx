@@ -10,7 +10,7 @@ class EventIndex extends React.Component {
     const { events } = this.props;
     return (
       <div className="event-index">
-        <h2>Events in New York</h2>
+        <h2>Events in <span className="blue">New York</span></h2>
         <div className="event-index-list">
           {events.map(event => (
             <EventIndexItem

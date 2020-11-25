@@ -6,11 +6,11 @@
 }
 
 .splash-img {
-  width: 40%;
-  max-width: 600px;
+  width: 50%;
+  max-width: 700px;
   margin: 20px 8vw 100px auto;
   position: absolute;
-  right: 5%;
+  right: 3vw;
 }
 
 .splash-text-box {
@@ -20,13 +20,13 @@
 
 .splash-text {
   font-weight: 900;
-  font-size: 28px;
+  font-size: 2.5em;
   color: $orange;
 }
 
 .splash-text-strong {
   font-weight: 900;
-  font-size: 38px;
+  font-size: 3.5em;
 }
 
 .splash-bg {
