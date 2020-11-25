@@ -188,7 +188,6 @@ class EventForm extends React.Component {
                 type="number"
                 id="input-capacity"
                 min="1"
-                placeholder="1"
                 value={currEvent.capacity}
                 onChange={this.handleInput('capacity')} />
               </div>
