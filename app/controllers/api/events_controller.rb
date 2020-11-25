@@ -31,9 +31,19 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find_by(id: params[:id])
+    @event = current_user.organized_events.find_by(id: params[:id])
     if @event && @event.destroy
+      @events = current_user.organized_events
       render :index
+    end
+  end
+  
+  def organized_events_index
+    @events = User.find_by(id: params[:userId]).organized_events.with_attached_image
+    if @events 
+      render :index
+    else
+      render json: @event.errors.full_messages, status: 404
     end
   end
 
