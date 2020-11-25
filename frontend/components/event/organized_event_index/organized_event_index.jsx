@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import OrganizedEventIndexItem from './organized_event_index_item';
 
 class OrganizedEventIndex extends React.Component {
@@ -6,7 +7,7 @@ class OrganizedEventIndex extends React.Component {
     this.props.fetchOrganizedEvents(this.props.match.params.userId);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.props.fetchOrganizedEvents(this.props.match.params.userId);
   }
 
@@ -31,4 +32,4 @@ class OrganizedEventIndex extends React.Component {
   }
 }
 
-export default OrganizedEventIndex;
+export default withRouter(OrganizedEventIndex);

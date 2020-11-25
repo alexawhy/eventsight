@@ -82,7 +82,7 @@ export const deleteEvent = eventId => dispatch => {
 };
 
 export const clearEventErrors = () => dispatch => {
-  return dispatchEvent(removeEventErrors())
+  return dispatch(removeEventErrors())
 }; 
 
 export const fetchOrganizedEvents = userId => dispatch => {

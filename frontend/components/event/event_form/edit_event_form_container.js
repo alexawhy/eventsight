@@ -8,13 +8,15 @@ class EditEventForm extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
+    debugger
     this.props.fetchEvent(this.props.match.params.eventId)
       .then(() => this.setState({ event: this.props.event }))
   }
 
   render () {
-    const { action, formType, event, imageFile } = this.props;
+    const { action, formType, event, imageFile, errors, clearEventErrors } = this.props;
     if (!event) return null;
 
     return (
@@ -23,12 +25,15 @@ class EditEventForm extends React.Component {
         formType={formType}
         event={event}
         imageFile={imageFile} 
-        history={this.props.history}/>
+        history={this.props.history}
+        errors={errors}
+        clearEventErrors={clearEventErrors}/>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
+  // debugger
   return {
     event: state.entities.events[ownProps.match.params.eventId],
     imageFile: null,

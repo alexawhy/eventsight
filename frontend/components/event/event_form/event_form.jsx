@@ -90,6 +90,10 @@ class EventForm extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearEventErrors();
+  }
+
   render() {
 
     const { currEvent } = this.state;
