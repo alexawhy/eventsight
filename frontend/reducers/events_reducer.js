@@ -15,8 +15,9 @@ const eventsReducer = (state = {}, action) => {
       const newEvent = { [action.event.id]: action.event};
       return Object.assign({}, state, newEvent)
     case REMOVE_EVENT:
+      debugger
       let nextState = Object.assign({}, state);
-      delete nextState[action.postId];
+      delete nextState[action.eventId];
       return nextState;
     case RECEIVE_ORGANIZED_EVENTS:
       return action.events;
