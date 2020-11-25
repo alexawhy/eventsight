@@ -6,6 +6,10 @@ class OrganizedEventIndex extends React.Component {
     this.props.fetchOrganizedEvents(this.props.match.params.userId);
   }
 
+  componentDidUpdate() {
+    this.props.fetchOrganizedEvents(this.props.match.params.userId);
+  }
+
   render() {
     const { events, deleteEvent } = this.props;
     return (

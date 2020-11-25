@@ -36,8 +36,8 @@ class OrganizedEventIndexItem extends React.Component {
           </div>
         </div>
         <div className="organized-event-index-item-options">
-          <div className="option" onClick={this.redirectToEdit}>Edit Event</div>
-          <div className="option" onClick={deleteEvent}>Delete Event</div>
+          <button className="option" onClick={this.redirectToEdit}>Edit Event</button>
+          <button className="option" onClick={() => deleteEvent(event.id)}>Delete Event</button>
         </div>
       </div>
     )
