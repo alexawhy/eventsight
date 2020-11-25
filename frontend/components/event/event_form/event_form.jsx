@@ -183,6 +183,8 @@ class EventForm extends React.Component {
                 <input
                 type="number"
                 id="input-capacity"
+                min="1"
+                placeholder="1"
                 value={currEvent.capacity}
                 onChange={this.handleInput('capacity')} />
               </div>
@@ -223,6 +225,7 @@ class EventForm extends React.Component {
                   type="date"
                   id="input-end-date"
                   value={currEvent.end_date}
+                  min={currEvent.start_date}
                   onChange={this.handleInput('end_date')} />
               </div>
               <div className="input-wrapper end-time">
