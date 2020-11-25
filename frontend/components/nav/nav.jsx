@@ -12,10 +12,16 @@ class Nav extends React.Component {
       visible: false
     }
     this.handleClick = this.handleClick.bind(this);
+    this.redirectToOrganizedEvents = this.redirectToOrganizedEvents.bind(this);
   }
 
   handleClick() {
     this.props.history.push("/")
+  }
+
+  redirectToOrganizedEvents() {
+    const { currentUser } = this.props;
+    this.props.history.push(`/users/${currentUser.id}/events`)
   }
 
   // toggleDropdown(e) {
@@ -85,8 +91,8 @@ class Nav extends React.Component {
                       <div className="user-info-email">{currentUser.email}</div>
                     </div>
                   </li>
-                  <li>
-                    <Link to={`/users/${currentUser.id}/events`}>Manage Events</Link>
+                  <li onClick={this.redirectToOrganizedEvents}>
+                    Manage Events
                   </li>
                   <li onClick={logout}>
                     Log Out

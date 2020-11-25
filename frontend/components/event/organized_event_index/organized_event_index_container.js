@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
-import { fetchOrganizedEvents } from '../../../actions/event_actions';
+import { fetchOrganizedEvents, fetchEvent } from '../../../actions/event_actions';
 import OrganizedEventIndex from './organized_event_index';
 
-const mapStateToProps = ({ entities: { events }, session}) => {
+const mapStateToProps = ({ entities: { events, users }, session}) => {
   return {
     events: Object.values(events),
-    currentUserId: session.currentUserId
+    currentUser: users[session.currentUserId]
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchOrganizedEvents: (userId) => dispatch(fetchOrganizedEvents(userId)),
+    fetchEvent: (eventId) => dispatch(fetchEvent(eventId)),
     deleteEvent: (eventId) => dispatch(deleteEvent(eventId))
   }
 }
