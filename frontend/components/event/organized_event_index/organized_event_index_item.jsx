@@ -19,9 +19,17 @@ class OrganizedEventIndexItem extends React.Component {
   }
   
   render() {
-    const { event, deleteEvent } = this.props;
+    const { event, deleteEvent, currentUserId } = this.props;
     const datetime = event.start_time ? <p>{event.start_date}, {event.start_time}</p> : <p>{event.start_date}</p>;
     
+    const organizerOptions = (
+      <div className="organized-event-index-item-options">
+        <button className="option" onClick={this.redirectToEdit}>Edit Event</button>
+        <button className="option" onClick={() => deleteEvent(event.id)}>Delete Event</button>
+      </div>
+    )
+
+    debugger
     return (
       <div className="organized-event-index-item">
         <div className="organized-event-index-item-image redirect">
@@ -35,10 +43,7 @@ class OrganizedEventIndexItem extends React.Component {
             {event.title}
           </div>
         </div>
-        <div className="organized-event-index-item-options">
-          <button className="option" onClick={this.redirectToEdit}>Edit Event</button>
-          <button className="option" onClick={() => deleteEvent(event.id)}>Delete Event</button>
-        </div>
+        {event.organizer_id === currentUserId ? organizerOptions : null }
       </div>
     )
   }

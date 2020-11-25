@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { fetchOrganizedEvents } from '../../../actions/event_actions';
 import OrganizedEventIndex from './organized_event_index';
 
-const mapStateToProps = ({ entities: { events }}) => {
+const mapStateToProps = ({ entities: { events }, session}) => {
   return {
-    events: Object.values(events)
+    events: Object.values(events),
+    currentUserId: session.currentUserId
   }
 };
 

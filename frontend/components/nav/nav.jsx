@@ -85,8 +85,11 @@ class Nav extends React.Component {
                       <div className="user-info-email">{currentUser.email}</div>
                     </div>
                   </li>
+                  <li>
+                    <Link to={`/users/${currentUser.id}/events`}>Manage Events</Link>
+                  </li>
                   <li onClick={logout}>
-                    <Link to="/" className="logout">Log Out</Link>
+                    Log Out
                   </li>
                 </ul>
               </div>
