@@ -15,7 +15,6 @@ const eventsReducer = (state = {}, action) => {
       const newEvent = { [action.event.id]: action.event};
       return Object.assign({}, state, newEvent)
     case REMOVE_EVENT:
-      debugger
       let nextState = Object.assign({}, state);
       delete nextState[action.eventId];
       return nextState;

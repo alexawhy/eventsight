@@ -10,7 +10,6 @@ class EditEventForm extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchEvent(this.props.match.params.eventId)
       .then(() => this.setState({ event: this.props.event }))
   }
@@ -33,7 +32,6 @@ class EditEventForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return {
     event: state.entities.events[ownProps.match.params.eventId],
     imageFile: null,

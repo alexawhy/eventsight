@@ -53,7 +53,6 @@ class Nav extends React.Component {
           <div className="navbar">
             {navLogo}
             <div className="auth-links">
-              {/* <Link to="/signin">Sign In</Link> */}
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Log In</Link>
             </div>
@@ -78,7 +77,7 @@ class Nav extends React.Component {
                 <FontAwesomeIcon className="ticket icon" icon={faTicketAlt} rotation={90}/>
                 <span>Tickets</span>
               </a>
-              <div className="user-dropdown" onClick={this.toggleDropdown}>
+              <div className="user-dropdown">
                 <div className="user-dropdown-trigger">
                   <FontAwesomeIcon className="user-icon" icon={faUser}/>
                   <FontAwesomeIcon className="down-icon" icon={faAngleDown} />

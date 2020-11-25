@@ -76,7 +76,6 @@ export const updateEvent = (event, eventId) => dispatch => {
 };
 
 export const deleteEvent = eventId => dispatch => {
-  debugger
   return EventAPIUtil.deleteEvent(eventId)
     .then(() => dispatch(removeEvent(eventId)))
 };

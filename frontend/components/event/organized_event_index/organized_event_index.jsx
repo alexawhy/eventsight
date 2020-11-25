@@ -8,7 +8,6 @@ class OrganizedEventIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger
     if (this.props.events.length !== prevProps.events.length) {
       this.props.fetchOrganizedEvents(this.props.match.params.userId);
     }
