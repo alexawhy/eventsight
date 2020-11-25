@@ -43,6 +43,7 @@
 
   >a {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 72px;
@@ -57,6 +58,22 @@
     background-color: $lightest-gray;
   }
 
+  >a:first-of-type {
+    width: 110px;
+    margin-right: 10px;
+  }
+
+  >a:last-of-type {
+    margin-left: 10px;
+  }
+
+  .create-event {
+    color: $blue;
+  }
+
+  span {
+    margin-top: 5px;
+  }
 }
 
 .user-dropdown {

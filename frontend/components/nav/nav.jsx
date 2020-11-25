@@ -1,9 +1,9 @@
+
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { extend } from 'lodash';
+import { faUser, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faAngleDown, faPlus, faTicketAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -33,8 +33,8 @@ class Nav extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
-    const userIcon = <FontAwesomeIcon icon={faUser} />;
     const dropdownState = this.state.visible ? 'expand' : 'collapse';
+
     const navLogo = (
       <div className="nav-logo" onClick={this.handleClick}>
         <img src={window.logo} alt="eventsight" className="logo"/>
@@ -60,9 +60,18 @@ class Nav extends React.Component {
           <div className="navbar">
             {navLogo}
             <div className="nav-links">
-              <Link to="/events/create">Create Events</Link>
-              {/* <a>Create Events</a> */}
-              <a>Tickets</a>
+              <Link to="/events/create" className="create-event">
+                <FontAwesomeIcon className="plus icon" icon={faPlus}/>
+                <span>Create Events</span>
+              </Link>
+              <a>
+                <FontAwesomeIcon className="heart icon" icon={faHeart}/>
+                <span>Likes</span>
+              </a>
+              <a>
+                <FontAwesomeIcon className="ticket icon" icon={faTicketAlt} rotation={90}/>
+                <span>Tickets</span>
+              </a>
               <div className="user-dropdown" onClick={this.toggleDropdown}>
                 <div className="user-dropdown-trigger">
                   <FontAwesomeIcon className="user-icon" icon={faUser}/>
