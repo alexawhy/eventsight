@@ -5,13 +5,13 @@ class OrganizedEventIndex extends React.Component {
   componentDidMount() {
     this.props.fetchOrganizedEvents(this.props.match.params.userId);
   }
-  
-  // componentDidUpdate() {
-  //   this.props.fetchOrganizedEvents(this.props.match.params.userId);
-  // }
+
+  componentDidUpdate() {
+    this.props.fetchOrganizedEvents(this.props.match.params.userId);
+  }
 
   render() {
-    const { events, deleteEvent, currentUser } = this.props;
+    const { events, fetchEvent, deleteEvent, currentUser } = this.props;
     return (
       <div className="organized-event-index">
         <h1>Events Organized</h1>

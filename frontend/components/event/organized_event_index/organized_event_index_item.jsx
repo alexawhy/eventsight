@@ -14,7 +14,9 @@ class OrganizedEventIndexItem extends React.Component {
   }
 
   redirectToEdit() {
-    const { event, fetchEvent } = this.props;
+    debugger
+    const { event } = this.props;
+    this.props.fetchEvent(event.id);
     this.props.history.push(`/events/${event.id}/edit`)
   }
   
