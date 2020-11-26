@@ -16,6 +16,7 @@ class SignupForm extends React.Component {
       errors: {}
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   update(field) {
@@ -24,6 +25,17 @@ class SignupForm extends React.Component {
       newUser[field] = e.target.value;
       this.setState({ user: newUser });
     }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = Object.assign({}, this.state.user);
+    this.props.signup(user);
+  }
+
+  handleDemoLogin() {
+    const demo = { email: 'demo@example.com', password: 'pa$$word'};
+    this.props.login(demo);
   }
 
   componentWillUnmount() {
@@ -54,13 +66,7 @@ class SignupForm extends React.Component {
       </ul>
     );
   }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state.user);
-    this.props.signup(user);
-  }
-
+  
   render() {
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
@@ -121,7 +127,7 @@ class SignupForm extends React.Component {
         <Link to="/login" className="login-msg">Log In Instead</Link>
         <button 
           className="demo-login-btn" 
-          onClick={() => dispatch(login({email: 'demo@example.com', password: 'pa$$word'}))}>
+          onClick={this.handleDemoLogin}>
           Demo User Login
         </button>
       </div>
