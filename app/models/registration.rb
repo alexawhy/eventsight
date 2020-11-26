@@ -13,7 +13,7 @@ class Registration < ApplicationRecord
   validates :user_id, uniqueness: { scope: :event_id,
     message: "has already registered for this event" } 
 
-  belongs_to :user, dependent: :destroy
-  belongs_to :event, dependent: :destroy
+  belongs_to :user
+  belongs_to :event
 
 end
