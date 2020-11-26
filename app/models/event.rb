@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   validates :capacity, numericality: {greater_than: 0}
   validate :ensure_image
 
-  belongs_to :organizer
+  belongs_to :organizer, class_name: :User, foreign_key: :organizer_id
   belongs_to :category
 
   has_one_attached :image
