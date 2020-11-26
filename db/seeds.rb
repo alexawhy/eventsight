@@ -11,6 +11,7 @@ require 'open-uri'
 User.destroy_all
 Category.destroy_all
 Event.destroy_all
+Registration.destroy_all
 
 # Users
 
@@ -266,3 +267,9 @@ event9.image.attach(io: image9, filename: 'event9.jpg')
 event10.image.attach(io: image10, filename: 'event10.jpg')
 event11.image.attach(io: image11, filename: 'event11.jpg')
 event12.image.attach(io: image12, filename: 'event12.jpg')
+
+# Registration
+
+registration1 = Registration.create(user_id: demo.id, event_id: event2.id)
+registration1 = Registration.create(user_id: demo.id, event_id: event3.id)
+registration1 = Registration.create(user_id: demo.id, event_id: event4.id)
