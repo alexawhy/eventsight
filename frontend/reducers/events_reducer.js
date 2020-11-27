@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { 
   RECEIVE_EVENTS,
   RECEIVE_EVENT,
