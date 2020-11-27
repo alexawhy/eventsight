@@ -46,3 +46,17 @@ export const fetchOrganizedEvents = (userId) => {
     data: { userId }
   })
 }
+
+export const createRegistration = (eventId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/events/${eventId}/registrations`
+  })
+}
+
+export const deleteRegistration = (eventId, registrationId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/events/${eventId}/registrations/${registrationId}`
+  })
+}

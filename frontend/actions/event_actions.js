@@ -50,12 +50,12 @@ const receivedOrganizedEvents = events => {
 export const fetchEvents = () => dispatch => {
   return EventAPIUtil.fetchEvents()
     .then(events => dispatch(receiveEvents(events)))
-};
+}
 
 export const fetchEvent = eventId => dispatch => {
   return EventAPIUtil.fetchEvent(eventId)
     .then(event => dispatch(receiveEvent(event)))
-};
+}
 
 export const createEvent = event => dispatch => {
   return EventAPIUtil.createEvent(event)
@@ -64,7 +64,7 @@ export const createEvent = event => dispatch => {
     }, error => {
       return dispatch(receiveEventErrors(error.responseJSON))
     })
-};
+}
 
 export const updateEvent = (event, eventId) => dispatch => {
   return EventAPIUtil.updateEvent(event, eventId)
@@ -73,18 +73,28 @@ export const updateEvent = (event, eventId) => dispatch => {
     }, error => {
       return dispatch(receiveEventErrors(error.responseJSON))
     })
-};
+}
 
 export const deleteEvent = eventId => dispatch => {
   return EventAPIUtil.deleteEvent(eventId)
     .then(() => dispatch(removeEvent(eventId)))
-};
+}
 
 export const clearEventErrors = () => dispatch => {
   return dispatch(removeEventErrors())
-}; 
+}
 
 export const fetchOrganizedEvents = userId => dispatch => {
   return EventAPIUtil.fetchOrganizedEvents(userId)
     .then(events => dispatch(receivedOrganizedEvents(events)))
-};
+}
+
+export const createRegistration = eventId => dispatch => {
+  return EventAPIUtil.createRegistration(eventId)
+    .then(event => dispatch(receiveEvent(event)))
+}
+
+export const deleteRegistration = (eventId, registrationId) => {
+  return EventAPIUtil.deleteRegistration(eventId, registrationId)
+    .then(event => dispatch(receiveEvent(event)))
+}
