@@ -40,13 +40,6 @@ const removeEventErrors = () => {
   }
 }
 
-const receivedOrganizedEvents = events => {
-  return {
-    type: RECEIVE_ORGANIZED_EVENTS,
-    events
-  }
-}
-
 export const fetchEvents = () => dispatch => {
   return EventAPIUtil.fetchEvents()
     .then(events => dispatch(receiveEvents(events)))
@@ -86,7 +79,7 @@ export const clearEventErrors = () => dispatch => {
 
 export const fetchOrganizedEvents = userId => dispatch => {
   return EventAPIUtil.fetchOrganizedEvents(userId)
-    .then(events => dispatch(receivedOrganizedEvents(events)))
+    .then(events => dispatch(receiveEvents(events)))
 }
 
 export const createRegistration = eventId => dispatch => {
