@@ -1,11 +1,11 @@
 .background {
-  width: 100%;
+  width: 100vw;
   position: absolute;
   top: 72px;
   z-index: -1;
-  filter: blur(15px);  
   overflow: hidden;
-
+  filter: blur(15px);  
+  
   img {
     height: 60vh;
     transform: scale(1.1);
