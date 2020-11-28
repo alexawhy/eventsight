@@ -25,7 +25,7 @@ class RegistrationIndexItem extends React.Component {
     
     const userOption = (
       <div className="user-event-index-item-options">
-        <button className="option" onClick={this.handleDelete}>Cancel Registration</button>
+        <button className="option registration-option" onClick={this.handleDelete}>Cancel Registration</button>
       </div>
     )
 
