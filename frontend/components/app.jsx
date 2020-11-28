@@ -15,11 +15,13 @@ import EventIndexContainer from './event/event_index/event_index_container';
 import EventShowContainer from './event/event_show/event_show_container';
 import CreateEventFormContainer from './event/event_form/create_event_form_container';
 import EditEventFormContainer from './event/event_form/edit_event_form_container';
-import OrganizedEventIndexContainer from './event/organized_event_index/organized_event_index_container'
+import OrganizedEventIndexContainer from './event/organized_event_index/organized_event_index_container';
+import Modal from './modal/modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div className="app">
+    <Modal />
     <div className="content">
       <NavContainer />
       <Route exact path="/" component={Splash} />
