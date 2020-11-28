@@ -73,10 +73,10 @@ class Nav extends React.Component {
                 <FontAwesomeIcon className="heart icon" icon={faHeart}/>
                 <span>Likes</span>
               </a>
-              <a>
+              <Link to={`/users/${currentUser.id}/registrations`}>
                 <FontAwesomeIcon className="ticket icon" icon={faTicketAlt} rotation={90}/>
                 <span>Tickets</span>
-              </a>
+              </Link>
               <div className="user-dropdown">
                 <div className="user-dropdown-trigger">
                   <FontAwesomeIcon className="user-icon" icon={faUser}/>

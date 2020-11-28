@@ -5,7 +5,6 @@ export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
 export const REMOVE_EVENT_ERRORS = 'REMOVE_EVENT_ERRORS';
-export const RECEIVE_ORGANIZED_EVENTS = 'RECEIVE_ORGANIZED_EVENTS';
 
 const receiveEvents = events => {
   return {
@@ -89,5 +88,10 @@ export const createRegistration = eventId => dispatch => {
 
 export const deleteRegistration = (eventId, registrationId) => {
   return EventAPIUtil.deleteRegistration(eventId, registrationId)
-    .then(event => dispatch(receiveEvent(event)))
+    .then(events => dispatch(receiveEvents(events)))
+}
+
+export const fetchRegistrations = userId => dispatch => {
+  return EventAPIUtil.fetchRegistrations(userId)
+    .then(events => dispatch(receiveEvents(events)))
 }

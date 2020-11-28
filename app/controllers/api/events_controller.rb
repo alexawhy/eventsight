@@ -40,7 +40,7 @@ class Api::EventsController < ApplicationController
   def organized_events_index
     @events = User.find_by(id: params[:userId]).organized_events.with_attached_image
     if @events 
-      render :organized_index
+      render :user_event_index
     else
       render json: @event.errors.full_messages, status: 404
     end

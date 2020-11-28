@@ -23,7 +23,6 @@ class EventShow extends React.Component {
     const { event, currentUserId, openModal } = this.props;
     if (!event) return null;
 
-    debugger
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
     const button = event.attendees.includes(currentUserId) ?
       <button onClick={this.handleRedirect}>Cancel Registration</button> :

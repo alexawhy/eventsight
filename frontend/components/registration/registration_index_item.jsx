@@ -1,31 +1,31 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-class OrganizedEventIndexItem extends React.Component {
+class RegistrationIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.redirectToShow = this.redirectToShow.bind(this);
-    this.redirectToEdit = this.redirectToEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   redirectToShow() {
     const { event } = this.props;
-    this.props.history.push(`/events/${event.id}`)
+    this.props.history.push(`/events/${event.event_id}`)
   }
 
-  redirectToEdit() {
+  handleDelete(e) {
     const { event } = this.props;
-    this.props.history.push(`/events/${event.id}/edit`)
+    e.preventDefault();
+    this.props.deleteRegistration(event.event_id, event.registration_id);
   }
-  
+
   render() {
-    const { event, deleteEvent, currentUser } = this.props;
+    const { event, currentUser } = this.props;
     const datetime = event.start_time ? <p>{event.start_date}, {event.start_time}</p> : <p>{event.start_date}</p>;
     
-    const organizerOptions = (
+    const userOption = (
       <div className="user-event-index-item-options">
-        <button className="option" onClick={this.redirectToEdit}>Edit Event</button>
-        <button className="option" onClick={() => deleteEvent(event.id)}>Delete Event</button>
+        <button className="option" onClick={this.handleDelete}>Cancel Registration</button>
       </div>
     )
 
@@ -44,10 +44,10 @@ class OrganizedEventIndexItem extends React.Component {
             </div>
           </div>
         </div>
-        {event.organizer_id === currentUser.id ? organizerOptions : null }
+        {event.user_id === currentUser.id ? userOption : null }
       </li>
     )
   }
 }
 
-export default withRouter(OrganizedEventIndexItem);
+export default withRouter(RegistrationIndexItem);

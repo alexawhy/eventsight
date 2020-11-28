@@ -60,3 +60,10 @@ export const deleteRegistration = (eventId, registrationId) => {
     url: `/api/events/${eventId}/registrations/${registrationId}`
   })
 }
+
+export const fetchRegistrations = (userId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/registrations`
+  })
+}

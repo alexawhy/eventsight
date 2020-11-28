@@ -10,14 +10,12 @@ class RegistrationModal extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.createRegistration(this.props.event.id)
       .then(this.props.closeModal);
   }
 
   handleRedirect(e) {
-    debugger
     e.preventDefault();
     this.props.closeModal();
     this.props.history.push('/signup');
@@ -30,7 +28,6 @@ class RegistrationModal extends React.Component {
       <button className="register-btn button" onClick={this.handleSubmit}>Register</button> : 
       <button className="redirect-btn button" onClick={this.handleRedirect}>Sign up or Log in to Register</button>;
 
-    debugger 
     return (
       <div className="registration-modal">
         <div className="left">

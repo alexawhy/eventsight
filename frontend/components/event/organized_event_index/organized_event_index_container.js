@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchOrganizedEvents, fetchEvent } from '../../../actions/event_actions';
+import { fetchOrganizedEvents, fetchEvent, deleteEvent } from '../../../actions/event_actions';
 import OrganizedEventIndex from './organized_event_index';
 
 const mapStateToProps = ({ entities: { events, users }, session}) => {

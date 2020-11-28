@@ -6,7 +6,6 @@ import { closeModal } from '../../actions/modal_actions';
 import RegistrationModal from './registration_modal';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     currentUserId: state.session.currentUserId,
     event: state.entities.events[ownProps.location.pathname.split('/')[2]]
@@ -14,7 +13,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  debugger
   return {
     createRegistration: (eventId) => dispatch(createRegistration(eventId)),
     closeModal: () => dispatch(closeModal())
