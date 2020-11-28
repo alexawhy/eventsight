@@ -9,12 +9,14 @@ class RegistrationModal extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     this.props.createRegistration(this.props.event.id)
       .then(this.props.closeModal);
   }
 
   render() {
+    debugger
     const { event } = this.props;
 
     return (
@@ -29,7 +31,7 @@ class RegistrationModal extends React.Component {
             <p>{event.description}</p>
           </div>
           <div>
-            <button className="register-btn" onclick={this.handleSubmit}>Register</button>
+            <button className="register-btn" onClick={this.handleSubmit}>Register</button>
           </div>
         </div>
         <div className="right">

@@ -6,7 +6,7 @@ import EventTime from './time_component'
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
   
   componentDidMount() {
@@ -14,13 +14,14 @@ class EventShow extends React.Component {
     this.props.fetchEvent(this.props.match.params.eventId);
   }
 
-  handleClick(e) {
-    debugger
-    e.preventDefault();
-    this.props.openModal('registration');
-  }
+  // handleClick(e) {
+  //   debugger
+  //   e.preventDefault();
+  //   return(() => this.props.openModal('registration'));
+  // }
 
   render() {
+
     const { event } = this.props;
     if (!event) return null;
 
@@ -51,7 +52,7 @@ class EventShow extends React.Component {
             <div className="right">
               <button 
                 className="register-btn" 
-                onClick={this.handleClick}>
+                onClick={() => this.props.openModal('registration')}>
                 Register
               </button>
             </div>

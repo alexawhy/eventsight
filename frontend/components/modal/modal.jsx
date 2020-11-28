@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { RegistrationModalContainer } from '../../components/registration/registration_modal_container'; 
+import RegistrationModalContainer from '../registration/registration_modal_container'; 
 
 const Modal = ({ modal, closeModal }) => {
   if (!modal) {
