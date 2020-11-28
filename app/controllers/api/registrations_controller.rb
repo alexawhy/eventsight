@@ -13,7 +13,7 @@ class Api::RegistrationsController < ApplicationController
   end
 
   def destroy 
-    @registration = Registration.find_by(id: params[:id])
+    @registration = current_user.registrations.find_by(id: params[:id])
     @event = Event.find_by(id: params[:event_id])
     if @registration && @registration.destroy
       render "api/events/show"

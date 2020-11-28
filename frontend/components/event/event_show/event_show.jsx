@@ -6,19 +6,30 @@ import EventTime from './time_component'
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
   
   componentDidMount() {
-    window.scrollTo(0, 0);
     this.props.fetchEvent(this.props.match.params.eventId);
+    window.scrollTo(0, 0);
+  }
+
+  handleRedirect() {
+    const { currentUserId } = this.props;
+    this.props.history.push(`/users/${currentUserId}/registrations`)
   }
 
   render() {
-
-    const { event, openModal } = this.props;
+    const { event, currentUserId, openModal } = this.props;
     if (!event) return null;
 
+    debugger
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
+    const button = event.attendees.includes(currentUserId) ?
+      <button onClick={this.handleRedirect}>Cancel Registration</button> :
+      <button className="register-btn" onClick={() => openModal('registration')}>
+        Register
+      </button> 
 
     return(
       <div className="event-show">
@@ -42,11 +53,7 @@ class EventShow extends React.Component {
               <FontAwesomeIcon className="bookmark" icon={faHeart} />
             </div>
             <div className="right">
-              <button 
-                className="register-btn" 
-                onClick={() => openModal('registration')}>
-                Register
-              </button>
+              {button}
             </div>
           </div>
           <div className="event-show-main">

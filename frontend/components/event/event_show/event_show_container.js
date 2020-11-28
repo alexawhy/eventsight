@@ -3,9 +3,10 @@ import { fetchEvent } from '../../../actions/event_actions';
 import { openModal } from '../../../actions/modal_actions';
 import EventShow from './event_show';
 
-const mapStateToProps = ({ entities: {events} }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    event: events[ownProps.match.params.eventId]
+    event: state.entities.events[ownProps.match.params.eventId],
+    currentUserId: state.session.currentUserId
   }
 };
 
