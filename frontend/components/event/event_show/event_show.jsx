@@ -3,10 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import EventTime from './time_component'
 
-class EventShow extends React.Component {  
+class EventShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
   componentDidMount() {
     window.scrollTo(0, 0);
     this.props.fetchEvent(this.props.match.params.eventId);
+  }
+
+  handleClick(e) {
+    debugger
+    e.preventDefault();
+    this.props.openModal('registration');
   }
 
   render() {
@@ -15,11 +26,9 @@ class EventShow extends React.Component {
 
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
 
-    const diffEndDate = event.start_date === event.end_date;
-
+    debugger
     return(
       <div className="event-show">
-        {/* <Background event={event}/> */}
         <div className="background">
           <img src={event.imageUrl} alt=""/>
         </div>
@@ -40,7 +49,11 @@ class EventShow extends React.Component {
               <FontAwesomeIcon className="bookmark" icon={faHeart} />
             </div>
             <div className="right">
-              <button className="register-btn">Register</button>
+              <button 
+                className="register-btn" 
+                onClick={this.handleClick}>
+                Register
+              </button>
             </div>
           </div>
           <div className="event-show-main">

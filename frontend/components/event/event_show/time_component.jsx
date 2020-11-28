@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EventTime = ({ event }) => {
-  if (event.start_date === event.end_date ) {
+  if (event.start_date === event.end_date) {
     return(
     <>
       <p>{event.start_date}</p>
