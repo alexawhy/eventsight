@@ -60,23 +60,22 @@
 
 .event-show-action {
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 66px;
+  padding-left: 15px;
   border-top: 1px solid $lighter-gray;
   border-bottom: 1px solid $lighter-gray;
 
-  .left {
+  .bookmark {
+    height: 20px;
+    width: 20px;
+    color: $gray;
+    padding: 10px;
+    border-radius: 25px;
 
-    .bookmark {
-      height: 20px;
-      width: 20px;
-      color: $gray;
-      padding: 10px;
-      border-radius: 25px;
-      margin: 5px 5px 5px 10px;
-  
-      &:hover {
-        background-color: $lightest-gray;
-      }
+    &:hover {
+      background-color: $lightest-gray;
     }
   }
   

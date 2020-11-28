@@ -8,7 +8,7 @@ import RegistrationModal from './registration_modal'
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUserId: state.session.currentUserId,
-    eventId: ownProps.match.params.eventId
+    event: state.events[ownProps.match.params.eventId]
   }
 }
 
