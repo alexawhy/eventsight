@@ -1,4 +1,4 @@
-.organized-event-index {
+.user-event-index {
   width: 80%;
   max-width: 1000px;
   min-width: 600px;
@@ -12,7 +12,7 @@
   }
 }
 
-.organized-event-index-item {
+.user-event-index-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,29 +32,29 @@
   flex-direction: row;
 }
 
-.organized-event-index-item-image {
+.user-event-index-item-image {
   width: 40%;
 }
 
-.organized-event-details {
+.user-event-details {
   margin: 0 0 0 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.organized-event-index-item-time{
+.user-event-index-item-time{
   color: $orange;
   font-size: 14px;
   font-weight: 500;
 }
 
-.organized-event-index-item-title {
+.user-event-index-item-title {
   font-size: 20px;
   font-weight: 700;
 }
 
-.organized-event-index-item-options {
+.user-event-index-item-options {
 
   button {
     display: block;
@@ -71,5 +71,4 @@
       transition: 0.2s;
     }
   }
-
 }

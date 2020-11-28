@@ -16,9 +16,9 @@ class OrganizedEventIndex extends React.Component {
   render() {
     const { events, fetchEvent, deleteEvent, currentUser } = this.props;
     return (
-      <div className="organized-event-index">
+      <div className="user-event-index">
         <h1>Events Organized</h1>
-        <div className="organized-event-index-list">
+        <div className="user-event-index-list">
           {events.map(event => (
             <OrganizedEventIndexItem
               event={event}
