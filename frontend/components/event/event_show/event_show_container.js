@@ -10,7 +10,6 @@ const mapStateToProps = ({ entities: {events} }, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  debugger
   return {
     fetchEvent: (eventId) => dispatch(fetchEvent(eventId)),
     openModal: (modal) => dispatch(openModal(modal))

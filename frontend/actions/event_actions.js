@@ -83,7 +83,6 @@ export const fetchOrganizedEvents = userId => dispatch => {
 }
 
 export const createRegistration = eventId => dispatch => {
-  debugger
   return EventAPIUtil.createRegistration(eventId)
     .then(event => dispatch(receiveEvent(event)))
 }

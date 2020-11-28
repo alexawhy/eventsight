@@ -1,7 +1,8 @@
 class Api::RegistrationsController < ApplicationController
-  # before_action :ensure_logged_in, only: [:create, :destroy]
+  before_action :ensure_logged_in, only: [:create, :destroy]
 
   def create
+    debugger
     @event = Event.find_by(id: params[:event_id])
     if @event.attendees.include?(current_user)
       render "api/events/show", status: 422

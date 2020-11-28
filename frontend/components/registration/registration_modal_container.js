@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   debugger
   return {
     currentUserId: state.session.currentUserId,
-    event: state.entities.events[ownProps.location.pathname.split('/').reverse()[0]]
+    event: state.entities.events[ownProps.location.pathname.split('/')[2]]
   }
 }
 

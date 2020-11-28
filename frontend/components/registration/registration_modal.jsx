@@ -6,6 +6,7 @@ class RegistrationModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   handleSubmit(e) {
@@ -15,10 +16,21 @@ class RegistrationModal extends React.Component {
       .then(this.props.closeModal);
   }
 
-  render() {
+  handleRedirect(e) {
     debugger
-    const { event } = this.props;
+    e.preventDefault();
+    this.props.closeModal();
+    this.props.history.push('/signup');
+  }
 
+  render() {
+    const { event, closeModal, currentUserId } = this.props;
+
+    const actionButton = currentUserId ? 
+      <button className="register-btn button" onClick={this.handleSubmit}>Register</button> : 
+      <button className="redirect-btn button" onClick={this.handleRedirect}>Sign up or Log in to Register</button>;
+
+    debugger 
     return (
       <div className="registration-modal">
         <div className="left">
@@ -28,13 +40,14 @@ class RegistrationModal extends React.Component {
           </div>
           <div className="registration-details">
             <h2>{event.title}</h2>
-            <p>{event.description}</p>
+            <p>{event.description.split('. ').slice(0, 5).join('. ')}.</p>
           </div>
-          <div>
-            <button className="register-btn" onClick={this.handleSubmit}>Register</button>
+          <div className="registration-footer">
+            {actionButton}
           </div>
         </div>
         <div className="right">
+          <div className="close-modal" onClick={() => closeModal()}>&times;</div>
           <div className="modal-image">
             <img src={event.imageUrl} alt=""/>
           </div>

@@ -6,7 +6,6 @@ import EventTime from './time_component'
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
   }
   
   componentDidMount() {
@@ -14,20 +13,13 @@ class EventShow extends React.Component {
     this.props.fetchEvent(this.props.match.params.eventId);
   }
 
-  // handleClick(e) {
-  //   debugger
-  //   e.preventDefault();
-  //   return(() => this.props.openModal('registration'));
-  // }
-
   render() {
 
-    const { event } = this.props;
+    const { event, openModal } = this.props;
     if (!event) return null;
 
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
 
-    debugger
     return(
       <div className="event-show">
         <div className="background">
@@ -52,7 +44,7 @@ class EventShow extends React.Component {
             <div className="right">
               <button 
                 className="register-btn" 
-                onClick={() => this.props.openModal('registration')}>
+                onClick={() => openModal('registration')}>
                 Register
               </button>
             </div>
