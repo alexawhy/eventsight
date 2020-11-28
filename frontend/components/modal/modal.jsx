@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { RegistrationFormContainer } from '../../components/registration/registration_form_container'; 
+import { RegistrationModalContainer } from '../../components/registration/registration_modal_container'; 
 
 const Modal = ({ modal, closeModal }) => {
   if (!modal) {
@@ -11,7 +11,7 @@ const Modal = ({ modal, closeModal }) => {
   let component;
   switch (modal) {
     case 'registration':
-      component = <RegistrationFormContainer />;
+      component = <RegistrationModalContainer />;
       break;
     default:
       return null;
