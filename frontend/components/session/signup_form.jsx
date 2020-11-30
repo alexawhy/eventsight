@@ -30,12 +30,14 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state.user);
-    this.props.signup(user);
+    this.props.signup(user)
+      .then(() => this.props.history.goBack());
   }
 
   handleDemoLogin() {
     const demo = { email: 'demo@example.com', password: 'pa$$word'};
     this.props.login(demo);
+    this.props.history.goBack();
   }
 
   componentWillUnmount() {
