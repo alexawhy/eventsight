@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchRegistrations: (userId) => dispatch(fetchRegistrations(userId)),
     deleteRegistration: (eventId, registrationId) => dispatch(deleteRegistration(eventId, registrationId)),
-    fetchEvents: (events) => dispatch(fetchEvents(events)),
+    fetchEvents: () => dispatch(fetchEvents()),
     fetchEvent: (eventId) => dispatch(fetchEvent(eventId))
   }
 }
