@@ -6,7 +6,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <a href="https://github.com/alexawhy" target="_blank">
+        <a href="https://github.com/alexawhy/eventsight" target="_blank">
           <FontAwesomeIcon className="footer-icon" icon={faGithub} />
         </a>
         <a href="https://www.linkedin.com/in/alexandria-hy-wong/" target="_blank">
