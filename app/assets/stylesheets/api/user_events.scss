@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid $lightest-gray;
+  border-bottom: 1px solid $lighter-gray;
 
   &:hover {
     border-bottom: none;
@@ -60,14 +60,14 @@
     display: block;
     width: 120px;
     height: 40px;
-    border: 1px solid $lightest-gray;
+    border: 1px solid $lighter-gray;
 
     &:first-of-type {
       margin-bottom: 5px;
     }
 
     &:hover {
-      background-color: $lightest-gray;
+      background-color: $lighter-gray;
       transition: 0.2s;
     }
   }

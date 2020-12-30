@@ -124,7 +124,7 @@ class EventForm extends React.Component {
     )
 
     const imagePreview = this.state.tempImageUrl ? <img src={this.state.tempImageUrl}></img> : <img src={this.state.currEvent.imageUrl}></img>;
-
+party
     
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>

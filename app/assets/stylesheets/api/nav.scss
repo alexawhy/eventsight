@@ -6,7 +6,7 @@
   height: 72px;
   background-color: white;
   box-shadow: 0px 0px 3px 1px rgba(230, 230, 230, 0.15);
-  // border-bottom: $lightest-gray 1px solid; 
+  // border-bottom: $lighter-gray 1px solid; 
 }
 
 .logo {
@@ -31,7 +31,7 @@
     font-size: 13px;
     text-align: center;
     font-weight: 500;
-    color: $darker-gray;
+    color: $darkest-gray;
   }
 
   a:hover {
@@ -52,7 +52,7 @@
     font-size: 13px;
     text-align: center;
     font-weight: 500;
-    color: $darker-gray;
+    color: $darkest-gray;
   }
 
   >a:hover {
@@ -87,7 +87,7 @@
   .user-icon{
     width: 20px;
     height: 20px;
-    background-color: $lightest-gray;
+    background-color: $lighter-gray;
     padding: 8px;
     border-radius: 36px;
     margin-right: 20px;
@@ -98,12 +98,12 @@
     height: 20px;
     position: relative;
     top: -5px;
-    color: $gray;
+    color: $darker-gray;
   }
 
   &:hover {
     cursor: pointer;
-    background-color: $lightest-gray;
+    background-color: $lighter-gray;
   }
 
   &:hover .user-dropdown-list {
@@ -134,7 +134,7 @@
   }
   
   li:first-child {
-    border-bottom: 1px solid $lighter-gray;
+    border-bottom: 1px solid $gray;
   }
 
   li:hover {
@@ -154,7 +154,7 @@
     margin: 0 20px 0 10px;
     width: 15px;
     height: 15px;
-    color: $gray;
+    color: $darker-gray;
   }
   
   .user-info-name {
@@ -163,10 +163,10 @@
   
   .user-info-email{
     font-size: 12px;
-    color: $gray;
+    color: $darker-gray;
   
     &:hover{
-      color: $darker-gray;
+      color: $darkest-gray;
     }
   }
 }
