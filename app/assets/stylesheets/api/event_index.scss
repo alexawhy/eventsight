@@ -14,7 +14,38 @@
     font-size: 36px;
     font-weight: 700;  
     color: $purple;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+  }
+}
+
+.category-list-container {
+  display: block;
+  height: 30px;
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+.category-list {
+  display: flex;
+  color: $darker-gray;
+  font-family: $sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+
+  li {
+    margin-right: 15px;
+
+    &:hover {
+      color: $purple;
+      border-bottom: 2px solid $purple;
+      cursor: pointer;
+    }
+  }
+
+  li.active  {
+    color: $blue;
+    border-bottom: 2px solid $blue;
   }
 }
 
