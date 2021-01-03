@@ -67,3 +67,24 @@ export const fetchRegistrations = (userId) => {
     url: `/api/users/${userId}/registrations`
   })
 }
+
+export const createBookmark = (eventId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/events/${eventId}/bookmarks`
+  })
+}
+
+export const deleteBookmark = (eventId, bookmarkId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/events/${eventId}/bookmarks/${bookmarkId}`
+  })
+}
+
+export const fetchBookmarks = (userId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/bookmarks`
+  })
+}
