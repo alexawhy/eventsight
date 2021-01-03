@@ -2,11 +2,14 @@
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
 #    api_user_registrations GET    /api/users/:user_id/registrations(.:format)                                              api/registrations#index {:format=>:json}
+#        api_user_bookmarks GET    /api/users/:user_id/bookmarks(.:format)                                                  api/bookmarks#index {:format=>:json}
 #                 api_users POST   /api/users(.:format)                                                                     api/users#create {:format=>:json}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>:json}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
 #   api_event_registrations POST   /api/events/:event_id/registrations(.:format)                                            api/registrations#create {:format=>:json}
 #    api_event_registration DELETE /api/events/:event_id/registrations/:id(.:format)                                        api/registrations#destroy {:format=>:json}
+#       api_event_bookmarks POST   /api/events/:event_id/bookmarks(.:format)                                                api/bookmarks#create {:format=>:json}
+#        api_event_bookmark DELETE /api/events/:event_id/bookmarks/:id(.:format)                                            api/bookmarks#destroy {:format=>:json}
 #                api_events GET    /api/events(.:format)                                                                    api/events#index {:format=>:json}
 #                           POST   /api/events(.:format)                                                                    api/events#create {:format=>:json}
 #                 api_event GET    /api/events/:id(.:format)                                                                api/events#show {:format=>:json}
