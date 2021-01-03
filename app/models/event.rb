@@ -32,6 +32,9 @@ class Event < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :attendees, through: :registrations, source: :user
 
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_users, through: :bookmarks, source: :user
+
   def ensure_image 
     unless self.image.attached?
       errors[:image] << "must be attached"
