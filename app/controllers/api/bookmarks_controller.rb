@@ -11,7 +11,7 @@ class Api::BookmarksController < ApplicationController
     if @event.bookmarked_users.include?(current_user)
       render "api/events/show", status: 422
     else 
-      @registration = Registration.create(user_id: current_user.id, event_id: @event.id)
+      @bookmark = Bookmark.create(user_id: current_user.id, event_id: @event.id)
       render "api/events/show"
     end
   end

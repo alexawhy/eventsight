@@ -7,6 +7,7 @@ import {
   deleteBookmark,
   fetchBookmarks
 } from './actions/event_actions';
+import { faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
