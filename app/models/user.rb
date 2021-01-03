@@ -22,8 +22,12 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :organized_events, class_name: :Event, foreign_key: :organizer_id
+  
   has_many :registrations, dependent: :destroy
   has_many :attending_events, through: :registrations, source: :event
+  
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_events, through: :bookmarks, source: :event
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
