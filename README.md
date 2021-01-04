@@ -16,7 +16,7 @@ Backend:
 Frontend:
 - React
 - Redux
-- SCSS
+- CSS/SASS
 
 Hosting:
 - AWS S3
