@@ -14,7 +14,16 @@ class BookmarkIndex extends React.Component {
   }
 
   render() {
+    debugger
     const { events, fetchEvent, deleteBookmark, currentUser } = this.props;
+
+    // if (!events) {
+    //   return (
+    //     <p className="message">
+    //       Nothing here yet. <Link to="/">Find interesting events</Link> to join!
+    //     </p>
+    //   )
+    // }
     
     const content = events.length > 0 ? (
       <ul className="user-event-index-list">

@@ -15,7 +15,9 @@ class RegistrationIndex extends React.Component {
 
   render() {
     const { events, fetchEvent, deleteRegistration, currentUser } = this.props;
-    
+
+    // if (events.some((event) => typeof event === 'undefined')) return null;
+
     const content = events.length > 0 ? (
       <ul className="user-event-index-list">
           {events.map((event, idx) => (
