@@ -5,7 +5,11 @@ import Root from './components/root'
 import { 
   createBookmark, 
   deleteBookmark,
-  fetchBookmarks
+  fetchBookmarks,
+  createRegistration,
+  deleteRegistration,
+  fetchEvents,
+  fetchEvent
 } from './actions/event_actions';
 import { faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
@@ -33,4 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createBookmark = createBookmark;
   window.deleteBookmark = deleteBookmark;
   window.fetchBookmarks = fetchBookmarks;
+  window.createRegistration = createRegistration;
+  window.deleteRegistration = deleteRegistration;
+  window.fetchEvents = fetchEvents;
+  window.fetchEvent = fetchEvent;
 });
