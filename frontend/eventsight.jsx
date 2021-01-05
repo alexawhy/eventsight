@@ -11,6 +11,7 @@ import {
   fetchEvents,
   fetchEvent
 } from './actions/event_actions';
+import { fetchUser } from './actions/session_actions';
 import { faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,4 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.deleteRegistration = deleteRegistration;
   window.fetchEvents = fetchEvents;
   window.fetchEvent = fetchEvent;
+  window.fetchUser = fetchUser;
 });

@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { fetchEvent, createBookmark, deleteBookmark } from '../../../actions/event_actions';
+
 import { openModal } from '../../../actions/modal_actions';
 import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     event: state.entities.events[ownProps.match.params.eventId],
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    bookmarks: state.entities.users[state.session.currentUserId].bookmarked_events
   }
 };
 

@@ -76,6 +76,11 @@
 
     &:hover {
       background-color: $lighter-gray;
+      cursor: pointer;
+    }
+
+    &.selected {
+      color: $orange;
     }
   }
   

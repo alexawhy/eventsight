@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid }  from '@fortawesome/free-solid-svg-icons';
 import EventTime from './time_component'
 
 class EventShow extends React.Component {
@@ -16,6 +17,13 @@ class EventShow extends React.Component {
     this.props.fetchEvent(this.props.match.params.eventId);
     window.scrollTo(0, 0);
   }
+
+  // componentDidUpdate(prevProps) {
+  //   debugger
+  //   if (this.props.event.bookmarked_users.length !== prevProps.event.bookmarked_user.length) {
+  //     this.props.fetchEvent(this.props.match.params.eventId);
+  //   }
+  // }
 
   handleRedirect() {
     const { currentUserId } = this.props;
@@ -34,22 +42,28 @@ class EventShow extends React.Component {
   }
 
   handleDeleteBookmark(e) {
-    const { event, currentUserId } = this.props;
+    const { event } = this.props;
     e.preventDefault();
     this.setState({ bookmarked: false });
     this.props.deleteBookmark(event.id);
   }
 
   render() {
-    const { event, currentUserId, openModal } = this.props;
+    const { event, currentUserId, bookmarks, openModal } = this.props;
     if (!event) return null;
 
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
-    const button = event.attendees.includes(currentUserId) ?
+    const registerButton = event.attendees.includes(currentUserId) ?
       <button onClick={this.handleRedirect}>Cancel Registration</button> :
       <button className="register-btn" onClick={() => openModal('registration')}>
         Register
       </button> 
+
+    const bookmark = this.state.bookmark === true || bookmarks.includes(event.id)
+      ?
+      <FontAwesomeIcon className="bookmark selected" icon={faHeartSolid} onClick={this.handleDeleteBookmark}/>
+      :
+      <FontAwesomeIcon className="bookmark" icon={faHeart} onClick={this.handleCreateBookmark}/>
 
     return(
       <div className="event-show">
@@ -70,10 +84,10 @@ class EventShow extends React.Component {
           </div>
           <div className="event-show-action">
             <div className="left">
-              <FontAwesomeIcon className="bookmark" icon={faHeart} />
+              {bookmark}
             </div>
             <div className="right">
-              {button}
+              {registerButton}
             </div>
           </div>
           <div className="event-show-main">
