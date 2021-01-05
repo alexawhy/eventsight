@@ -18,10 +18,10 @@ class RegistrationIndex extends React.Component {
     
     const content = events.length > 0 ? (
       <ul className="user-event-index-list">
-          {events.map(event => (
+          {events.map((event, idx) => (
             <RegistrationIndexItem
               event={event}
-              key={event.registration_id}
+              key={idx}
               fetchEvent={fetchEvent}
               deleteRegistration={deleteRegistration}
               currentUser={currentUser}
@@ -33,6 +33,7 @@ class RegistrationIndex extends React.Component {
         Nothing here yet. <Link to="/">Find interesting events</Link> to join!
       </p>
     )
+
     return (
       <div className="user-event-index">
         <h1>Attending Events</h1>
