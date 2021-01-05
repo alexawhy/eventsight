@@ -17,7 +17,8 @@ class Api::BookmarksController < ApplicationController
   end
 
   def destroy 
-    @bookmark = current_user.bookmarks.find_by(id: params[:id])
+    debugger
+    @bookmark = current_user.bookmarks.find_by(event_id: params[:event_id])
     @event = Event.find_by(id: params[:event_id])
     if @bookmark && @bookmark.destroy
       render "api/events/show"

@@ -75,10 +75,11 @@ export const createBookmark = (eventId) => {
   })
 }
 
-export const deleteBookmark = (eventId, bookmarkId) => {
+export const deleteBookmark = (eventId) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/events/${eventId}/bookmarks/${bookmarkId}`
+    url: `/api/bookmarks`,
+    data: { event_id: eventId }
   })
 }
 

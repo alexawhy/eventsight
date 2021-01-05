@@ -98,13 +98,13 @@ export const fetchRegistrations = userId => dispatch => {
     .then(events => dispatch(receiveEvents(events)))
 }
 
-export const createBookmark = (eventId) => dispatch => {
+export const createBookmark = eventId => dispatch => {
   return EventAPIUtil.createBookmark(eventId)
     .then(events => dispatch(receiveEvent(events)))
 }
 
-export const deleteBookmark = (eventId, bookmarkId) => {
-  return EventAPIUtil.deleteBookmark(eventId, bookmarkId)
+export const deleteBookmark = eventId => dispatch => {
+  return EventAPIUtil.deleteBookmark(eventId)
   .then(events => dispatch(receiveEvents(events)))
 }
 

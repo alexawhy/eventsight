@@ -6,7 +6,10 @@ import EventTime from './time_component'
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { bookmarked: false };
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.handleCreateBookmark = this.handleCreateBookmark.bind(this);
+    this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this);
   }
   
   componentDidMount() {
@@ -17,6 +20,24 @@ class EventShow extends React.Component {
   handleRedirect() {
     const { currentUserId } = this.props;
     this.props.history.push(`/users/${currentUserId}/registrations`)
+  }
+
+  handleCreateBookmark(e) {
+    const { event, currentUserId } = this.props;
+    if (currentUserId) {
+      e.preventDefault();
+      this.setState({ bookmarked: true });
+      this.props.createBookmark(event.id);
+    } else {
+      this.props.history.push('/signin');
+    }
+  }
+
+  handleDeleteBookmark(e) {
+    const { event, currentUserId } = this.props;
+    e.preventDefault();
+    this.setState({ bookmarked: false });
+    this.props.deleteBookmark(event.id);
   }
 
   render() {
