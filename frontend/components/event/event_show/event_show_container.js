@@ -5,7 +5,6 @@ import { openModal } from '../../../actions/modal_actions';
 import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   let currentUserId = state.session.currentUserId;
   let bookmarks = currentUserId ? state.entities.users[state.session.currentUserId].bookmarked_events : [];
   return {

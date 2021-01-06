@@ -10,12 +10,10 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return Object.assign(nextState, { [action.currentUser.id]: action.currentUser });
     case RECEIVE_BOOKMARK:
-      debugger
       nextUser = state[action.bookmark.user_id];
-      // nextUser.bookmarked_events.push(action.bookmark.event_id);
+      nextUser.bookmarked_events.push(action.bookmark.event_id);
       return Object.assign(nextState, { [nextUser.id]: nextUser });
     case REMOVE_BOOKMARK: 
-      debugger
       nextUser = state[action.bookmark.user_id];
       nextBookmark = nextUser.bookmarked_events.filter(id => id !== action.bookmark.event_id);
       nextUser.bookmarked_events = nextBookmark;

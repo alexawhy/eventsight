@@ -26,19 +26,16 @@ const removeBookmark = bookmark => {
 }
 
 export const fetchBookmarks = userId => dispatch => {
-  debugger
   return BookmarkAPIUtil.fetchBookmarks(userId)
     .then(bookmarks => dispatch(receiveBookmarks(bookmarks)))
 }
 
 export const createBookmark = eventId => dispatch => {
-  debugger
   return BookmarkAPIUtil.createBookmark(eventId)
     .then(bookmark => dispatch(receiveBookmark(bookmark)))
 }
 
 export const deleteBookmark = eventId => dispatch => {
-  debugger
   return BookmarkAPIUtil.deleteBookmark(eventId)
     .then(bookmark => dispatch(removeBookmark(bookmark)))
 }
