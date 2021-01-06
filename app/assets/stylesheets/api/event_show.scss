@@ -70,18 +70,8 @@
   .bookmark {
     height: 20px;
     width: 20px;
-    color: $darker-gray;
     padding: 10px;
     border-radius: 25px;
-
-    &:hover {
-      background-color: $lighter-gray;
-      cursor: pointer;
-    }
-
-    &.selected {
-      color: $orange;
-    }
   }
   
   .right {

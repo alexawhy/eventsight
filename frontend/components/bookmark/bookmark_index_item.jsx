@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 class BookmarkIndexItem extends React.Component {
   constructor(props) {
@@ -27,8 +27,7 @@ class BookmarkIndexItem extends React.Component {
     
     const userOption = (
       <div className="user-event-index-item-options">
-        <FontAwesomeIcon className="bookmark" icon={faHeart} onClick={this.handleDelete} />
-        {/* <button className="option registration-option" onClick={this.handleDelete}>Delete Bookmark</button> */}
+        <FontAwesomeIcon className="bookmark" icon={faHeartSolid} onClick={this.handleDelete} />
       </div>
     )
 

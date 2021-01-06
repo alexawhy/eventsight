@@ -78,8 +78,26 @@
   }
 }
 
-.event-index-item-time{
-  margin-top: 40px;
+.event-index-bookmark .bookmark {
+  position: relative;
+  z-index: 10;
+  top: -20px;
+  left: 75%;
+  height: 18px;
+  width: 18px;
+  padding: 11px;
+  border-radius: 25px;
+  border: 1px solid $lighter-gray;
+  background-color: white;
+
+  &:hover {
+    background-color: $lightest-gray;
+    transition: 0.25s;
+  }
+}
+
+.event-index-item-time {
+  margin-top: -10px;
   padding: 0 15px;
   color: $orange;
   font-size: 14px;
