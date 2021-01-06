@@ -15,12 +15,11 @@ class EventShow extends React.Component {
   
   componentDidMount() {
     this.props.fetchEvent(this.props.match.params.eventId);
-    window.scrollTo(0, 0);
   }
 
   // componentDidUpdate(prevProps) {
   //   debugger
-  //   if (this.props.event.bookmarked_users.length !== prevProps.event.bookmarked_user.length) {
+  //   if (prevProps.bookmarks.length !== this.props.bookmarks.length) {
   //     this.props.fetchEvent(this.props.match.params.eventId);
   //   }
   // }
@@ -34,10 +33,11 @@ class EventShow extends React.Component {
     const { event, currentUserId } = this.props;
     if (currentUserId) {
       e.preventDefault();
-      this.setState({ bookmarked: true });
       this.props.createBookmark(event.id);
+      this.setState({ bookmarked: true });
+      // this.props.fetchEvent(event.id);
     } else {
-      this.props.history.push('/signin');
+      this.props.history.push('/login');
     }
   }
 
@@ -46,6 +46,7 @@ class EventShow extends React.Component {
     e.preventDefault();
     this.setState({ bookmarked: false });
     this.props.deleteBookmark(event.id);
+    // this.props.fetchEvent(event.id);
   }
 
   render() {
@@ -59,7 +60,7 @@ class EventShow extends React.Component {
         Register
       </button> 
 
-    const bookmark = this.state.bookmark === true || bookmarks.includes(event.id)
+    const bookmark = this.state.bookmarked || bookmarks.includes(event.id) 
       ?
       <FontAwesomeIcon className="bookmark selected" icon={faHeartSolid} onClick={this.handleDeleteBookmark}/>
       :

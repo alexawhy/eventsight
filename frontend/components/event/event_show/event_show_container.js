@@ -5,10 +5,13 @@ import { openModal } from '../../../actions/modal_actions';
 import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
+  let currentUserId = state.session.currentUserId;
+  let bookmarks = currentUserId ? state.entities.users[state.session.currentUserId].bookmarked_events : [];
   return {
     event: state.entities.events[ownProps.match.params.eventId],
-    currentUserId: state.session.currentUserId,
-    bookmarks: state.entities.users[state.session.currentUserId].bookmarked_events
+    currentUserId,
+    bookmarks
   }
 };
 
@@ -17,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     fetchEvent: (eventId) => dispatch(fetchEvent(eventId)),
     openModal: (modal) => dispatch(openModal(modal)),
     createBookmark: (eventId) => dispatch(createBookmark(eventId)),
-    deleteBookmark: (eventId, bookmarkId) => dispatch(deleteBookmark(eventId, bookmarkId))
+    deleteBookmark: (eventId) => dispatch(deleteBookmark(eventId))
   }
 }
 
