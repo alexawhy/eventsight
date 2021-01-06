@@ -1,3 +1,20 @@
 // Place all the styles related to the api/bookmarks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.bookmark {
+  color: $darker-gray;
+  transition: 0.25s;
+
+  &:hover {
+    background-color: $lightest-gray;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  &.selected {
+    color: $orange;
+    transition: 0.25s;
+  }
+}

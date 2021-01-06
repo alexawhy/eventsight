@@ -51,7 +51,7 @@ class EventIndexItem extends React.Component {
         <div className="event-index-item-image redirect">
           <img src={event.imageUrl} alt={event.title} onClick={this.handleClick} />
         </div>
-        <div className="bookmark-container">
+        <div className="event-index-bookmark">
           {bookmark}
         </div>
         <div className="event-index-item-time">
