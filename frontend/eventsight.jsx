@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store'
 import Root from './components/root'
 import { 
-  createBookmark, 
-  deleteBookmark,
-  fetchBookmarks,
   createRegistration,
   deleteRegistration,
   fetchEvents,
   fetchEvent
 } from './actions/event_actions';
+import {
+  createBookmark, 
+  deleteBookmark,
+  fetchBookmarks
+} from './actions/bookmark_actions';
 import { fetchUser } from './actions/session_actions';
-import { faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

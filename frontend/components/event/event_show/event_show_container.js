@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchEvent, createBookmark, deleteBookmark } from '../../../actions/event_actions';
-
+import { fetchEvent } from '../../../actions/event_actions';
+import { fetchBookmarks, createBookmark, deleteBookmark  } from '../../../actions/bookmark_actions';
 import { openModal } from '../../../actions/modal_actions';
 import EventShow from './event_show';
 

@@ -67,4 +67,3 @@ export const fetchRegistrations = (userId) => {
     url: `/api/users/${userId}/registrations`
   })
 }
-

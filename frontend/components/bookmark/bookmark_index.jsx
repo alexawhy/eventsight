@@ -14,7 +14,6 @@ class BookmarkIndex extends React.Component {
   }
 
   render() {
-    debugger
     const { events, fetchEvent, deleteBookmark, currentUser } = this.props;
 
     // if (!events) {

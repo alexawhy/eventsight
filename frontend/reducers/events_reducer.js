@@ -3,6 +3,9 @@ import {
   RECEIVE_EVENT,
   REMOVE_EVENT
 } from '../actions/event_actions';
+import {
+  RECEIVE_BOOKMARKS
+} from '../actions/bookmark_actions';
 
 const eventsReducer = (state = {}, action) => {
   Object.freeze(state)
@@ -16,6 +19,8 @@ const eventsReducer = (state = {}, action) => {
       let nextState = Object.assign({}, state);
       delete nextState[action.eventId];
       return nextState;
+    case RECEIVE_BOOKMARKS:
+      return action.bookmarks;
     default:
       return state;
   }
