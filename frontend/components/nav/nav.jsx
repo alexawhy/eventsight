@@ -24,19 +24,6 @@ class Nav extends React.Component {
     this.props.history.push(`/users/${currentUser.id}/events`)
   }
 
-  // toggleDropdown(e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   this.setState({visible: !this.state.visible}, () => {
-  //     if (this.state.visible) {
-  //       document.addEventListener("mouseenter", this.toggleDropdown)
-  //     }
-  //     else {
-  //       document.removeEventListener("click", this.toggleDropdown)
-  //     }
-  //   })
-  // }
-
   render() {
     const { currentUser, logout } = this.props;
     const dropdownState = this.state.visible ? 'expand' : 'collapse';
