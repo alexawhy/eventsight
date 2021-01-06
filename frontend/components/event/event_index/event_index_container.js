@@ -3,11 +3,11 @@ import { fetchEvents } from '../../../actions/event_actions';
 import { createBookmark, deleteBookmark  } from '../../../actions/bookmark_actions';
 import EventIndex from './event_index';
 
-const mapStateToProps = ({ entities: { events } }) => {
+const mapStateToProps = (state) => {
   let currentUserId = state.session.currentUserId;
   let bookmarks = currentUserId ? state.entities.users[state.session.currentUserId].bookmarked_events : [];
   return {
-    events: Object.values(events),
+    events: Object.values(state.entities.events),
     currentUserId,
     bookmarks
   }
