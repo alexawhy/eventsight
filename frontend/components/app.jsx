@@ -17,6 +17,7 @@ import CreateEventFormContainer from './event/event_form/create_event_form_conta
 import EditEventFormContainer from './event/event_form/edit_event_form_container';
 import OrganizedEventIndexContainer from './event/organized_event_index/organized_event_index_container'
 import RegistrationIndexContainer from './registration/registration_index_container';
+import BookmarkIndexContainer from './bookmark/bookmark_index_container';
 import Modal from './modal/modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -35,6 +36,7 @@ const App = () => (
         <Route exact path="/events/:eventId" component={EventShowContainer} />
         <ProtectedRoute exact path="/users/:userId/events" component={OrganizedEventIndexContainer} />
         <ProtectedRoute exact path="/users/:userId/registrations" component={RegistrationIndexContainer} />
+        <ProtectedRoute exact path="/users/:userId/bookmarks" component={BookmarkIndexContainer} />
       </Switch>
     </div>
     <Route path="/" component={Footer} />

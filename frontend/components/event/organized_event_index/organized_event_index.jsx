@@ -18,10 +18,10 @@ class OrganizedEventIndex extends React.Component {
 
     const content = events.length > 0 ? (
       <ul className="user-event-index-list">
-          {events.map(event => (
+          {events.map((event, idx) => (
             <OrganizedEventIndexItem
               event={event}
-              key={event.id}
+              key={idx}
               fetchEvent={fetchEvent}
               deleteEvent={deleteEvent}
               currentUser={currentUser}

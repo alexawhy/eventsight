@@ -9,7 +9,6 @@
 #   api_event_registrations POST   /api/events/:event_id/registrations(.:format)                                            api/registrations#create {:format=>:json}
 #    api_event_registration DELETE /api/events/:event_id/registrations/:id(.:format)                                        api/registrations#destroy {:format=>:json}
 #       api_event_bookmarks POST   /api/events/:event_id/bookmarks(.:format)                                                api/bookmarks#create {:format=>:json}
-#        api_event_bookmark DELETE /api/events/:event_id/bookmarks/:id(.:format)                                            api/bookmarks#destroy {:format=>:json}
 #                api_events GET    /api/events(.:format)                                                                    api/events#index {:format=>:json}
 #                           POST   /api/events(.:format)                                                                    api/events#create {:format=>:json}
 #                 api_event GET    /api/events/:id(.:format)                                                                api/events#show {:format=>:json}
@@ -17,6 +16,7 @@
 #                           PUT    /api/events/:id(.:format)                                                                api/events#update {:format=>:json}
 #                           DELETE /api/events/:id(.:format)                                                                api/events#destroy {:format=>:json}
 #      api_organized_events GET    /api/organized_events(.:format)                                                          api/events#organized_events_index {:format=>:json}
+#             api_bookmarks DELETE /api/bookmarks(.:format)                                                                 api/bookmarks#destroy {:format=>:json}
 #                      root GET    /                                                                                        static_pages#root
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
@@ -34,10 +34,11 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :events, only: [:index, :show, :create, :update, :destroy] do
       resources :registrations, only: [:create, :destroy]
-      resources :bookmarks, only: [:create, :destroy]
+      resources :bookmarks, only: [:create]
     end
   
     get "/organized_events", to: "events#organized_events_index"
+    delete "/bookmarks", to: "bookmarks#destroy"
   end
 
   root "static_pages#root"

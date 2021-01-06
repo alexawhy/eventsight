@@ -69,10 +69,10 @@ class Nav extends React.Component {
                 <FontAwesomeIcon className="plus icon" icon={faPlus}/>
                 <span>Create Events</span>
               </Link>
-              <a>
+              <Link to={`/users/${currentUser.id}/bookmarks`}>
                 <FontAwesomeIcon className="heart icon" icon={faHeart}/>
                 <span>Likes</span>
-              </a>
+              </Link>
               <Link to={`/users/${currentUser.id}/registrations`}>
                 <FontAwesomeIcon className="ticket icon" icon={faTicketAlt} rotation={90}/>
                 <span>Tickets</span>

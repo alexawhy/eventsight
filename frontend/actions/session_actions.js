@@ -60,3 +60,7 @@ export const logout = () => dispatch => {
 export const clearSessionErrors = () => dispatch => {
   return dispatch(removeSessionErrors())
 };
+
+export const fetchUser = user => dispatch => {
+  return dispatch(receiveCurrentUser(user))
+}

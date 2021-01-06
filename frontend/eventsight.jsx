@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store'
 import Root from './components/root'
 import { 
+  createRegistration,
+  deleteRegistration,
+  fetchEvents,
+  fetchEvent
+} from './actions/event_actions';
+import {
   createBookmark, 
   deleteBookmark,
   fetchBookmarks
-} from './actions/event_actions';
-import { faWindowRestore } from '@fortawesome/free-regular-svg-icons';
+} from './actions/bookmark_actions';
+import { fetchUser } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -33,4 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createBookmark = createBookmark;
   window.deleteBookmark = deleteBookmark;
   window.fetchBookmarks = fetchBookmarks;
+  window.createRegistration = createRegistration;
+  window.deleteRegistration = deleteRegistration;
+  window.fetchEvents = fetchEvents;
+  window.fetchEvent = fetchEvent;
+  window.fetchUser = fetchUser;
 });

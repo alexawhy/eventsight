@@ -71,14 +71,14 @@ class EventIndex extends React.Component {
             {categories}
           </ul>
         </div>
-        <div className="event-index-list">
-          {filteredEvents.map(event => (
+        <ul className="event-index-list">
+          {filteredEvents.map((event, idx) => (
             <EventIndexItem
               event={event}
-              key={event.id}
+              key={idx}
             />
           ))}
-        </div>
+        </ul>
       </div>
     )
   }
