@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    let loginError = this.handleErrors() ? <p className="error-msg">{this.handleErrors()}</p> : ""
+    let loginError = this.handleErrors() ? <p className="error-msg">{this.handleErrors()}</p> : "" ;
 
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
