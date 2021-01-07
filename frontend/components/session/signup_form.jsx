@@ -56,10 +56,10 @@ class SignupForm extends React.Component {
   
   render() {
     let formErrors = this.handleErrors();
-    let emailError = formErrors['Email'] ? <p className="error-msg">{formErrors['Email']}</p> : ""
-    let fnameError = formErrors['Fname'] ? <p className="error-msg">First name can't be blank</p> : ""
-    let lnameError = formErrors['Lname'] ? <p className="error-msg">Last name can't be blank</p> : ""
-    let passwordError = formErrors['Password'] ? <p className="error-msg">Password is too short</p> : ""
+    let emailError = formErrors['Email'] ? <p className="error-msg">{formErrors['Email']}</p> : "" ;
+    let fnameError = formErrors['Fname'] ? <p className="error-msg">First name can't be blank</p> : "" ;
+    let lnameError = formErrors['Lname'] ? <p className="error-msg">Last name can't be blank</p> : "" ;
+    let passwordError = formErrors['Password'] ? <p className="error-msg">Password is too short</p> : "" ;
 
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;

@@ -10,7 +10,8 @@ class EventForm extends React.Component {
     this.state = {
       currEvent: this.props.event,
       imageFile: null,
-      tempImageUrl: null
+      tempImageUrl: null,
+      submitted: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +23,7 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
+    this.setState({ submitted: true });
     formData.append('event[organizer_id]', this.props.currentUserId);
     formData.append('event[category_id]', this.state.currEvent.category_id);
     formData.append('event[title]', this.state.currEvent.title);
@@ -76,18 +78,14 @@ class EventForm extends React.Component {
     this.setState({ currEvent: nextEvent });
   }
 
-  renderErrors() {
-    if (this.props.errors) {
-      return(
-        <ul className="errors">
-          {this.props.errors.map((error, i) => (
-            <li key={`error-${i}`}>
-              {error}
-            </li>
-          ))}
-        </ul>
-      );
-    }
+  handleErrors() {
+    let formErrors = {};
+    if (this.props.errors === "") return;
+    this.props.errors.map((error) => {
+      const field = error.split(" ")[0];
+      formErrors[field] = error;
+    })
+    return formErrors;
   }
 
   componentWillUnmount() {
@@ -95,8 +93,17 @@ class EventForm extends React.Component {
   }
 
   render() {
+    const { currEvent, submitted } = this.state;
 
-    const { currEvent } = this.state;
+    let formErrors = this.handleErrors();
+    let titleError = formErrors["Title"] ? <p className="error-msg">Title is required</p> : "" ;
+    let categoryError = formErrors["Category"] ? <p className="error-msg">Category is required</p> : "" ;
+    let venueError = submitted && !currEvent.online && currEvent.venue === "" ? <p className="error-msg">Venue location is required</p> : "" ;
+    let capacityError = formErrors["Capacity"] ? <p className="error-msg">Capacity is required</p> : "" ;
+    let startDateError = formErrors["Start"] ? <p className="error-msg">Start date is required</p> : "" ;
+    let endDateError = formErrors["End"] ? <p className="error-msg">End date is required</p> : "" ;
+    let imageError = formErrors["Image"] ? <p className="error-msg">Image is required</p> : "" ;
+    let descriptionError = formErrors["Description"] ? <p className="error-msg">Description is required</p> : "" ;
 
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {
       return(
@@ -146,6 +153,7 @@ class EventForm extends React.Component {
                   value={currEvent.title}
                   onChange={this.handleInput('title')} />
               </div>
+              {titleError}
             </div>
             <div className="category">
               <div className="input-wrapper">
@@ -154,6 +162,7 @@ class EventForm extends React.Component {
                   {categoryOptions}
                 </select>
               </div>
+              {categoryError}
             </div>
           </div>
         </div>
@@ -170,7 +179,10 @@ class EventForm extends React.Component {
               <div className={`location-btn ${isOffline}`} onClick={this.toggleOffline}>Venue</div>
               <div className={`location-btn ${isOnline}`} onClick={this.toggleOnline}>Online Event</div>
             </div>
-            {this.state.currEvent.online ? '' : venueInput}
+            <div>
+              {this.state.currEvent.online ? '' : venueInput}
+              {venueError}
+            </div>
           </div>
         </div>
         <div className="event-form-capacity form-section">
@@ -190,6 +202,7 @@ class EventForm extends React.Component {
                 value={currEvent.capacity}
                 onChange={this.handleInput('capacity')} />
               </div>
+              {capacityError}
             </div>
           </div>
         </div>
@@ -203,40 +216,50 @@ class EventForm extends React.Component {
               Tell event-goers when your event starts and ends so they can make plans to attend.
             </p>
             <div className="flex-row">
-              <div className="input-wrapper start-date">
-                <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
-                <input 
-                  type="date"
-                  id="input-start-date"
-                  value={currEvent.start_date}
-                  onChange={this.handleInput('start_date')} />
+              <div className="start-date">
+                <div className="input-wrapper">
+                  <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
+                  <input 
+                    type="date"
+                    id="input-start-date"
+                    value={currEvent.start_date}
+                    onChange={this.handleInput('start_date')} />
+                </div>
+                {startDateError}
               </div>
-              <div className="input-wrapper start-time">
-                <label htmlFor="input-start-time">Start Time</label>
-                <input 
-                  type="time"
-                  id="input-start-time"
-                  value={currEvent.start_time}
-                  onChange={this.handleInput('start_time')} />
+              <div className="start-time">
+                <div className="input-wrapper">
+                  <label htmlFor="input-start-time">Start Time</label>
+                  <input 
+                    type="time"
+                    id="input-start-time"
+                    value={currEvent.start_time}
+                    onChange={this.handleInput('start_time')} />
+                </div>
               </div>
             </div>
             <div className="flex-row">
-              <div className="input-wrapper end-date">
-                <label htmlFor="input-end-date">Event Ends <span className="red">*</span></label>
-                <input 
-                  type="date"
-                  id="input-end-date"
-                  value={currEvent.end_date}
-                  min={currEvent.start_date}
-                  onChange={this.handleInput('end_date')} />
+              <div className="end-date">
+                <div className="input-wrapper">
+                  <label htmlFor="input-end-date">Event Ends <span className="red">*</span></label>
+                  <input 
+                    type="date"
+                    id="input-end-date"
+                    value={currEvent.end_date}
+                    min={currEvent.start_date}
+                    onChange={this.handleInput('end_date')} />
+                </div>
+                {endDateError}
               </div>
-              <div className="input-wrapper end-time">
-                <label htmlFor="input-end-time">End Time</label>
-                <input 
-                  type="time"
-                  id="input-end-time"
-                  value={currEvent.end_time}
-                  onChange={this.handleInput('end_time')} />
+              <div className="end-time">
+                <div className="input-wrapper">
+                  <label htmlFor="input-end-time">End Time</label>
+                  <input 
+                    type="time"
+                    id="input-end-time"
+                    value={currEvent.end_time}
+                    onChange={this.handleInput('end_time')} />
+                </div>
               </div>
             </div>
           </div>
@@ -254,11 +277,12 @@ class EventForm extends React.Component {
                 onChange={this.handleFile}/>
             </div>
             <div className="image-preview">
-            <h3>Image Preview</h3>
-            <div className="image-box">
-              {imagePreview}
+              <h3>Image Preview</h3>
+              <div className="image-box">
+                {imagePreview}
+              </div>
             </div>
-            </div>
+            {imageError}
           </div>
         </div>
         <div className="event-form-description form-section">
@@ -276,10 +300,10 @@ class EventForm extends React.Component {
                   value={currEvent.description}
                   onChange={this.handleInput('description')} />
               </div>
+              {descriptionError}
             </div>
           </div>
         </div>
-        {this.renderErrors()}
         <button className="submit-btn">{this.props.formType}</button>
       </form>
     )
