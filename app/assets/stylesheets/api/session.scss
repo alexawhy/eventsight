@@ -68,7 +68,7 @@
   }
 
   &:focus-within {
-    border: 2px solid #365AE4;
+    border: 2px solid $bright-blue;
     box-shadow: 0px 0px 1px rgb(190, 190, 190);
     transition: border 0.3s;
   }
