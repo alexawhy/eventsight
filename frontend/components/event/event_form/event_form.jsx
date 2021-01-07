@@ -1,8 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft, faMapMarkedAlt, faCalendarAlt, faImage, faUserFriends } from '@fortawesome/free-solid-svg-icons';
-import * as eventFormUtil from '../../../util/event_form_util'
+import { 
+  faAlignLeft, 
+  faMapMarkedAlt, 
+  faCalendarAlt, 
+  faImage, 
+  faUserFriends 
+} from '@fortawesome/free-solid-svg-icons';
+import * as eventFormUtil from '../../../util/event_form_util';
+import Error from '../../helper_components/error_message';
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -96,14 +103,16 @@ class EventForm extends React.Component {
     const { currEvent, submitted } = this.state;
 
     let formErrors = this.handleErrors();
-    let titleError = formErrors["Title"] ? <p className="error-msg">Title is required</p> : "" ;
-    let categoryError = formErrors["Category"] ? <p className="error-msg">Category is required</p> : "" ;
-    let venueError = submitted && !currEvent.online && currEvent.venue === "" ? <p className="error-msg">Venue location is required</p> : "" ;
-    let capacityError = formErrors["Capacity"] ? <p className="error-msg">Capacity is required</p> : "" ;
-    let startDateError = formErrors["Start"] ? <p className="error-msg">Start date is required</p> : "" ;
-    let endDateError = formErrors["End"] ? <p className="error-msg">End date is required</p> : "" ;
-    let imageError = formErrors["Image"] ? <p className="error-msg">Image is required</p> : "" ;
-    let descriptionError = formErrors["Description"] ? <p className="error-msg">Description is required</p> : "" ;
+    let titleError = formErrors["Title"] ? <Error msg="Title is required"/> : "" ;
+    let categoryError = formErrors["Category"] ? <Error msg="Category is required"/> : "" ;
+    let capacityError = formErrors["Capacity"] ? <Error msg="Capacity is required"/> : "" ;
+    let startDateError = formErrors["Start"] ? <Error msg="Start date is required"/> : "" ;
+    let endDateError = formErrors["End"] ? <Error msg="End date is required"/> : "" ;
+    let imageError = formErrors["Image"] ? <Error msg="Image is required"/> : "" ;
+    let descriptionError = formErrors["Description"] ? <Error msg="Description is required"/> : "" ;
+    let venueError = submitted && !currEvent.online && currEvent.venue === "" 
+      ? <Error msg="Venue location is required"/>
+      : "" ;
 
     const categoryOptions = eventFormUtil.categories.map((category, idx) => {
       return(
@@ -120,7 +129,9 @@ class EventForm extends React.Component {
     const venueInput = (
       <div className="venue">
         <div className="input-wrapper">
-          <label htmlFor="input-venue">Venue Location <span className="red">*</span></label>
+          <label htmlFor="input-venue">
+            Venue Location <span className="red">*</span>
+          </label>
           <input 
             type="text"
             id="input-venue"
@@ -131,7 +142,9 @@ class EventForm extends React.Component {
       </div>
     )
 
-    const imagePreview = this.state.tempImageUrl ? <img src={this.state.tempImageUrl}></img> : <img src={this.state.currEvent.imageUrl}></img>;
+    const imagePreview = this.state.tempImageUrl 
+      ? <img src={this.state.tempImageUrl}></img> 
+      : <img src={this.state.currEvent.imageUrl}></img>;
     
     return (
       <form className="event-form" onSubmit={this.handleSubmit}>
@@ -147,7 +160,9 @@ class EventForm extends React.Component {
             </p>
             <div className="title">
               <div className="input-wrapper">
-                <label htmlFor="input-title">Event Title <span className="red">*</span></label>
+                <label htmlFor="input-title">
+                  Event Title <span className="red">*</span>
+                </label>
                 <input 
                   type="text"
                   id="input-title"
@@ -158,7 +173,10 @@ class EventForm extends React.Component {
             </div>
             <div className="category">
               <div className="input-wrapper">
-                <select id="input-category" value={currEvent.category_id} onChange={this.handleInput('category_id')}>
+                <select 
+                  id="input-category" 
+                  value={currEvent.category_id} 
+                  onChange={this.handleInput('category_id')}>
                   <option value="">Category </option>
                   {categoryOptions}
                 </select>
@@ -177,8 +195,16 @@ class EventForm extends React.Component {
               Help people in the area discover your event and let attendees know where to show up.
             </p>
             <div className="flex-row location-selector" >
-              <div className={`location-btn ${isOffline}`} onClick={this.toggleOffline}>Venue</div>
-              <div className={`location-btn ${isOnline}`} onClick={this.toggleOnline}>Online Event</div>
+              <div 
+                className={`location-btn ${isOffline}`} 
+                onClick={this.toggleOffline}>
+                Venue
+              </div>
+              <div 
+                className={`location-btn ${isOnline}`} 
+                onClick={this.toggleOnline}>
+                Online Event
+              </div>
             </div>
             <div>
               {this.state.currEvent.online ? '' : venueInput}
@@ -194,7 +220,9 @@ class EventForm extends React.Component {
             <p>Tell us how many attendees can register at maximum.</p>
             <div className="capacity">
               <div className="input-wrapper">
-                <label htmlFor="input-capacity">Event capacity <span className="red">*</span></label>
+                <label htmlFor="input-capacity">
+                  Event capacity <span className="red">*</span>
+                </label>
                 <input
                 type="number"
                 id="input-capacity"
@@ -218,7 +246,9 @@ class EventForm extends React.Component {
             <div className="flex-row">
               <div className="start-date">
                 <div className="input-wrapper">
-                  <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
+                  <label htmlFor="input-start-date">
+                    Event Starts <span className="red">*</span>
+                  </label>
                   <input 
                     type="date"
                     id="input-start-date"
@@ -241,7 +271,9 @@ class EventForm extends React.Component {
             <div className="flex-row">
               <div className="end-date">
                 <div className="input-wrapper">
-                  <label htmlFor="input-end-date">Event Ends <span className="red">*</span></label>
+                  <label htmlFor="input-end-date">
+                    Event Ends <span className="red">*</span>
+                  </label>
                   <input 
                     type="date"
                     id="input-end-date"
@@ -294,7 +326,9 @@ class EventForm extends React.Component {
             <p>Add more details to your event like your schedule, sponsors, or featured guests.</p>
             <div className="description">
               <div className="input-wrapper">
-                <label htmlFor="input-description">Event Description <span className="red">*</span></label>
+                <label htmlFor="input-description">
+                  Event Description <span className="red">*</span>
+                </label>
                 <textarea
                   id="input-description"
                   value={currEvent.description}
