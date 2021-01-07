@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import Error from '../helper_components/error_message';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -56,10 +57,10 @@ class SignupForm extends React.Component {
   
   render() {
     let formErrors = this.handleErrors();
-    let emailError = formErrors['Email'] ? <p className="error-msg">{formErrors['Email']}</p> : "" ;
-    let fnameError = formErrors['Fname'] ? <p className="error-msg">First name can't be blank</p> : "" ;
-    let lnameError = formErrors['Lname'] ? <p className="error-msg">Last name can't be blank</p> : "" ;
-    let passwordError = formErrors['Password'] ? <p className="error-msg">Password is too short</p> : "" ;
+    let emailError = formErrors['Email'] ? <Error msg={formErrors['Email']}/> : "" ;
+    let fnameError = formErrors['Fname'] ? <Error msg="First name can't be blank"/> : "" ;
+    let lnameError = formErrors['Lname'] ? <Error msg="Last name can't be blank"/> : "" ;
+    let passwordError = formErrors['Password'] ? <Error msg="Password is too short"/> : "" ;
 
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;

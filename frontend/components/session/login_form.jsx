@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import Error from '../helper_components/error_message';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    let loginError = this.handleErrors() ? <p className="error-msg">{this.handleErrors()}</p> : "" ;
+    let loginError = this.handleErrors() ? <Error msg={this.handleErrors()}/> : "" ;
 
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
