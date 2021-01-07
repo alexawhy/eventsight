@@ -127,6 +127,7 @@ class EventForm extends React.Component {
             value={currEvent.venue}
             onChange={this.handleInput('venue')} />
         </div>
+        {venueError}
       </div>
     )
 
@@ -181,7 +182,6 @@ class EventForm extends React.Component {
             </div>
             <div>
               {this.state.currEvent.online ? '' : venueInput}
-              {venueError}
             </div>
           </div>
         </div>
