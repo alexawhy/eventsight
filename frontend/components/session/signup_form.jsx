@@ -59,7 +59,7 @@ class SignupForm extends React.Component {
     let emailError = formErrors['Email'] ? <p className="error-msg">{formErrors['Email']}</p> : ""
     let fnameError = formErrors['Fname'] ? <p className="error-msg">First name can't be blank</p> : ""
     let lnameError = formErrors['Lname'] ? <p className="error-msg">Last name can't be blank</p> : ""
-    let passwordError = formErrors['Password'] ? <p className="error-msg">{formErrors['Password']}</p> : ""
+    let passwordError = formErrors['Password'] ? <p className="error-msg">Password is too short</p> : ""
 
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
@@ -71,7 +71,7 @@ class SignupForm extends React.Component {
         <h3 className="session-form-greeting">Create an account.</h3>
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
-            <div className={`email`}>
+            <div className="email">
               <div className="input-wrapper">
                 <label htmlFor="input-email">Email</label>
                 <input 
@@ -118,10 +118,10 @@ class SignupForm extends React.Component {
                   value={user.password}
                   onChange={this.update('password')}
                 />
-                {passwordError}
               </div>
-              <p>Your password must be at least 8 characters</p>
+              {passwordError}
             </div>
+            <p>Your password must be at least 8 characters</p>
             <button className="signup-btn">Sign Up</button>
           </div>
         </form>

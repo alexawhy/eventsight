@@ -7,17 +7,47 @@
   padding: 40px;
   font-size: 14px;
   box-sizing: content-box;
-  
-  .input-wrapper {
-    width: 100%;
-    height: 60px;
-  }
+
 
   .errors {
     text-align: center;
     color: $orange;
     font-size: 14px;
     margin-bottom: 20px;
+  }
+}
+
+.event-form .input-wrapper {
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid transparent;
+  border-radius: 4px; 
+  box-shadow: 0px 0px 1px rgb(190, 190, 190);
+  
+  label {
+    margin: 5px 10px 2px 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: $darker-gray;
+  }
+
+  input {
+    height: 2em;
+    appearance: none;
+    border: none;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 1px rgb(70, 70, 70);
+  }
+
+  &:focus-within {
+    border: 2px solid #365AE4;
+    box-shadow: 0px 0px 1px rgb(190, 190, 190);
+    transition: border 0.3s;
   }
 }
 
