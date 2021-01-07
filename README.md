@@ -88,12 +88,16 @@ For the signup, login, create event and edit forms, active input field will be w
 ```jsx
 // frontend/components/event/event_form/event_form.jsx
 render () {
-  let startDateError = formErrors["Start"] ? <p className="error-msg">Start date is required</p> : "" ;
-  
+  let startDateError = formErrors["Start"] 
+    ? <p className="error-msg">Start date is required</p> 
+    : "" ;
+    
   return (
     <div className="start-date">
       <div className="input-wrapper">
-        <label htmlFor="input-start-date">Event Starts <span className="red">*</span></label>
+        <label htmlFor="input-start-date">
+          Event Starts <span className="red">*</span>
+        </label>
         <input 
           type="date"
           id="input-start-date"
