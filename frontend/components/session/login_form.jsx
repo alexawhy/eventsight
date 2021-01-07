@@ -33,16 +33,9 @@ class LoginForm extends React.Component {
     this.props.login(demo);
   }
 
-  renderErrors() {
-    return(
-      <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+  handleErrors() {
+    if (this.props.errors === "") return;
+    return this.props.errors;
   }
 
   handleSubmit(e) {
@@ -56,6 +49,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    let loginError = this.handleErrors() ? <p className="error-msg">{this.handleErrors()}</p> : ""
+
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
     return (
@@ -63,7 +58,6 @@ class LoginForm extends React.Component {
         {userIcon}
         <h1 className="session-form-title">Welcome Back</h1>
         <h3 className="session-form-greeting">Please enter your password to log in.</h3>
-        {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
             <div className="email">
@@ -88,6 +82,7 @@ class LoginForm extends React.Component {
                 />
               </div>
             </div>
+            {loginError}
             <button className="login-btn">Log In</button>
           </div>
         </form>
