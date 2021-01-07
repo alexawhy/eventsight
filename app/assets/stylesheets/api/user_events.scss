@@ -107,11 +107,11 @@
   a {
     display: inline-block;
     line-height: 0.4;
-    border-bottom: 8px solid rgba(255, 187, 40, 0.8);
+    border-bottom: 8px solid $gold-80;
     transition: border 0.2s;
 
     &:hover {
-      border-bottom: 8px solid rgba(255, 116, 135, 0.8);
+      border-bottom: 8px solid $pink-80;
       transition: border 0.2s;
     }
   }
