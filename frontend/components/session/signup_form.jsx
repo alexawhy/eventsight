@@ -44,43 +44,34 @@ class SignupForm extends React.Component {
     this.props.clearSessionErrors();
   }
 
-  renderErrors() {
-    return(
-      <ul className="errors">
-        {this.props.errors.map((error, i) => {
-          let item = error.split(' ')[0];
-          const message = error.split(' ').slice(1).join(' ');
-          switch (item) {
-            case 'Fname':
-              item = 'First name';
-              break;
-            case 'Lname':
-              item = 'Last name';
-              break;
-            default:
-              item = item;
-          }
-          return (<li key={`error-${i}`}>
-            {item} {message}
-          </li>
-          )
-        })}
-      </ul>
-    );
+  handleErrors() {
+    let formErrors = {};
+    if (this.props.errors === "") return;
+    this.props.errors.map((error) => {
+      const field = error.split(" ")[0];
+      formErrors[field] = error;
+    })
+    return formErrors;
   }
   
   render() {
+    let formErrors = this.handleErrors();
+    let emailError = formErrors['Email'] ? <p className="error-msg">{formErrors['Email']}</p> : ""
+    let fnameError = formErrors['Fname'] ? <p className="error-msg">First name can't be blank</p> : ""
+    let lnameError = formErrors['Lname'] ? <p className="error-msg">Last name can't be blank</p> : ""
+    let passwordError = formErrors['Password'] ? <p className="error-msg">{formErrors['Password']}</p> : ""
+
     const { user } = this.state;
     const userIcon = <FontAwesomeIcon className="session-icon" icon={faUser} size="4x"/>;
+
     return (
       <div className="session-form-container">
         {userIcon}
         <h1 className="session-form-title">Welcome</h1>
         <h3 className="session-form-greeting">Create an account.</h3>
-        {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className="signup-form-box">
           <div className="session-form">
-            <div className="email">
+            <div className={`email`}>
               <div className="input-wrapper">
                 <label htmlFor="input-email">Email</label>
                 <input 
@@ -90,25 +81,32 @@ class SignupForm extends React.Component {
                   onChange={this.update('email')}
                 />
               </div>
+              {emailError}
             </div>
             <div className="name">
-              <div className="input-wrapper">
-                <label htmlFor="input-fname">First Name</label>
-                <input 
-                  type="text"
-                  id="input-fname"
-                  value={user.fname}
-                  onChange={this.update('fname')}
-                />
+              <div className="fname">
+                <div className="input-wrapper">
+                  <label htmlFor="input-fname">First Name</label>
+                  <input 
+                    type="text"
+                    id="input-fname"
+                    value={user.fname}
+                    onChange={this.update('fname')}
+                  />
+                </div>
+                {fnameError}
               </div>
-              <div className="input-wrapper">
-                <label htmlFor="input-lname">Last Name</label>
-                <input 
-                  type="text"
-                  id="input-lname"
-                  value={user.lname}
-                  onChange={this.update('lname')}
-                />
+              <div className="lname">
+                <div className="input-wrapper">
+                  <label htmlFor="input-lname">Last Name</label>
+                  <input 
+                    type="text"
+                    id="input-lname"
+                    value={user.lname}
+                    onChange={this.update('lname')}
+                  />
+                </div>
+                {lnameError}
               </div>
             </div>
             <div className="password">
@@ -120,6 +118,7 @@ class SignupForm extends React.Component {
                   value={user.password}
                   onChange={this.update('password')}
                 />
+                {passwordError}
               </div>
               <p>Your password must be at least 8 characters</p>
             </div>
