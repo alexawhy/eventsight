@@ -93,7 +93,7 @@ export const showHeaderDate = (event) => {
   return (
     <>
       <p class="month">{getMonth(date).slice(0, 3)}</p>
-      <p>{date.getDate()}</p>
+      <p class="date">{date.getDate()}</p>
     </>
   )
 }

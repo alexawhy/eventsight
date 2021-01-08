@@ -45,10 +45,20 @@
     background-color: $lighter-gray;
 
     .event-show-date {
-      font-size: 18px;
       font-weight: 500;
       color: $darkest-gray;
       margin-bottom: 30px;
+      width: 30px;
+      text-align: center;
+
+      .month {
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      .date {
+        font-size: 18px;
+      }
     }
 
     #event-title {

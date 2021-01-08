@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid }  from '@fortawesome/free-solid-svg-icons';
-import EventTime from './time_component';
 import * as DateTimeUtil from '../../../util/datetime_util';
 
 class EventShow extends React.Component {

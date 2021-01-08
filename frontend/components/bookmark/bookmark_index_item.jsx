@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import * as DateTimeUtil from '../../util/datetime_util';
 
 class BookmarkIndexItem extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class BookmarkIndexItem extends React.Component {
 
   render() {
     const { event, currentUser } = this.props;
-    const datetime = event.start_time ? <p>{event.start_date}, {event.start_time}</p> : <p>{event.start_date}</p>;
+    const indexItemDate = DateTimeUtil.indexItemDate(event);
     
     const userOption = (
       <div className="user-event-index-item-options">
@@ -39,7 +40,7 @@ class BookmarkIndexItem extends React.Component {
           </div>
           <div className="user-event-details">
             <div className="user-event-index-item-time">
-              {datetime}
+              {indexItemDate}
             </div>
             <div className="user-event-index-item-title redirect" onClick={this.redirectToShow}>
               {event.title}
