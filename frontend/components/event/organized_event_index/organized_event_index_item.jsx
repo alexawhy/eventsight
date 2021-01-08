@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import * as DateTimeUtil from '../../../util/datetime_util';
 
 class OrganizedEventIndexItem extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class OrganizedEventIndexItem extends React.Component {
   
   render() {
     const { event, deleteEvent, currentUser } = this.props;
-    const datetime = event.start_time ? <p>{event.start_date}, {event.start_time}</p> : <p>{event.start_date}</p>;
+    const indexItemDate = DateTimeUtil.indexItemDate(event);
     
     const organizerOptions = (
       <div className="user-event-index-item-options">
@@ -37,7 +38,7 @@ class OrganizedEventIndexItem extends React.Component {
           </div>
           <div className="user-event-details">
             <div className="user-event-index-item-time">
-              {datetime}
+              {indexItemDate}
             </div>
             <div className="user-event-index-item-title redirect" onClick={this.redirectToShow}>
               {event.title}

@@ -67,24 +67,55 @@ export const getMonth = (date) => {
   };
 }
 
-export const get12Hours = (event) => {
-  let hh = event.start_time.split(":")[0];
-  let m = event.start_time.split(":")[1];
-  let h = hh;
-  let dd = "AM"
-  if (h >= 12) {
-    h = hh - 12;
-    dd = "PM"
-  };
-  if (h === 0) {
-    h = 12;
-  }
-  return `${h}:${m} ${dd}`
+export const getTime12 = (time) => {
+  let hh = parseInt(time.split(":")[0]);
+  let m = time.split(":")[1];
+  let h = ((hh + 11) % 12 + 1);
+  let suffix = hh > 11 ? "PM" : "AM";
+  return `${h}:${m} ${suffix}`
 }
 
-export const indexItemDate = event => {
+export const indexItemDate = (event) => {
+  const date = new Date(event.start_date);
+  if (event.start_time) {
+    return (
+      <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}, {getTime12(event.start_time)}</p>
+    )
+  } else {
+    return (
+      <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}</p>
+    )
+  }
+}
+
+export const showHeaderDate = (event) => {
   const date = new Date(event.start_date);
   return (
-    <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}, {get12Hours(event)}</p>
+    <>
+      <p class="month">{getMonth(date).slice(0, 3)}</p>
+      <p class="date">{date.getDate()}</p>
+    </>
   )
+}
+
+export const showMainDate = (event) => {
+  const startDate = new Date(event.start_date);
+  const endDate = new Date(event.end_date);
+  if (event.start_date === event.end_date) {
+    return(
+    <>
+      <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
+      <p>{getTime12(event.start_time)} - {getTime12(event.end_time)}</p>
+    </>
+    )
+  } else {
+    return(
+      <>
+        <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
+        <p>{getTime12(event.start_time)} -</p>
+        <p>{getDayOfWeek(endDate)}, {getMonth(endDate)} {endDate.getDate()}, {endDate.getFullYear()}</p>
+        <p>{getTime12(event.end_time)}</p>
+      </>
+    )
+  }
 }
