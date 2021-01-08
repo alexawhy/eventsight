@@ -15,6 +15,7 @@ class EventShow extends React.Component {
   
   componentDidMount() {
     this.props.fetchEvent(this.props.match.params.eventId);
+    window.scroll(0, 0);
   }
 
   handleRedirect() {
