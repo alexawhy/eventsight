@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid }  from '@fortawesome/free-solid-svg-icons';
 import { Link, withRouter } from 'react-router-dom';
+import * as DateTimeUtil from '../../../util/datetime_util';
 
 class EventIndexItem extends React.Component {
   constructor(props) {
@@ -38,7 +39,10 @@ class EventIndexItem extends React.Component {
   
   render() {
     const { event, bookmarks } = this.props;
-    const datetime = event.start_time ? <p>{event.start_date}, {event.start_time}</p> : <p>{event.start_date}</p>;
+    const datetime = event.start_time 
+      ? <p>{event.start_date}, {event.start_time}</p> 
+      : <p>{event.start_date}</p>;
+    const indexItemDate = DateTimeUtil.indexItemDate(event);
 
     const bookmark = this.state.bookmarked || bookmarks.includes(event.id) 
       ?
@@ -55,7 +59,7 @@ class EventIndexItem extends React.Component {
           {bookmark}
         </div>
         <div className="event-index-item-time">
-          {datetime}
+          {indexItemDate}
         </div>
         <div className="event-index-item-title redirect" onClick={this.handleClick}>
           {event.title}
