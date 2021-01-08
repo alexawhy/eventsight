@@ -75,9 +75,27 @@ export const get12Hours = (event) => {
   return `${h}:${m} ${suffix}`
 }
 
-export const indexItemDate = event => {
+export const indexItemDate = (event) => {
+  const date = new Date(event.start_date);
+  if (event.start_time) {
+    return (
+      <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}, {get12Hours(event)}</p>
+    )
+  } else {
+    return (
+      <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}</p>
+    )
+  }
+}
+
+export const showHeaderDate = (event) => {
   const date = new Date(event.start_date);
   return (
-    <p>{getDayOfWeek(date)}, {getMonth(date).slice(0, 3)} {date.getDate()}, {get12Hours(event)}</p>
+    <>
+      <p class="month">{getMonth(date).slice(0, 3)}</p>
+      <p>{date.getDate()}</p>
+    </>
   )
 }
+
+// export const

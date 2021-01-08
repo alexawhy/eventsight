@@ -39,9 +39,6 @@ class EventIndexItem extends React.Component {
   
   render() {
     const { event, bookmarks } = this.props;
-    const datetime = event.start_time 
-      ? <p>{event.start_date}, {event.start_time}</p> 
-      : <p>{event.start_date}</p>;
     const indexItemDate = DateTimeUtil.indexItemDate(event);
 
     const bookmark = this.state.bookmarked || bookmarks.includes(event.id) 

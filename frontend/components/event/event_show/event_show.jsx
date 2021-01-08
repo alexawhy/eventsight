@@ -2,7 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid }  from '@fortawesome/free-solid-svg-icons';
-import EventTime from './time_component'
+import EventTime from './time_component';
+import * as DateTimeUtil from '../../../util/datetime_util';
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class EventShow extends React.Component {
     const { event, currentUserId, bookmarks, openModal } = this.props;
     if (!event) return null;
 
+    const showHeaderDate = DateTimeUtil.showHeaderDate(event);
     const locationHeader = event.online === true ? 'Online Event' : 'Location';
     const registerButton = event.attendees.includes(currentUserId) ?
       <button onClick={this.handleRedirect}>Cancel Registration</button> :
@@ -70,7 +72,7 @@ class EventShow extends React.Component {
             </div>
             <div className="right">
               <div className="event-show-date">
-                {event.start_date}
+                {showHeaderDate}
               </div>
               <h1 id="event-title">{event.title}</h1>
             </div>
