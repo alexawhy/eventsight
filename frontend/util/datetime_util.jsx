@@ -68,18 +68,11 @@ export const getMonth = (date) => {
 }
 
 export const get12Hours = (event) => {
-  let hh = event.start_time.split(":")[0];
+  let hh = parseInt(event.start_time.split(":")[0]);
   let m = event.start_time.split(":")[1];
-  let h = hh;
-  let dd = "AM"
-  if (h >= 12) {
-    h = hh - 12;
-    dd = "PM"
-  };
-  if (h === 0) {
-    h = 12;
-  }
-  return `${h}:${m} ${dd}`
+  let h = ((hh + 11) % 12 + 1);
+  let suffix = hh > 11 ? "PM" : "AM";
+  return `${h}:${m} ${suffix}`
 }
 
 export const indexItemDate = event => {
