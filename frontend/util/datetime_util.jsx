@@ -68,6 +68,7 @@ export const getMonth = (date) => {
 }
 
 export const getTime12 = (time) => {
+  debugger
   let hh = parseInt(time.split(":")[0]);
   let m = time.split(":")[1];
   let h = ((hh + 11) % 12 + 1);
@@ -92,8 +93,8 @@ export const showHeaderDate = (event) => {
   const date = new Date(event.start_date);
   return (
     <>
-      <p class="month">{getMonth(date).slice(0, 3)}</p>
-      <p class="date">{date.getDate()}</p>
+      <p className="month">{getMonth(date).slice(0, 3)}</p>
+      <p className="date">{date.getDate()}</p>
     </>
   )
 }
