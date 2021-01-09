@@ -20,8 +20,10 @@ class RegistrationIndexItem extends React.Component {
     this.props.deleteRegistration(event.event_id, event.registration_id);
   }
 
-  render() {
+  render() {  
+    debugger
     const { event, currentUser } = this.props;
+    if (event === undefined) return null;
     const indexItemDate = DateTimeUtil.indexItemDate(event);
     
     const userOption = (

@@ -68,7 +68,6 @@ export const getMonth = (date) => {
 }
 
 export const getTime12 = (time) => {
-  debugger
   let hh = parseInt(time.split(":")[0]);
   let m = time.split(":")[1];
   let h = ((hh + 11) % 12 + 1);
@@ -77,6 +76,7 @@ export const getTime12 = (time) => {
 }
 
 export const indexItemDate = (event) => {
+  if (event === undefined) return;
   const date = new Date(event.start_date);
   if (event.start_time) {
     return (
