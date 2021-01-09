@@ -20,7 +20,8 @@ class Api::RegistrationsController < ApplicationController
     @registration = current_user.registrations.find_by(id: params[:id])
     @event = Event.find_by(id: params[:event_id])
     if @registration && @registration.destroy
-      render "api/events/show"
+      @registrations = current_user.registrations
+      render "api/registrations/index"
     else
       render "api/events/show", status: 422
     end      
