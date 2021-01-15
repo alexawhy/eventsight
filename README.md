@@ -1,6 +1,6 @@
 # Eventsight
 
-![splash](readme_images/readme_1.png)
+![splash](app/assets/images/eventsight.gif)
 
 Eventsight is an Eventbrite clone. It replicates the ability to create, register and view events hosted by diffferent organizer. 
 
