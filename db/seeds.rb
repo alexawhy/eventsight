@@ -81,9 +81,9 @@ event2 = Event.create(
   Non pulvinar neque laoreet suspendisse interdum. Sodales ut etiam sit amet nisl purus. Id diam maecenas ultricies mi eget mauris. Amet facilisis magna etiam tempor orci eu lobortis elementum nibh. Egestas maecenas pharetra convallis posuere morbi leo. A scelerisque purus semper eget duis at tellus.",
   online: true,
   capacity: 20,
-  start_date: "2020-11-28",
+  start_date: "2021-01-23",
   start_time: "20:30",
-  end_date: "2020-11-28",
+  end_date: "2020-01-23",
   end_time: "22:00"
 )
 
@@ -100,9 +100,9 @@ event3 = Event.create(
   online: false,
   venue: "260 Bicetown Road, Brooklyn, NY 11211",
   capacity: 8,
-  start_date: "2020-12-06",
+  start_date: "2021-01-30",
   start_time: "12:00",
-  end_date: "2020-12-06",
+  end_date: "2021-01-30",
   end_time: "15:00"
 )
 
@@ -119,9 +119,9 @@ event4 = Event.create(
   online: false,
   venue: "4637 Dancing Dove Lane, New York, NY 10016",
   capacity: 100,
-  start_date: "2020-12-21",
+  start_date: "2021-02-09",
   start_time: "10:00",
-  end_date: "2020-12-21",
+  end_date: "2021-02-09",
   end_time: "20:00"
 )
 
@@ -134,9 +134,9 @@ event5 = Event.create(
   online: false,
   venue: "87 Geraldine Lane, New York, NY 10003",
   capacity: 5,
-  start_date: "2020-12-01",
+  start_date: "2021-02-14",
   start_time: "15:00",
-  end_date: "2020-12-01",
+  end_date: "2021-02-14",
   end_time: "17:00"
 )
 
@@ -149,9 +149,9 @@ event6 = Event.create(
   online: false,
   venue: "29 Pine Street, Brooklyn, NY 11249",
   capacity: 8,
-  start_date: "2020-12-04",
+  start_date: "2021-03-04",
   start_time: "19:00",
-  end_date: "2020-12-04",
+  end_date: "2021-03-04",
   end_time: "22:00"
 )
 
@@ -163,9 +163,9 @@ event7 = Event.create(
   description: "Practice simple Muay Thai Moves together.",
   online: true,
   capacity: 30,
-  start_date: "2020-11-29",
+  start_date: "2021-03-09",
   start_time: "11:30",
-  end_date: "2020-11-29",
+  end_date: "2021-03-09",
   end_time: "13:00"
 )
 
@@ -178,9 +178,9 @@ event8 = Event.create(
   online: false,
   venue: "Marine Park, Brooklyn, NY",
   capacity: 10,
-  start_date: "2020-12-05",
+  start_date: "2021-03-13",
   start_time: "12:00",
-  end_date: "2020-12-06",
+  end_date: "2021-03-14",
   end_time: "09:00"
 )
 
@@ -192,9 +192,9 @@ event9 = Event.create(
   description: "Brief introduction to UI/UX design.",
   online: true,
   capacity: 50,
-  start_date: "2020-12-08",
+  start_date: "2021-03-18",
   start_time: "18:30",
-  end_date: "2020-12-08",
+  end_date: "2021-03-18",
   end_time: "20:30"
 )
 
@@ -207,9 +207,9 @@ event10 = Event.create(
   online: false,
   venue: "86 Friendship Lane, NY 10001",
   capacity: 50,
-  start_date: "2020-12-08",
+  start_date: "2021-03-27",
   start_time: "18:30",
-  end_date: "2020-12-08",
+  end_date: "2021-03-27",
   end_time: "20:30"
 )
 
@@ -222,9 +222,9 @@ event11 = Event.create(
   online: false,
   venue: "1 W 32nd Street, New York, NY 10001",
   capacity: 50,
-  start_date: "2020-12-08",
+  start_date: "2021-04-07",
   start_time: "18:30",
-  end_date: "2020-12-08",
+  end_date: "2021-04-07",
   end_time: "20:30"
 )
 
@@ -236,9 +236,9 @@ event12 = Event.create(
   description: "Learn how to make maki sushi at home.",
   online: true,
   capacity: 20,
-  start_date: "2020-12-15",
+  start_date: "2021-05-11",
   start_time: "17:00",
-  end_date: "2020-12-15",
+  end_date: "2021-05-11",
   end_time: "18:30"
 )
 
@@ -273,3 +273,10 @@ event12.image.attach(io: image12, filename: 'event12.jpg')
 registration1 = Registration.create(user_id: demo.id, event_id: event2.id)
 registration1 = Registration.create(user_id: demo.id, event_id: event3.id)
 registration1 = Registration.create(user_id: demo.id, event_id: event4.id)
+
+# Bookmark
+
+bookmark1 = Bookmark.create(user_id: demo.id, event_id: event2.id)
+bookmark2 = Bookmark.create(user_id: demo.id, event_id: event4.id)
+bookmark3 = Bookmark.create(user_id: demo.id, event_id: event5.id)
+bookmark4 = Bookmark.create(user_id: demo.id, event_id: event6.id)
