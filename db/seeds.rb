@@ -12,6 +12,7 @@ User.destroy_all
 Category.destroy_all
 Event.destroy_all
 Registration.destroy_all
+Bookmark.destroy_all
 
 # Users
 
