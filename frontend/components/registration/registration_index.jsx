@@ -34,7 +34,6 @@ class RegistrationIndex extends React.Component {
       </p>
     )
 
-    debugger
     return (
       <div className="user-event-index">
         <h1>Attending Events</h1>
