@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   belongs_to :organizer, class_name: :User, foreign_key: :organizer_id
   belongs_to :category
 
-  has_one_attached :image
+  # has_one_attached :image
 
   has_many :registrations, dependent: :destroy
   has_many :attendees, through: :registrations, source: :user
