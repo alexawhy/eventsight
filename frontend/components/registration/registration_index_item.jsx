@@ -21,7 +21,6 @@ class RegistrationIndexItem extends React.Component {
   }
 
   render() {  
-    debugger
     const { event, currentUser } = this.props;
     if (event === undefined) return null;
     const indexItemDate = DateTimeUtil.indexItemDate(event);

@@ -47,19 +47,19 @@ class EventIndex extends React.Component {
         filteredEvents = events;
         break;
       case 1:
-        filteredEvents = events.filter(event => event.category_id === 6);
+        filteredEvents = events.filter(event => event.category === "Food & Drink");
         break;
       case 2:
-        filteredEvents = events.filter(event => event.category_id === 8);
+        filteredEvents = events.filter(event => event.category === "Hobbies & Special Interest");
         break;
       case 3:
-        filteredEvents = events.filter(event => event.category_id === 10);
+        filteredEvents = events.filter(event => event.category === "Performing and Visual Arts");
         break;
       case 4:
-        filteredEvents = events.filter(event => event.category_id === 12);
+        filteredEvents = events.filter(event => event.category === "Science & Technology");
         break;
       case 5:
-        filteredEvents = events.filter(event => event.category_id === 14);
+        filteredEvents = events.filter(event => event.category === "Sports & Fitness");
         break;
     }
 
