@@ -103,20 +103,35 @@ export const showMainDate = (event) => {
   const startDate = new Date(event.start_date);
   const endDate = new Date(event.end_date);
   if (event.start_date === event.end_date) {
-    return(
-    <>
-      <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
-      <p>{getTime12(event.start_time)} - {getTime12(event.end_time)}</p>
-    </>
-    )
-  } else {
-    return(
-      <>
+    if (event.start_time) {
+      return(
+        <>
+          <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
+          <p>{getTime12(event.start_time)} - {getTime12(event.end_time)}</p>
+        </>
+      )
+    } else {
+      return(
         <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
-        <p>{getTime12(event.start_time)} -</p>
-        <p>{getDayOfWeek(endDate)}, {getMonth(endDate)} {endDate.getDate()}, {endDate.getFullYear()}</p>
-        <p>{getTime12(event.end_time)}</p>
-      </>
-    )
+      )
+    }
+  } else {
+    if (event.start_time) {
+      return(
+        <>
+          <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()}</p>
+          <p>{getTime12(event.start_time)} -</p>
+          <p>{getDayOfWeek(endDate)}, {getMonth(endDate)} {endDate.getDate()}, {endDate.getFullYear()}</p>
+          <p>{getTime12(event.end_time)}</p>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <p>{getDayOfWeek(startDate)}, {getMonth(startDate)} {startDate.getDate()}, {startDate.getFullYear()} - </p>
+          <p>{getDayOfWeek(endDate)}, {getMonth(endDate)} {endDate.getDate()}, {endDate.getFullYear()}</p>
+        </>
+      )
+    }
   }
 }
