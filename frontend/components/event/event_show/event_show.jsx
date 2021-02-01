@@ -47,7 +47,8 @@ class EventShow extends React.Component {
 
     const showHeaderDate = DateTimeUtil.showHeaderDate(event);
     const showMainDate = DateTimeUtil.showMainDate(event);
-    const locationHeader = event.online === true ? 'Online Event' : 'Location';
+    const locationHeader = event.online ? 'Online Event' : 'Location';
+    const location = event.venue === 'null' ? '' : <p>{event.venue}</p>;
     const registerButton = event.attendees.includes(currentUserId) ?
       <button onClick={this.handleRedirect}>Cancel Registration</button> :
       <button className="register-btn" onClick={() => openModal('registration')}>
@@ -96,7 +97,7 @@ class EventShow extends React.Component {
               <h3>Date and Time</h3>
               {showMainDate}
               <h3>{locationHeader}</h3>
-              <p>{event.venue}</p>
+              {location}
             </div>
           </div>
         </div>
