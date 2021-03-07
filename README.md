@@ -25,8 +25,10 @@ Hosting:
 ## Features
 
 - User authentication
-- CRUD functionalities (Create, read, update and delete) for events and event registrations
-- Uploading images to events
+- CRUD functionalities (Create, read, update and delete) for events
+- Create and delete event registrations
+- Create and delete event bookmarks
+- Browse events according to category
 
 ## Example Code
 
